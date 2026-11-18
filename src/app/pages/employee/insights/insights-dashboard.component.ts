@@ -7,6 +7,7 @@ import { BehaviorSubject, Subscription, catchError, of, switchMap, timer } from 
 import { Chart, registerables } from 'chart.js';
 import { ReportData, ReportPeriod, ReportsService } from '../../../services/reports.service';
 import { StatusApi, FormaPagamentoApi } from '../../../core/api/api.types';
+import { pollingErrorMessage } from '../../../services/orders.service';
 
 Chart.register(...registerables);
 
@@ -74,12 +75,20 @@ const REFRESH_MS = 15000;
         </div>
       </div>
 
-      <p *ngIf="error" style="margin-bottom:1rem;padding:.75rem 1rem;border-radius:var(--r-lg);background:rgba(239,68,68,.1);color:#f87171;font-size:var(--text-sm)">
-        {{ error }}
+      <!-- Carregando / erro (RNF10) -->
+      <p *ngIf="loading && !error" role="status" aria-live="polite" class="ins-loading">
+        <span class="ins-spinner" aria-hidden="true"></span> Carregando relatórios...
       </p>
+      <div *ngIf="error" role="alert" class="ins-error">
+        <span style="flex:1;min-width:200px">
+          <strong>Não foi possível {{ data ? 'atualizar' : 'carregar' }} os relatórios.</strong>
+          {{ error }} {{ data ? 'Mostrando os últimos dados.' : 'Tentando de novo automaticamente.' }}
+        </span>
+        <button type="button" class="btn btn-sm ins-retry" (click)="retry()">Tentar agora</button>
+      </div>
 
       <!-- KPI Cards -->
-      <div class="grid-4 stagger" style="margin-bottom:2rem">
+      <div class="grid-4 stagger" style="margin-bottom:2rem" [class.ins-dim]="loading">
 
         <div class="kpi-card">
           <div class="kpi-icon" style="background:rgba(58,111,240,.12);color:var(--brand-400)">
@@ -248,6 +257,14 @@ const REFRESH_MS = 15000;
     </div>
   `,
   styles: [`
+    .ins-loading { display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; color:var(--text-tertiary); font-size:var(--text-sm); }
+    .ins-spinner { width:14px; height:14px; border-radius:50%; border:2px solid var(--border); border-top-color:var(--brand-400); animation:ins-spin .8s linear infinite; }
+    @keyframes ins-spin { to { transform:rotate(360deg); } }
+    .ins-error { display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-bottom:1rem; padding:.75rem 1rem; border-radius:var(--r-lg);
+      background:var(--danger-bg); border:1px solid var(--danger-border); color:var(--danger-text); font-size:var(--text-sm); }
+    .ins-retry { background:transparent; color:var(--danger-text); border:1px solid var(--danger-border); }
+    .ins-dim { opacity:.45; transition:opacity .2s; }
+    @media (prefers-reduced-motion: reduce) { .ins-spinner { animation:none; } }
     .chart-empty { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--text-tertiary); font-size:var(--text-sm); }
     @media (max-width: 1024px) {
       .chart-grid-main { grid-template-columns: minmax(0,1fr) !important; }
@@ -270,6 +287,8 @@ export class InsightsDashboardComponent implements OnInit, AfterViewInit, OnDest
   period: ReportPeriod = 'all';
   data: ReportData | null = null;
   error = '';
+  /** true até os relatórios do período chegarem (RNF10). */
+  loading = true;
 
   private period$ = new BehaviorSubject<ReportPeriod>(this.period);
   private sub?: Subscription;
@@ -282,8 +301,8 @@ export class InsightsDashboardComponent implements OnInit, AfterViewInit, OnDest
       switchMap(p => timer(0, REFRESH_MS).pipe(
         switchMap(() => this.reports.load(p).pipe(
           catchError(err => {
-            console.error('[Insights] erro nos relatórios:', err);
-            this.error = 'Não foi possível carregar os relatórios. Verifique se a API está rodando.';
+            this.error = pollingErrorMessage(err);
+            this.loading = false;
             return of(null);
           }),
         )),
@@ -291,6 +310,7 @@ export class InsightsDashboardComponent implements OnInit, AfterViewInit, OnDest
     ).subscribe(data => {
       if (!data) return;
       this.error = '';
+      this.loading = false;
       this.data = data;
       this.ngZone.runOutsideAngular(() => this.updateAllCharts());
     });
@@ -312,7 +332,14 @@ export class InsightsDashboardComponent implements OnInit, AfterViewInit, OnDest
   setPeriod(p: ReportPeriod) {
     if (p === this.period) return;
     this.period = p;
+    this.loading = true;
     this.period$.next(p);
+  }
+
+  /** "Tentar agora": refaz a consulta do período atual sem esperar os 15s. */
+  retry() {
+    this.loading = !this.data;
+    this.period$.next(this.period);
   }
 
   // ── Dados derivados ────────────────────────────────────────────

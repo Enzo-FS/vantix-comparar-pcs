@@ -5,6 +5,7 @@
 // (gerados em mock-seed.json por scripts/sql-to-mock.mjs) e imita as
 // regras do banco: trigger de estoque, FK RESTRICT, UNIQUE de e-mail etc.
 // O estado fica no localStorage; para zerar rode voltzMockReset() no console.
+// Para simular a API fora do ar (RNF10): voltzMockOffline(true) / voltzMockOffline(false).
 // ============================================================
 import {
   HttpErrorResponse, HttpInterceptorFn, HttpRequest, HttpResponse,
@@ -58,6 +59,16 @@ function save(): void {
 }
 (window as unknown as Record<string, unknown>)['voltzMockReset'] = () => {
   db = freshDb(); save(); location.reload();
+};
+
+// Simula a API fora do ar: toda chamada falha como erro de rede (status 0), igual ao servidor desligado.
+const OFFLINE_KEY = 'voltz_mock_offline';
+function isOffline(): boolean {
+  try { return localStorage.getItem(OFFLINE_KEY) === '1'; } catch { return false; }
+}
+(window as unknown as Record<string, unknown>)['voltzMockOffline'] = (on = true) => {
+  try { on ? localStorage.setItem(OFFLINE_KEY, '1') : localStorage.removeItem(OFFLINE_KEY); } catch { /* ignora */ }
+  return on ? 'API simulada FORA do ar' : 'API simulada de volta';
 };
 
 // ── Utilitários ─────────────────────────────────────────────
@@ -456,6 +467,11 @@ route('GET', '/relatorios/estoque-baixo', req => {
 // ── Interceptor ─────────────────────────────────────────────
 export const mockBackendInterceptor: HttpInterceptorFn = (req, next) => {
   if (!environment.useMock || !req.url.startsWith(environment.apiUrl)) return next(req);
+
+  if (isOffline()) {
+    return timer(300).pipe(mergeMap(() => throwError(() =>
+      new HttpErrorResponse({ status: 0, statusText: 'Unknown Error', url: req.url }))));
+  }
 
   const path = req.url.slice(environment.apiUrl.length).split('?')[0];
   const found = routes

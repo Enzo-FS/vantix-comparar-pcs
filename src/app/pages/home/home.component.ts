@@ -65,8 +65,8 @@ import { CustomerService } from '../../services/customer.service';
       </div>
     </section>
 
-    <!-- DESTAQUES -->
-    <section style="padding:5rem 0;background:#fff">
+    <!-- DESTAQUES (some se o catálogo não carregou, em vez de mostrar uma grade vazia) -->
+    <section *ngIf="specials.length" style="padding:5rem 0;background:#fff">
       <div class="container">
         <div style="text-align:center;margin-bottom:3rem">
           <div class="section-tag" style="justify-content:center">

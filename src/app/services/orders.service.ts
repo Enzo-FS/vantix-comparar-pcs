@@ -1,12 +1,25 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import {
-  EMPTY, Observable, Subject, catchError, firstValueFrom, map, merge, shareReplay, switchMap, tap, timer,
+  EMPTY, Observable, Subject, catchError, firstValueFrom, map, merge, of, shareReplay, switchMap, tap, timer,
 } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { CartItem, Customer, Order, OrderStatus, PaymentMethod } from '../models';
 import { MudarStatusRequest, NovoPedidoRequest, PedidoApi } from '../core/api/api.types';
 import { orderFromApi, paymentToApi, statusToApi } from '../core/api/mappers';
+
+/** Resultado de cada consulta de "Meus pedidos": a lista, ou null + mensagem quando a API falha. */
+export interface CustomerOrdersResult {
+  orders: Order[] | null;
+  error: string;
+}
+
+/** Mensagem para quando a consulta automática (polling) falha. */
+export function pollingErrorMessage(err: unknown): string {
+  if (err instanceof HttpErrorResponse && err.status === 0) return 'Sem conexão com o servidor.';
+  if (err instanceof HttpErrorResponse && err.status >= 500) return 'O servidor está com problemas no momento.';
+  return 'Não foi possível atualizar os pedidos.';
+}
 
 export interface NewOrderData {
   items: CartItem[];
@@ -23,6 +36,14 @@ export class OrdersService {
   private _orders = signal<Order[]>([]);
   readonly orders$ = this._orders.asReadonly();
 
+  // RNF10: os painéis mostram "carregando" na primeira consulta e um aviso quando a API falha.
+  private _loading = signal(true);
+  private _error = signal('');
+  /** true até a primeira resposta (com sucesso ou com erro). */
+  readonly loading = this._loading.asReadonly();
+  /** Mensagem da última falha; volta a '' quando uma consulta dá certo. */
+  readonly error = this._error.asReadonly();
+
   /** Força uma atualização imediata (após mudar status, por exemplo). */
   private refresh$ = new Subject<void>();
 
@@ -33,23 +54,34 @@ export class OrdersService {
    */
   readonly orders: Observable<Order[]> = merge(timer(0, environment.pollingMs), this.refresh$).pipe(
     switchMap(() => this.http.get<PedidoApi[]>(this.base).pipe(
-      catchError(err => { console.error('[OrdersService] erro ao buscar pedidos:', err); return EMPTY; }),
+      catchError(err => {
+        // Mantém a última lista na tela e tenta de novo na próxima rodada do polling.
+        this._error.set(pollingErrorMessage(err));
+        this._loading.set(false);
+        return EMPTY;
+      }),
     )),
     map(list => list.map(orderFromApi).sort((a, b) => +b.createdAt - +a.createdAt)),
-    tap(list => this._orders.set(list)),
+    tap(list => { this._orders.set(list); this._error.set(''); this._loading.set(false); }),
     shareReplay({ bufferSize: 1, refCount: true }),
   );
 
   getOrders(): Order[] { return this._orders(); }
 
-  /** Pedidos de um cliente (público, sem login) — tela "Meus pedidos". */
-  customerOrders(phone: string): Observable<Order[]> {
+  /** "Tentar de novo": consulta agora, sem esperar a próxima rodada do polling. */
+  refresh(): void { this.refresh$.next(); }
+
+  /**
+   * Pedidos de um cliente (público, sem login) — tela "Meus pedidos".
+   * Consulta a cada `pollingMs`; quando a API falha, emite { orders: null, error } e continua tentando.
+   */
+  customerOrders(phone: string): Observable<CustomerOrdersResult> {
     const params = new HttpParams().set('telefone', phone);
     return timer(0, environment.pollingMs).pipe(
       switchMap(() => this.http.get<PedidoApi[]>(`${this.base}/cliente`, { params }).pipe(
-        catchError(err => { console.error('[OrdersService] erro ao buscar meus pedidos:', err); return EMPTY; }),
+        map(list => ({ orders: list.map(orderFromApi).sort((a, b) => +b.createdAt - +a.createdAt), error: '' })),
+        catchError(err => of({ orders: null, error: pollingErrorMessage(err) })),
       )),
-      map(list => list.map(orderFromApi).sort((a, b) => +b.createdAt - +a.createdAt)),
     );
   }
 

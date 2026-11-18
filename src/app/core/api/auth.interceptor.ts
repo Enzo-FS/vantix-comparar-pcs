@@ -30,7 +30,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 /** Lê a mensagem de erro padrão da API ({ mensagem: "..." }). */
 export function apiErrorMessage(err: unknown, fallback: string): string {
   if (err instanceof HttpErrorResponse) {
-    if (err.status === 0) return 'Servidor indisponível. Verifique se a API está rodando.';
+    if (err.status === 0) return 'Servidor indisponível no momento. Tente novamente em instantes.';
     const m = (err.error as { mensagem?: string } | null)?.mensagem;
     if (m) return m;
   }

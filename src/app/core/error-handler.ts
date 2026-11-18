@@ -26,7 +26,7 @@ export class GlobalErrorHandler implements ErrorHandler {
     // API fora do ar (status 0) ou sessão expirada (401/403)
     if (error instanceof HttpErrorResponse) {
       const msg = error.status === 0
-        ? 'Não foi possível falar com o servidor. A API está rodando?'
+        ? 'Sem conexão com o servidor. Tente novamente em instantes.'
         : error.status === 401 || error.status === 403
           ? 'Permissão negada. Faça login novamente.'
           : 'Erro no servidor. Tente novamente.';

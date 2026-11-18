@@ -20,9 +20,13 @@ export class MenuService {
   private _categories = signal<CategoriaApi[]>(CATEGORIES.map((nome, i) => ({ id: i + 1, nome })));
   private includeInactive = false;
 
+  private _error      = signal('');
+
   readonly items$      = this._items.asReadonly();
   readonly loaded$     = this._loaded.asReadonly();
   readonly categories$ = this._categories.asReadonly();
+  /** Mensagem quando o catálogo não carregou (RNF10); '' quando deu certo. */
+  readonly error$      = this._error.asReadonly();
 
   constructor() {
     this.loadCategories();
@@ -36,11 +40,21 @@ export class MenuService {
     try {
       const list = await firstValueFrom(this.http.get<ProdutoApi[]>(this.base, { params }));
       this._items.set(list.map(productFromApi));
+      this._error.set('');
     } catch (e) {
-      console.error('[MenuService] erro ao carregar produtos:', e);
+      // Mantém a lista anterior (se houver) e avisa a tela.
+      this._error.set(e instanceof HttpErrorResponse && e.status === 0
+        ? 'Sem conexão com o servidor.'
+        : 'O servidor não respondeu como esperado.');
     } finally {
       this._loaded.set(true);
     }
+  }
+
+  /** "Tentar de novo" das telas: mostra o carregamento outra vez e consulta a API. */
+  async retry(): Promise<void> {
+    this._loaded.set(false);
+    await Promise.all([this.reload(), this.loadCategories()]);
   }
 
   private async loadCategories(): Promise<void> {
