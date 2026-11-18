@@ -100,6 +100,20 @@ const MAX_INSTALLMENTS = 10;
     <div *ngIf="!loading()" style="background:var(--stone-50);padding:2.5rem 0 4rem">
       <div class="container">
 
+        <!-- Erro ao carregar o catálogo (RNF10) -->
+        <div *ngIf="loadError()" role="alert" class="catalog-error">
+          <div style="font-size:2.5rem">📡</div>
+          <div style="flex:1;min-width:220px">
+            <h3 style="font-family:var(--font-serif);font-size:1.3rem;color:#991b1b;margin-bottom:.25rem">
+              {{ allItems().length ? 'Não foi possível atualizar os produtos' : 'Não conseguimos carregar os produtos agora' }}
+            </h3>
+            <p style="color:#b91c1c;font-size:.85rem">
+              {{ loadError() }} {{ allItems().length ? 'Mostrando a última lista carregada.' : 'Verifique sua conexão e tente de novo.' }}
+            </p>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="retry()">Tentar de novo</button>
+        </div>
+
         <!-- Search results header -->
         <div *ngIf="search()" style="margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap">
           <h2 style="font-family:var(--font-serif);font-size:1.5rem;color:var(--stone-900)">Resultados para "<em>{{ search() }}</em>"</h2>
@@ -107,7 +121,7 @@ const MAX_INSTALLMENTS = 10;
         </div>
 
         <!-- Category header (when not searching) -->
-        <div *ngIf="!search()" style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:.5rem">
+        <div *ngIf="!search() && !(loadError() && allItems().length===0)" style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:.5rem">
           <div style="display:flex;align-items:center;gap:.75rem">
             <span style="font-size:1.75rem">{{ catIcon(selectedCategory()) }}</span>
             <h2 style="font-family:var(--font-serif);font-size:2rem;color:var(--stone-900)">{{ selectedCategory() }}</h2>
@@ -123,8 +137,8 @@ const MAX_INSTALLMENTS = 10;
                   style="color:var(--stone-400);font-size:1.25rem;line-height:1;background:none;border:none;cursor:pointer">×</button>
         </app-also-bought>
 
-        <!-- Empty state -->
-        <div *ngIf="displayItems().length===0" style="text-align:center;padding:4rem 2rem;background:#fff;border-radius:var(--r-2xl);border:1px solid var(--stone-100)">
+        <!-- Empty state (só quando o catálogo carregou: com erro, o aviso acima explica) -->
+        <div *ngIf="displayItems().length===0 && !(loadError() && allItems().length===0)" style="text-align:center;padding:4rem 2rem;background:#fff;border-radius:var(--r-2xl);border:1px solid var(--stone-100)">
           <div style="font-size:3.5rem;margin-bottom:1rem">🔍</div>
           <h3 style="font-family:var(--font-serif);font-size:1.5rem;color:var(--stone-700);margin-bottom:.5rem">Nenhum produto encontrado</h3>
           <p style="color:var(--stone-400);font-size:.875rem">Tente outro termo, confira a grafia ou explore as categorias acima.</p>
@@ -216,6 +230,8 @@ const MAX_INSTALLMENTS = 10;
     @media (prefers-reduced-motion: reduce) { .menu-card-premium, .menu-card-premium img { transition:none !important; } .menu-card-premium:hover { transform:none; } .menu-card-premium:hover img { transform:none; } }
     .menu-card-premium:hover img { transform: scale(1.04); }
     .card-name-link { color:var(--stone-900); text-decoration:none; }
+    .catalog-error { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; padding:1.25rem 1.5rem; margin-bottom:1.5rem;
+      background:#fef2f2; border:1px solid #fecaca; border-radius:var(--r-2xl); }
     .card-name-link:hover { color:var(--brand-700); }
     .card-name-link:focus-visible { outline:2px solid var(--brand-400); outline-offset:2px; }
   `]
@@ -248,6 +264,9 @@ export class MenuComponent {
     const cat = this.selectedCategory();
     return this.allItems().filter(i => i.active !== false && (cat === ALL || i.category === cat));
   });
+
+  loadError = computed(() => this.menuService.error$());
+  retry() { this.menuService.retry(); }
 
   constructor(private menuService: MenuService, private cart: CartService, private toast: ToastService) {
     this.cart.count.subscribe(c => this.cartCount = c);

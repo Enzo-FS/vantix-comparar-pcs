@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgFor, NgIf, DatePipe, CurrencyPipe } from '@angular/common';
+import { OrdersSyncStatusComponent } from '../../../components/ui/orders-sync-status.component';
 import { Subscription } from 'rxjs';
 import { OrdersService } from '../../../services/orders.service';
 import { AuthService } from '../../../services/auth.service';
@@ -10,7 +11,7 @@ import { Order } from '../../../models';
 @Component({
   selector: 'app-delivery-dashboard',
   standalone: true,
-  imports: [NgFor, NgIf, DatePipe, CurrencyPipe],
+  imports: [NgFor, NgIf, DatePipe, CurrencyPipe, OrdersSyncStatusComponent],
   template: `
     <div style="max-width:900px;margin:0 auto;padding:0 1.5rem">
 
@@ -45,6 +46,9 @@ import { Order } from '../../../models';
         </div>
       </div>
 
+      <!-- Carregando / sem conexão (RNF10) -->
+      <app-orders-sync-status></app-orders-sync-status>
+
       <!-- Tabs -->
       <div style="display:flex;border-bottom:1px solid var(--border);margin-bottom:1.75rem;gap:.25rem">
         <button *ngFor="let tab of tabs"
@@ -62,7 +66,7 @@ import { Order } from '../../../models';
       </div>
 
       <!-- TAB: Disponíveis -->
-      <div *ngIf="activeTab === 'available'">
+      <div *ngIf="activeTab === 'available' && !syncLoading">
         <div *ngIf="available.length === 0" class="empty-state animate-fade-in">
           <div class="empty-icon">📭</div>
           <h3>Nenhuma entrega disponível</h3>
@@ -138,7 +142,7 @@ import { Order } from '../../../models';
       </div>
 
       <!-- TAB: Em Rota -->
-      <div *ngIf="activeTab === 'active'">
+      <div *ngIf="activeTab === 'active' && !syncLoading">
         <div *ngIf="active.length === 0" class="empty-state animate-fade-in">
           <div class="empty-icon">🗺️</div>
           <h3>Nenhuma entrega em andamento</h3>
@@ -190,7 +194,7 @@ import { Order } from '../../../models';
       </div>
 
       <!-- TAB: Concluídas -->
-      <div *ngIf="activeTab === 'done'">
+      <div *ngIf="activeTab === 'done' && !syncLoading">
         <div *ngIf="completed.length === 0" class="empty-state animate-fade-in">
           <div class="empty-icon">✅</div>
           <h3>Nenhuma entrega concluída hoje</h3>
@@ -262,6 +266,9 @@ export class DeliveryDashboardComponent implements OnInit, OnDestroy {
     private auth: AuthService,
     private toast: ToastService
   ) {}
+
+/** true até a primeira consulta de pedidos responder (RNF10). */
+  get syncLoading() { return this.ordersService.loading(); }
 
   ngOnInit() {
     this.deliveryUid = this.auth.getUser()?.uid ?? '';

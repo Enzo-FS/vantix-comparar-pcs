@@ -57,7 +57,7 @@ export class AuthService {
         throw new Error('Conta não autorizada neste sistema.');
       }
       if (err instanceof HttpErrorResponse && err.status === 0) {
-        throw new Error('Servidor indisponível. Verifique se a API está rodando.');
+        throw new Error('Servidor indisponível no momento. Tente novamente em instantes.');
       }
       throw new Error('E-mail ou senha incorretos.');
     }

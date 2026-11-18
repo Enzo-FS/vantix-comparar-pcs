@@ -239,10 +239,8 @@ function makeLoginComponent(
         // o AuthService lê a sessão ao iniciar e o guard libera a rota do painel.
         setTimeout(() => { window.location.assign(redirect); }, 400);
       } catch (err: any) {
-        const msg = err?.message ?? '';
-        this.error = msg.includes('não autorizada')
-          ? msg
-          : 'E-mail ou senha incorretos. Verifique as credenciais.';
+        // O AuthService já diferencia senha errada, conta desativada e servidor fora do ar (RNF10)
+        this.error = err?.message || 'E-mail ou senha incorretos. Verifique as credenciais.';
         this.loading = false;
       }
     }

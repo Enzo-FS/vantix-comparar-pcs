@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgFor, NgIf, DatePipe } from '@angular/common';
+import { OrdersSyncStatusComponent } from '../../../components/ui/orders-sync-status.component';
 import { Subscription } from 'rxjs';
 import { OrdersService } from '../../../services/orders.service';
 import { ToastService } from '../../../services/toast.service';
@@ -9,7 +10,7 @@ import { Order, OrderStatus } from '../../../models';
 @Component({
   selector: 'app-kitchen-dashboard',
   standalone: true,
-  imports: [NgFor, NgIf, DatePipe],
+  imports: [NgFor, NgIf, DatePipe, OrdersSyncStatusComponent],
   template: `
     <div style="padding:0 1.5rem;height:calc(100vh - 140px);display:flex;flex-direction:column">
 
@@ -31,8 +32,11 @@ import { Order, OrderStatus } from '../../../models';
         </div>
       </div>
 
+      <!-- Carregando / sem conexão (RNF10) -->
+      <app-orders-sync-status></app-orders-sync-status>
+
       <!-- Kanban -->
-      <div class="kanban" style="flex:1">
+      <div *ngIf="!syncLoading" class="kanban" style="flex:1">
 
         <!-- Pendentes -->
         <div class="kanban-col col-pending">
@@ -221,6 +225,10 @@ export class KitchenDashboardComponent implements OnInit, OnDestroy {
   private sub?: Subscription;
 
   constructor(private ordersService: OrdersService, private toast: ToastService) {}
+
+  /** true até a primeira consulta de pedidos responder (RNF10). */
+  get syncLoading() { return this.ordersService.loading(); }
+
 
   ngOnInit() {
     this.sub = this.ordersService.orders.subscribe({

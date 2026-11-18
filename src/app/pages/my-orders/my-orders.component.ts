@@ -37,10 +37,20 @@ const STATUS_CONFIG: Record<string, { label:string; color:string; bg:string; des
                  style="flex:1;min-width:220px" inputmode="tel">
           <button class="btn btn-primary" type="submit">Buscar pedidos</button>
         </form>
-        <div *ngIf="loading" style="text-align:center;color:var(--stone-400);font-size:.85rem;padding:2rem">Carregando pedidos...</div>
+        <div *ngIf="loading" role="status" aria-live="polite" style="text-align:center;color:var(--stone-400);font-size:.85rem;padding:2rem">Carregando pedidos...</div>
+
+        <!-- Erro ao consultar (RNF10): continua tentando sozinho a cada poucos segundos -->
+        <div *ngIf="!loading && error" role="alert"
+             style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem 1.25rem;margin-bottom:1.25rem;border-radius:var(--r-lg);background:#fef2f2;border:1px solid #fecaca;color:#991b1b">
+          <div>
+            <p style="font-weight:600;font-size:.9rem">Não foi possível carregar seus pedidos.</p>
+            <p style="font-size:.8rem;color:#b91c1c">{{ error }} {{ orders.length ? 'Mostrando a última atualização.' : 'Tentando de novo automaticamente.' }}</p>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" (click)="lookup()">Tentar de novo</button>
+        </div>
 
         <!-- Vazio -->
-        <div *ngIf="!loading && orders.length===0" style="text-align:center;padding:5rem 2rem">
+        <div *ngIf="!loading && !error && orders.length===0" style="text-align:center;padding:5rem 2rem">
           <div style="width:5rem;height:5rem;border-radius:50%;background:var(--stone-100);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.5rem">📦</div>
           <h2 style="font-family:var(--font-serif);font-size:1.75rem;margin-bottom:.75rem;color:var(--stone-900)">{{ phone ? 'Nenhum pedido encontrado' : 'Nenhum pedido ainda' }}</h2>
           <p style="color:var(--stone-500);margin-bottom:2rem;font-size:.9rem">{{ phone ? 'Confira o telefone digitado ou faça seu primeiro pedido.' : 'Faça seu primeiro pedido ou busque pelo telefone usado na compra.' }}</p>
@@ -119,6 +129,8 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
   phone = '';
   phoneInput = '';
   loading = false;
+  /** Mensagem quando a consulta falha (RNF10). */
+  error = '';
   private sub?: Subscription;
 
   /** Produtos comprados (pedidos não cancelados) da busca atual. */
@@ -141,15 +153,21 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
 
   lookup() {
     const phone = this.phoneInput.trim();
-    if (phone.replace(/\D/g, '').length < 10) { this.phone = ''; this.orders = []; this.historyIds = []; return; }
+    if (phone.replace(/\D/g, '').length < 10) { this.phone = ''; this.orders = []; this.historyIds = []; this.error = ''; return; }
+    if (phone !== this.phone) { this.orders = []; this.historyIds = []; }
     this.phone = phone;
     this.loading = true;
+    this.error = '';
     this.sub?.unsubscribe();
     // Atualiza sozinho a cada poucos segundos (polling), como o painel.
-    this.sub = this.ordersService.customerOrders(phone).subscribe(list => {
-      this.orders = list;
-      this.historyIds = productIds(list);
+    this.sub = this.ordersService.customerOrders(phone).subscribe(result => {
       this.loading = false;
+      this.error = result.error;
+      // Com erro, mantém o que já estava na tela; a próxima consulta tenta de novo.
+      if (result.orders) {
+        this.orders = result.orders;
+        this.historyIds = productIds(result.orders);
+      }
     });
   }
 }

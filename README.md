@@ -24,6 +24,7 @@ Em `src/environments/environment.ts`:
 
 - O formato de cada rota está em **[docs/API_CONTRATO.md](docs/API_CONTRATO.md)**.
 - Os dados do mock ficam salvos no navegador. Para zerar, rode `voltzMockReset()` no console (F12).
+- Para ver as mensagens de erro (RNF10), simule a API fora do ar com `voltzMockOffline(true)` no console e volte com `voltzMockOffline(false)`. As telas avisam o erro, mantêm o que já tinham carregado e se recuperam sozinhas.
 - Se o `02_dados.sql` mudar, gere o mock de novo com `node scripts/sql-to-mock.mjs`.
 
 ## Credenciais de acesso (demo)

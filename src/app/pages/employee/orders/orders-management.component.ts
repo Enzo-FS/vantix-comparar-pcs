@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, signal, computed } from '@angular/core';
-import { NgFor, NgIf, DatePipe } from '@angular/common';
+import { NgFor, NgIf, DatePipe, CurrencyPipe } from '@angular/common';
+import { OrdersSyncStatusComponent } from '../../../components/ui/orders-sync-status.component';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { OrdersService } from '../../../services/orders.service';
@@ -37,7 +38,7 @@ const NEXT_LABEL: Partial<Record<OrderStatus, string>> = {
 @Component({
   selector: 'app-orders-management',
   standalone: true,
-  imports: [NgFor, NgIf, DatePipe, FormsModule],
+  imports: [NgFor, NgIf, DatePipe, CurrencyPipe, FormsModule, OrdersSyncStatusComponent],
   template: `
     <div class="orders-page">
 
@@ -87,8 +88,11 @@ const NEXT_LABEL: Partial<Record<OrderStatus, string>> = {
         </button>
       </div>
 
+      <!-- Carregando / sem conexão (RNF10) -->
+      <app-orders-sync-status></app-orders-sync-status>
+
       <!-- Empty state -->
-      <div *ngIf="filtered().length === 0" style="text-align:center;padding:4rem 2rem;background:var(--surface-1);border:1px solid var(--border);border-radius:var(--r-2xl)">
+      <div *ngIf="filtered().length === 0 && !syncLoading" style="text-align:center;padding:4rem 2rem;background:var(--surface-1);border:1px solid var(--border);border-radius:var(--r-2xl)">
         <div style="font-size:3rem;margin-bottom:1rem">📋</div>
         <p style="color:var(--text-muted);font-size:.9rem">Nenhum pedido encontrado</p>
       </div>
@@ -115,7 +119,7 @@ const NEXT_LABEL: Partial<Record<OrderStatus, string>> = {
                 <span style="font-size:.75rem;color:var(--text-muted)">{{ order.createdAt | date:'dd/MM HH:mm' }}</span>
               </div>
               <div style="text-align:right">
-                <p style="font-family:var(--font-serif);font-size:1.375rem;color:var(--text-primary)">R$ {{ order.total.toFixed(2) }}</p>
+                <p style="font-family:var(--font-serif);font-size:1.375rem;color:var(--text-primary)">{{ order.total | currency:'BRL' }}</p>
                 <p style="font-size:.72rem;color:var(--text-muted)">{{ order.paymentMethod }}</p>
               </div>
             </div>
@@ -134,7 +138,7 @@ const NEXT_LABEL: Partial<Record<OrderStatus, string>> = {
               <div *ngFor="let item of order.items" style="display:flex;align-items:center;gap:.625rem;padding:.3rem 0">
                 <img [src]="item.image" [alt]="item.name" style="width:2rem;height:2rem;border-radius:5px;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">
                 <span style="font-size:.82rem;color:var(--text-secondary);flex:1">{{ item.quantity }}× {{ item.name }}</span>
-                <span style="font-size:.8rem;font-weight:500;color:var(--text-primary)">R$ {{ (item.price*item.quantity).toFixed(2) }}</span>
+                <span style="font-size:.8rem;font-weight:500;color:var(--text-primary)">{{ item.price * item.quantity | currency:'BRL' }}</span>
               </div>
             </div>
 
@@ -207,7 +211,7 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
       { label: 'PENDENTES', value: orders.filter(o => o.status === 'pending').length },
       { label: 'PREPARANDO',value: orders.filter(o => o.status === 'preparing').length },
       { label: 'PRONTOS',   value: orders.filter(o => o.status === 'ready').length },
-      { label: 'FATURAMENTO', value: `R$ ${revenue.toFixed(0)}` },
+      { label: 'FATURAMENTO', value: revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }) },
     ];
   });
 
@@ -224,6 +228,10 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
   });
 
   constructor(private ordersService: OrdersService, private toast: ToastService) {}
+
+  /** true até a primeira consulta de pedidos responder (RNF10). */
+  get syncLoading() { return this.ordersService.loading(); }
+
 
   ngOnInit() {
     this.sub = this.ordersService.orders.subscribe({
