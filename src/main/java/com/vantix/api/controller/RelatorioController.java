@@ -1,4 +1,4 @@
-package com.voltz.api.controller;
+package com.vantix.api.controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -60,14 +60,14 @@ public class RelatorioController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fim) {
         String sql = """
-                SELECT DATE_FORMAT(DATE(data_criacao), '%Y-%m-%d') AS dia,
+                SELECT DATE_FORMAT(data_criacao, '%Y-%m-%d') AS dia,
                        COUNT(*) AS pedidos,
                        SUM(valor_total) AS faturamento
                 FROM pedido
                 WHERE status <> 'cancelado'
                   AND DATE(data_criacao) BETWEEN :inicio AND :fim
-                GROUP BY DATE(data_criacao)
-                ORDER BY DATE(data_criacao)
+                GROUP BY DATE_FORMAT(data_criacao, '%Y-%m-%d')
+                ORDER BY dia
                 """;
         return jdbc.queryForList(sql, periodo(inicio, fim));
     }

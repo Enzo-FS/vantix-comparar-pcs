@@ -10,7 +10,7 @@ import { NgFor } from '@angular/common';
     <div style="min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:2rem">
 
       <!-- Background -->
-      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85"
+      <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1600&q=85"
            alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
       <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(7,13,28,.97) 0%,rgba(7,13,28,.88) 100%)"></div>
 
@@ -89,8 +89,8 @@ import { NgFor } from '@angular/common';
             <div *ngFor="let c of credentials" style="text-align:center">
               <p style="font-size:.68rem;color:rgba(255,255,255,.3);margin-bottom:.25rem;letter-spacing:.08em">{{ c.role }}</p>
               <p style="font-family:var(--font-mono);font-size:.82rem;color:rgba(255,255,255,.7)">
-                {{ c.user }}&#64;voltz.com
-                <span style="color:var(--brand-400);margin-left:.25rem">/ voltz2024</span>
+                {{ c.user }}&#64;vantix.com
+                <span style="color:var(--brand-400);margin-left:.25rem">/ vantix2024</span>
               </p>
             </div>
           </div>

@@ -9,9 +9,9 @@ export interface KnownCustomer {
 }
 
 // Chaves já usadas pelo checkout desde a primeira versão (não renomear: apagaria os dados de quem já comprou).
-const KEY_PHONE = 'voltz_customer_phone';
-const KEY_EMAIL = 'voltz_customer_email';
-const KEY_NAME  = 'voltz_customer_name';
+const KEY_PHONE = 'vantix_customer_phone';
+const KEY_EMAIL = 'vantix_customer_email';
+const KEY_NAME  = 'vantix_customer_name';
 
 /**
  * Perfil "Cliente" sem senha: o site reconhece o cliente pelo telefone usado nas compras.

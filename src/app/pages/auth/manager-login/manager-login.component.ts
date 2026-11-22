@@ -7,9 +7,9 @@ import { ToastService } from '../../../services/toast.service';
 import { UserRole } from '../../../models';
 
 // Usuários do 02_dados.sql (tabela usuario_painel):
-// gerente@voltz.com    / voltz2024
-// estoque@voltz.com    / voltz2024
-// logistica@voltz.com / voltz2024
+// gerente@vantix.com    / vantix2024
+// estoque@vantix.com    / vantix2024
+// logistica@vantix.com / vantix2024
 
 function makeLoginComponent(
   role: UserRole,
@@ -152,7 +152,7 @@ function makeLoginComponent(
                 </div>
                 <div style="background:var(--bg-elevated);border-radius:var(--r-md);padding:.5rem .75rem">
                   <p style="font-size:.62rem;color:var(--text-tertiary);margin-bottom:2px;letter-spacing:.05em">SENHA</p>
-                  <strong style="font-family:var(--font-mono);color:var(--text-primary)">voltz2024</strong>
+                  <strong style="font-family:var(--font-mono);color:var(--text-primary)">vantix2024</strong>
                 </div>
               </div>
               <button (click)="fillDemo()"
@@ -222,7 +222,7 @@ function makeLoginComponent(
 
     fillDemo() {
       this.email    = this.emailPlaceholder;
-      this.password = 'voltz2024';
+      this.password = 'vantix2024';
     }
 
     async login() {
@@ -257,7 +257,7 @@ export const ManagerLoginComponent = makeLoginComponent(
   'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85',
   '#1d5bd6',
   '#173d8c',
-  'gerente@voltz.com'
+  'gerente@vantix.com'
 );
 
 export const KitchenLoginComponent = makeLoginComponent(
@@ -268,7 +268,7 @@ export const KitchenLoginComponent = makeLoginComponent(
   'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85',
   '#0284c7',
   '#075985',
-  'estoque@voltz.com'
+  'estoque@vantix.com'
 );
 
 export const DeliveryLoginComponent = makeLoginComponent(
@@ -276,8 +276,8 @@ export const DeliveryLoginComponent = makeLoginComponent(
   'Portal da Logística',
   'Despache pacotes, acompanhe envios e confirme entregas com facilidade.',
   '/logistica/painel',
-  'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=900&q=85',
+  'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=900&q=85',
   '#0d9488',
   '#115e59',
-  'logistica@voltz.com'
+  'logistica@vantix.com'
 );

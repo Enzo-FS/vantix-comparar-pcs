@@ -23,19 +23,19 @@ Em `src/environments/environment.ts`:
 | `false` | O Angular chama a API Java em `apiUrl` (`http://localhost:8080/api`). |
 
 - O formato de cada rota está em **[docs/API_CONTRATO.md](docs/API_CONTRATO.md)**.
-- Os dados do mock ficam salvos no navegador. Para zerar, rode `voltzMockReset()` no console (F12).
-- Para ver as mensagens de erro (RNF10), simule a API fora do ar com `voltzMockOffline(true)` no console e volte com `voltzMockOffline(false)`. As telas avisam o erro, mantêm o que já tinham carregado e se recuperam sozinhas.
+- Os dados do mock ficam salvos no navegador. Para zerar, rode `vantixMockReset()` no console (F12).
+- Para ver as mensagens de erro (RNF10), simule a API fora do ar com `vantixMockOffline(true)` no console e volte com `vantixMockOffline(false)`. As telas avisam o erro, mantêm o que já tinham carregado e se recuperam sozinhas.
 - Se o `02_dados.sql` mudar, gere o mock de novo com `node scripts/sql-to-mock.mjs`.
 
 ## Credenciais de acesso (demo)
 
 | Portal    | E-mail              | Senha     |
 |-----------|---------------------|-----------|
-| Gerente   | gerente@voltz.com   | voltz2024 |
-| Estoque   | estoque@voltz.com   | voltz2024 |
-| Logística | logistica@voltz.com | voltz2024 |
+| Gerente   | gerente@vantix.com   | vantix2024 |
+| Estoque   | estoque@vantix.com   | vantix2024 |
+| Logística | logistica@vantix.com | vantix2024 |
 
-> Os e-mails e a senha ainda usam "voltz" porque vêm do `database/02_dados.sql`. Trocar exige mudar o banco junto.
+> Esses logins vêm do `database/02_dados.sql` (senha gravada com BCrypt). Se trocar a senha, gere um novo hash e atualize o script.
 
 ### Cliente (sem senha)
 
