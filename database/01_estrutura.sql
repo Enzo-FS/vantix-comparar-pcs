@@ -1,5 +1,5 @@
 -- =====================================================================
--- VOLTZ TECH STORE - Banco de dados (MySQL 8)  |  Script 1 de 2: ESTRUTURA
+-- VANTIX TECH STORE - Banco de dados (MySQL 8)  |  Script 1 de 2: ESTRUTURA
 -- rode este arquivo primeiro e depois o 02_dados.sql.
 -- ATENCAO: a linha DROP abaixo apaga o banco vantix_db se ele ja existir.
 -- =====================================================================

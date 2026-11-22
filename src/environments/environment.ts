@@ -4,6 +4,6 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080/api',
-  useMock: true,
+  useMock: false,
   pollingMs: 5000, // intervalo de atualização dos painéis de Estoque e Logística
 };

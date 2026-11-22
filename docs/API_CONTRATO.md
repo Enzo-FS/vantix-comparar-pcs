@@ -37,17 +37,17 @@ funciona sem nenhuma mudança: basta trocar `useMock: true` por `false` em
 
 ### `POST /api/auth/login` (público)
 ```json
-{ "email": "gerente@voltz.com", "senha": "voltz2024" }
+{ "email": "gerente@vantix.com", "senha": "vantix2024" }
 ```
 Resposta `200`:
 ```json
 {
   "token": "eyJhbGciOi...",
-  "usuario": { "id": 1, "nome": "Gerente Voltz", "email": "gerente@voltz.com", "papel": "gerente", "ativo": true }
+  "usuario": { "id": 1, "nome": "Gerente Vantix", "email": "gerente@vantix.com", "papel": "gerente", "ativo": true }
 }
 ```
 - Senha errada → `401`. Usuário com `ativo = false` → `403`.
-- Conferir a senha com BCrypt contra `senha_hash`. Os hashes do `02_dados.sql` são de `voltz2024`.
+- Conferir a senha com BCrypt contra `senha_hash`. Os hashes do `02_dados.sql` são de `vantix2024`.
 - Nas outras rotas o front envia `Authorization: Bearer <token>`.
 
 **Quem acessa o quê:**
@@ -103,13 +103,13 @@ Tabela `usuario_painel`. Só o gerente acessa.
 
 ### `GET /api/funcionarios`
 ```json
-[{ "id": 1, "nome": "Gerente Voltz", "email": "gerente@voltz.com", "papel": "gerente", "ativo": true, "dataCriacao": "2026-09-01T09:00:00" }]
+[{ "id": 1, "nome": "Gerente Vantix", "email": "gerente@vantix.com", "papel": "gerente", "ativo": true, "dataCriacao": "2026-09-01T09:00:00" }]
 ```
 **Nunca** devolver `senha_hash`.
 
 ### `POST /api/funcionarios`
 ```json
-{ "nome": "Ana Souza", "email": "ana@voltz.com", "papel": "estoque", "ativo": true, "senha": "123456" }
+{ "nome": "Ana Souza", "email": "ana@vantix.com", "papel": "estoque", "ativo": true, "senha": "123456" }
 ```
 A senha é obrigatória no cadastro (mínimo 6 caracteres) e é gravada com BCrypt. E-mail repetido → `409`.
 
@@ -142,7 +142,7 @@ Tudo numa **única transação** (`@Transactional`):
 2. **Preço, frete, total e número são calculados pela API.** Não confiar em valores vindos do navegador.
    - Preço unitário = `produto.preco` atual.
    - Frete = `0` se subtotal ≥ 299,00, senão `29,90` (mesma regra mostrada no carrinho). Retirada = `0`.
-   - Número = `VTZ-` + próximo número (ex.: `VTZ-1057`).
+   - Número = `VTX-` + próximo número (ex.: `VTX-1057`).
 3. Inserir `pedido` (status `pendente`), `item_pedido` e `pagamento` (`valor` = total).
 4. Se a forma **não** for `boleto`, o pagamento é aprovado na hora: fazer `UPDATE pedido SET status='confirmado'`.
    Isso dispara a `trg_pedido_estoque`, que baixa o estoque. Se faltar estoque, o `CHECK (estoque >= 0)`
@@ -155,7 +155,7 @@ Resposta `201`: o pedido completo (formato abaixo).
 ### Formato do pedido (usado em todas as respostas)
 ```json
 {
-  "id": 57, "numero": "VTZ-1057", "status": "confirmado", "tipoEntrega": "entrega",
+  "id": 57, "numero": "VTX-1057", "status": "confirmado", "tipoEntrega": "entrega",
   "enderecoEntrega": "Av. Paulista, 1000 ...", "frete": 0, "valorTotal": 7299.8,
   "observacoes": null, "motivoCancelamento": null, "idEntregador": null,
   "dataCriacao": "2026-11-11T17:46:02", "dataAtualizacao": "2026-11-11T17:46:02",
@@ -224,5 +224,5 @@ Sem esses parâmetros = todo o período. Só o gerente acessa. O painel atualiza
 ## Observações para a Letícia (SQL)
 
 - A trigger só roda em `UPDATE`. Por isso o pedido é inserido como `pendente` e atualizado para `confirmado` logo depois (passo 4 do `POST /pedidos`).
-- O pedido `VTZ-1056` do `02_dados.sql` é `retirada` com status `saiu_para_entrega`. Retirada normalmente não "sai para entrega"; trocar para `entregue` ou `tipo_entrega = 'entrega'`.
+- O pedido `VTX-1056` do `02_dados.sql` é `retirada` com status `saiu_para_entrega`. Retirada normalmente não "sai para entrega"; trocar para `entregue` ou `tipo_entrega = 'entrega'`.
 - O plano cita uma coluna `tags` em PRODUTO, mas ela não existe no `01_estrutura.sql`. O front não depende dela.
