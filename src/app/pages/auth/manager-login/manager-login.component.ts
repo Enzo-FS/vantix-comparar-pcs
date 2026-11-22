@@ -1,30 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgIf, NgFor } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
 import { ToastService } from '../../../services/toast.service';
-import { UserRole } from '../../../models';
 
 // Usuários do 02_dados.sql (tabela usuario_painel):
 // gerente@voltz.com    / voltz2024
 // estoque@voltz.com    / voltz2024
 // logistica@voltz.com / voltz2024
 
-function makeLoginComponent(
-  role: UserRole,
-  label: string,
-  subtitle: string,
-  redirect: string,
-  bgImage: string,
-  accentColor: string,
-  accentColorDark: string,
-  emailHint: string
-) {
-  @Component({
-    standalone: true,
-    imports: [FormsModule, NgIf, NgFor, RouterLink],
-    template: `
+interface PortalConfig {
+  label: string;
+  subtitle: string;
+  redirect: string;
+  bgImage: string;
+  accentColor: string;
+  accentColorDark: string;
+  emailHint: string;
+  features: string[];
+}
+
+const PORTALS = {
+  manager: {
+    label: 'Portal do Gerente',
+    subtitle: 'Gerencie pedidos, catálogo e acompanhe métricas em tempo real de toda a operação.',
+    redirect: '/gerente/dashboard',
+    bgImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85',
+    accentColor: '#1d5bd6',
+    accentColorDark: '#173d8c',
+    emailHint: 'gerente@voltz.com',
+    features: ['Dashboard com métricas em tempo real', 'Gestão completa do catálogo', 'Controle de pedidos e entregas'],
+  },
+  kitchen: {
+    label: 'Portal do Estoque',
+    subtitle: 'Kanban em tempo real. Da separação à embalagem de cada pedido.',
+    redirect: '/estoque/painel',
+    bgImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85',
+    accentColor: '#0284c7',
+    accentColorDark: '#075985',
+    emailHint: 'estoque@voltz.com',
+    features: ['Kanban visual de pedidos', 'Separação e conferência em tempo real', 'Notificações de novos pedidos'],
+  },
+  delivery: {
+    label: 'Portal da Logística',
+    subtitle: 'Despache pacotes, acompanhe envios e confirme entregas com facilidade.',
+    redirect: '/logistica/painel',
+    bgImage: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=900&q=85',
+    accentColor: '#0d9488',
+    accentColorDark: '#115e59',
+    emailHint: 'logistica@voltz.com',
+    features: ['Pacotes prontos para envio', 'Acompanhamento de rotas', 'Histórico de entregas'],
+  },
+} satisfies Record<string, PortalConfig>;
+
+// Template e estilos compartilhados pelos três portais.
+const LOGIN_TEMPLATE = `
       <div class="login-grid" style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr">
 
         <!-- Left: image panel -->
@@ -182,102 +213,98 @@ function makeLoginComponent(
         </div>
 
       </div>
-    `,
-    styles: [`
+    `;
+
+const LOGIN_STYLES = `
       @keyframes spin { to { transform: rotate(360deg); } }
       @keyframes fadeUp { from { opacity:0;transform:translateY(8px) } to { opacity:1;transform:translateY(0) } }
       @media (max-width: 768px) {
         .login-grid { grid-template-columns: minmax(0,1fr) !important; }
         .login-left { display: none !important; }
       }
-    `]
-  })
-  class LoginComponent {
-    email = '';
-    password = '';
-    error = '';
-    loading = false;
-    showPass = false;
-    portalLabel   = label;
-    portalSubtitle = subtitle;
-    bgImg          = bgImage;
-    accentCol      = accentColor;
-    accentColDark  = accentColorDark;
-    emailPlaceholder = emailHint;
-    features: string[] = [];
+    `;
 
-    constructor(
-      private auth: AuthService,
-      private toast: ToastService,
-      private router: Router
-    ) {
-      if (role === 'manager') {
-        this.features = ['Dashboard com métricas em tempo real', 'Gestão completa do catálogo', 'Controle de pedidos e entregas'];
-      } else if (role === 'kitchen') {
-        this.features = ['Kanban visual de pedidos', 'Separação e conferência em tempo real', 'Notificações de novos pedidos'];
-      } else {
-        this.features = ['Pacotes prontos para envio', 'Acompanhamento de rotas', 'Histórico de entregas'];
-      }
-    }
+/**
+ * Lógica comum dos três logins. Cada portal é um componente próprio com seletor fixo:
+ * antes os três saíam de uma mesma fábrica sem seletor e o Angular avisava NG0912
+ * (colisão de ID de componente).
+ */
+abstract class PortalLoginBase {
+  protected abstract readonly config: PortalConfig;
 
-    fillDemo() {
-      this.email    = this.emailPlaceholder;
-      this.password = 'voltz2024';
-    }
+  private auth  = inject(AuthService);
+  private toast = inject(ToastService);
+  protected router = inject(Router);
 
-    async login() {
-      if (!this.email || !this.password) {
-        this.error = 'Preencha todos os campos.';
-        return;
-      }
-      this.error = '';
-      this.loading = true;
-      try {
-        await this.auth.loginWithEmail(this.email, this.password);
-        this.toast.show('Acesso autorizado. Bem-vindo!');
-        // Usa navegação nativa: a sessão fica no localStorage, a página recarrega,
-        // o AuthService lê a sessão ao iniciar e o guard libera a rota do painel.
-        setTimeout(() => { window.location.assign(redirect); }, 400);
-      } catch (err: any) {
-        // O AuthService já diferencia senha errada, conta desativada e servidor fora do ar (RNF10)
-        this.error = err?.message || 'E-mail ou senha incorretos. Verifique as credenciais.';
-        this.loading = false;
-      }
-    }
+  email = '';
+  password = '';
+  error = '';
+  loading = false;
+  showPass = false;
+
+  get portalLabel()      { return this.config.label; }
+  get portalSubtitle()   { return this.config.subtitle; }
+  get bgImg()            { return this.config.bgImage; }
+  get accentCol()        { return this.config.accentColor; }
+  get accentColDark()    { return this.config.accentColorDark; }
+  get emailPlaceholder() { return this.config.emailHint; }
+  get features()         { return this.config.features; }
+
+  fillDemo() {
+    this.email    = this.emailPlaceholder;
+    this.password = 'voltz2024';
   }
 
-  return LoginComponent;
+  async login() {
+    if (!this.email || !this.password) {
+      this.error = 'Preencha todos os campos.';
+      return;
+    }
+    this.error = '';
+    this.loading = true;
+    try {
+      await this.auth.loginWithEmail(this.email, this.password);
+      this.toast.show('Acesso autorizado. Bem-vindo!');
+      // Usa navegação nativa: a sessão fica no localStorage, a página recarrega,
+      // o AuthService lê a sessão ao iniciar e o guard libera a rota do painel.
+      setTimeout(() => { window.location.assign(this.config.redirect); }, 400);
+    } catch (err: any) {
+      // O AuthService já diferencia senha errada, conta desativada e servidor fora do ar (RNF10)
+      this.error = err?.message || 'E-mail ou senha incorretos. Verifique as credenciais.';
+      this.loading = false;
+    }
+  }
 }
 
-export const ManagerLoginComponent = makeLoginComponent(
-  'manager',
-  'Portal do Gerente',
-  'Gerencie pedidos, catálogo e acompanhe métricas em tempo real de toda a operação.',
-  '/gerente/dashboard',
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85',
-  '#1d5bd6',
-  '#173d8c',
-  'gerente@voltz.com'
-);
+@Component({
+  selector: 'app-manager-login',
+  standalone: true,
+  imports: [FormsModule, NgIf, NgFor, RouterLink],
+  template: LOGIN_TEMPLATE,
+  styles: [LOGIN_STYLES],
+})
+export class ManagerLoginComponent extends PortalLoginBase {
+  protected readonly config = PORTALS.manager;
+}
 
-export const KitchenLoginComponent = makeLoginComponent(
-  'kitchen',
-  'Portal do Estoque',
-  'Kanban em tempo real. Da separação à embalagem de cada pedido.',
-  '/estoque/painel',
-  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85',
-  '#0284c7',
-  '#075985',
-  'estoque@voltz.com'
-);
+@Component({
+  selector: 'app-kitchen-login',
+  standalone: true,
+  imports: [FormsModule, NgIf, NgFor, RouterLink],
+  template: LOGIN_TEMPLATE,
+  styles: [LOGIN_STYLES],
+})
+export class KitchenLoginComponent extends PortalLoginBase {
+  protected readonly config = PORTALS.kitchen;
+}
 
-export const DeliveryLoginComponent = makeLoginComponent(
-  'delivery',
-  'Portal da Logística',
-  'Despache pacotes, acompanhe envios e confirme entregas com facilidade.',
-  '/logistica/painel',
-  'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=900&q=85',
-  '#0d9488',
-  '#115e59',
-  'logistica@voltz.com'
-);
+@Component({
+  selector: 'app-delivery-login',
+  standalone: true,
+  imports: [FormsModule, NgIf, NgFor, RouterLink],
+  template: LOGIN_TEMPLATE,
+  styles: [LOGIN_STYLES],
+})
+export class DeliveryLoginComponent extends PortalLoginBase {
+  protected readonly config = PORTALS.delivery;
+}
