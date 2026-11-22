@@ -19,6 +19,8 @@ export class MenuService {
   private _loaded     = signal(false);
   private _categories = signal<CategoriaApi[]>(CATEGORIES.map((nome, i) => ({ id: i + 1, nome })));
   private includeInactive = false;
+  /** Número da consulta mais recente do catálogo (descarta respostas fora de ordem). */
+  private reloadSeq = 0;
 
   private _error      = signal('');
 
@@ -33,21 +35,29 @@ export class MenuService {
     this.reload();
   }
 
-  /** Recarrega o catálogo. O painel do gerente pede também os produtos desativados. */
+  /**
+   * Recarrega o catálogo. O painel do gerente pede também os produtos desativados.
+   * Só a resposta da consulta mais recente vale: ao abrir /gerente/produtos, a busca inicial
+   * (só ativos) e a do gerente (com inativos) correm juntas, e a mais lenta não pode
+   * sobrescrever a mais nova — senão os produtos pausados somem da tela do gerente.
+   */
   async reload(includeInactive = this.includeInactive): Promise<void> {
     this.includeInactive = includeInactive;
+    const seq = ++this.reloadSeq;
     const params = includeInactive ? new HttpParams().set('incluirInativos', 'true') : undefined;
     try {
       const list = await firstValueFrom(this.http.get<ProdutoApi[]>(this.base, { params }));
+      if (seq !== this.reloadSeq) return; // resposta antiga: já existe uma consulta mais nova
       this._items.set(list.map(productFromApi));
       this._error.set('');
     } catch (e) {
+      if (seq !== this.reloadSeq) return;
       // Mantém a lista anterior (se houver) e avisa a tela.
       this._error.set(e instanceof HttpErrorResponse && e.status === 0
         ? 'Sem conexão com o servidor.'
         : 'O servidor não respondeu como esperado.');
     } finally {
-      this._loaded.set(true);
+      if (seq === this.reloadSeq) this._loaded.set(true);
     }
   }
 
