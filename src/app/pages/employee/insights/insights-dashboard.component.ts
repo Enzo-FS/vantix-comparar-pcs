@@ -86,6 +86,13 @@ const REFRESH_MS = 15000;
         </span>
         <button type="button" class="btn btn-sm ins-retry" (click)="retry()">Tentar agora</button>
       </div>
+      <!-- Alguns relatórios falharam e outros não: mostra o que veio e avisa o que faltou -->
+      <div *ngIf="!error && data?.failed?.length" role="status" class="ins-warn">
+        <span style="flex:1;min-width:200px">
+          <strong>Alguns relatórios não carregaram:</strong> {{ data?.failed?.join(', ') }}. Os demais estão atualizados.
+        </span>
+        <button type="button" class="btn btn-sm ins-retry ins-retry-warn" (click)="retry()">Tentar agora</button>
+      </div>
 
       <!-- KPI Cards -->
       <div class="grid-4 stagger" style="margin-bottom:2rem" [class.ins-dim]="loading">
@@ -263,6 +270,9 @@ const REFRESH_MS = 15000;
     .ins-error { display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-bottom:1rem; padding:.75rem 1rem; border-radius:var(--r-lg);
       background:var(--danger-bg); border:1px solid var(--danger-border); color:var(--danger-text); font-size:var(--text-sm); }
     .ins-retry { background:transparent; color:var(--danger-text); border:1px solid var(--danger-border); }
+    .ins-warn { display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-bottom:1rem; padding:.75rem 1rem; border-radius:var(--r-lg);
+      background:var(--warning-bg); border:1px solid var(--warning-border); color:var(--warning-text); font-size:var(--text-sm); }
+    .ins-retry-warn { color:var(--warning-text); border-color:var(--warning-border); }
     .ins-dim { opacity:.45; transition:opacity .2s; }
     @media (prefers-reduced-motion: reduce) { .ins-spinner { animation:none; } }
     .chart-empty { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--text-tertiary); font-size:var(--text-sm); }
