@@ -1,23 +1,23 @@
 {
  "usuario_painel": [
   {
-   "nome": "Gerente Voltz",
-   "email": "gerente@voltz.com",
-   "senha_hash": "$2a$10$.6CGlAyOumznqB7yxRWCB.xxReLUoJ.aqYbErCM4e6mwpLeRnAiQa",
+   "nome": "Gerente Vantix",
+   "email": "gerente@vantix.com",
+   "senha_hash": "$2a$10$FWeJNfedUEqDpgsOD3GkVO/jemmGvSKMzEboEbQBKIgUGkNtYG4qe",
    "papel": "gerente",
    "id_usuario": 1
   },
   {
-   "nome": "Estoque Voltz",
-   "email": "estoque@voltz.com",
-   "senha_hash": "$2a$10$.6CGlAyOumznqB7yxRWCB.xxReLUoJ.aqYbErCM4e6mwpLeRnAiQa",
+   "nome": "Estoque Vantix",
+   "email": "estoque@vantix.com",
+   "senha_hash": "$2a$10$FWeJNfedUEqDpgsOD3GkVO/jemmGvSKMzEboEbQBKIgUGkNtYG4qe",
    "papel": "estoque",
    "id_usuario": 2
   },
   {
-   "nome": "Logística Voltz",
-   "email": "logistica@voltz.com",
-   "senha_hash": "$2a$10$.6CGlAyOumznqB7yxRWCB.xxReLUoJ.aqYbErCM4e6mwpLeRnAiQa",
+   "nome": "Logística Vantix",
+   "email": "logistica@vantix.com",
+   "senha_hash": "$2a$10$FWeJNfedUEqDpgsOD3GkVO/jemmGvSKMzEboEbQBKIgUGkNtYG4qe",
    "papel": "logistica",
    "id_usuario": 3
   }
@@ -57,6 +57,11 @@
    "nome": "Áudio",
    "descricao": "Fones, headsets, caixas de som e microfones.",
    "id_categoria": 7
+  },
+  {
+   "nome": "Acessórios",
+   "descricao": "Capas, cabos, carregadores, mochilas, suportes e tudo para completar o seu setup.",
+   "id_categoria": 8
   }
  ],
  "produto": [
@@ -65,8 +70,8 @@
    "nome": "Placa de Vídeo GeForce RTX 4070 SUPER 12GB",
    "descricao": "Arquitetura Ada Lovelace, DLSS 3 e Ray Tracing de 3ª geração. Ideal para jogar em 1440p com taxas altas e para acelerar edição de vídeo e IA.",
    "marca": "NVIDIA",
-   "preco": 4899.9,
-   "preco_antigo": 5599.9,
+   "preco": 4699.9,
+   "preco_antigo": 5299.9,
    "estoque": 14,
    "imagem_url": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80",
    "destaque": 1,
@@ -77,8 +82,8 @@
    "nome": "Processador AMD Ryzen 7 7800X3D",
    "descricao": "8 núcleos, 16 threads e 96MB de cache L3 com tecnologia 3D V-Cache. Um dos processadores mais rápidos para jogos. Soquete AM5.",
    "marca": "AMD",
-   "preco": 2399.9,
-   "preco_antigo": 2799.9,
+   "preco": 1699.9,
+   "preco_antigo": 2199.9,
    "estoque": 22,
    "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
    "destaque": 1,
@@ -89,8 +94,8 @@
    "nome": "SSD NVMe 2TB PCIe 4.0",
    "descricao": "Leitura de até 7.000 MB/s. Carregamentos quase instantâneos em jogos e sistema. Formato M.2 2280, com dissipador opcional.",
    "marca": "Kingston",
-   "preco": 899.9,
-   "preco_antigo": 1099.9,
+   "preco": 849.9,
+   "preco_antigo": 999.9,
    "estoque": 40,
    "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
    "destaque": 0,
@@ -101,8 +106,8 @@
    "nome": "Memória DDR5 32GB (2x16GB) 6000MHz RGB",
    "descricao": "Kit dual channel com perfil EXPO/XMP e iluminação RGB endereçável. Latência CL30 para máximo desempenho em plataformas AM5 e Intel.",
    "marca": "Corsair",
-   "preco": 749.9,
-   "preco_antigo": 899.9,
+   "preco": 1099.9,
+   "preco_antigo": 1299.9,
    "estoque": 31,
    "imagem_url": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800&q=80",
    "destaque": 0,
@@ -112,9 +117,9 @@
    "id_categoria": 1,
    "nome": "PC Gamer Ryzen 7 · RTX 4070 · 32GB",
    "descricao": "Máquina montada e testada: Ryzen 7 7700, RTX 4070, 32GB DDR5, SSD 1TB e fonte 750W 80 Plus Gold. Pronto para jogar em 1440p.",
-   "marca": "VOLTZ",
-   "preco": 8999.9,
-   "preco_antigo": 10499.9,
+   "marca": "VANTIX",
+   "preco": 8499.9,
+   "preco_antigo": 9999.9,
    "estoque": 6,
    "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
    "destaque": 1,
@@ -125,8 +130,8 @@
    "nome": "Teclado Mecânico Gamer RGB ABNT2",
    "descricao": "Switches mecânicos lineares, keycaps PBT double-shot e layout ABNT2 com Ç. Iluminação RGB por tecla e cabo USB-C removível.",
    "marca": "Redragon",
-   "preco": 349.9,
-   "preco_antigo": 449.9,
+   "preco": 229.9,
+   "preco_antigo": 299.9,
    "estoque": 58,
    "imagem_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80",
    "destaque": 0,
@@ -137,8 +142,8 @@
    "nome": "Mouse Gamer Sem Fio 26.000 DPI",
    "descricao": "Sensor óptico de alta precisão, apenas 63g e bateria de até 70 horas. Conexão 2.4GHz de baixa latência e Bluetooth.",
    "marca": "Logitech",
-   "preco": 499.9,
-   "preco_antigo": 649.9,
+   "preco": 649.9,
+   "preco_antigo": 799.9,
    "estoque": 37,
    "imagem_url": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&q=80",
    "destaque": 0,
@@ -149,8 +154,8 @@
    "nome": "Headset Sem Fio com Cancelamento de Ruído",
    "descricao": "Drivers de 40mm, cancelamento ativo de ruído e microfone com redução de ruído por IA. Até 30 horas de bateria.",
    "marca": "Sony",
-   "preco": 899.9,
-   "preco_antigo": 1199.9,
+   "preco": 1199.9,
+   "preco_antigo": 1499.9,
    "estoque": 19,
    "imagem_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
    "destaque": 0,
@@ -161,8 +166,8 @@
    "nome": "Monitor Gamer 27\" QHD 170Hz IPS",
    "descricao": "Resolução 2560x1440, 1ms GtG, HDR10 e compatibilidade G-Sync. Cores precisas com 95% DCI-P3 e base com ajuste de altura.",
    "marca": "LG",
-   "preco": 1799.9,
-   "preco_antigo": 2199.9,
+   "preco": 1599.9,
+   "preco_antigo": 1899.9,
    "estoque": 17,
    "imagem_url": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80",
    "destaque": 0,
@@ -173,8 +178,8 @@
    "nome": "Monitor Ultrawide 34\" Curvo 165Hz",
    "descricao": "Proporção 21:9, curvatura 1500R e resolução UWQHD. Mais área de trabalho para produtividade e imersão total em jogos.",
    "marca": "Samsung",
-   "preco": 2699.9,
-   "preco_antigo": 3199.9,
+   "preco": 2599.9,
+   "preco_antigo": 3099.9,
    "estoque": 9,
    "imagem_url": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=800&q=80",
    "destaque": 0,
@@ -185,8 +190,8 @@
    "nome": "Notebook Gamer Intel Core i7 · RTX 4060",
    "descricao": "Tela 15,6\" 144Hz, 16GB DDR5, SSD 512GB e teclado RGB. Sistema de refrigeração com dupla ventoinha para longas sessões.",
    "marca": "Acer",
-   "preco": 6499.9,
-   "preco_antigo": 7499.9,
+   "preco": 6299.9,
+   "preco_antigo": 7299.9,
    "estoque": 12,
    "imagem_url": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80",
    "destaque": 0,
@@ -197,8 +202,8 @@
    "nome": "Notebook Ultrafino 14\" Intel Core Ultra 5",
    "descricao": "Apenas 1,2kg, 16GB de RAM, SSD 512GB e bateria para o dia inteiro. Tela 2.8K OLED para trabalho e estudo.",
    "marca": "ASUS",
-   "preco": 4299.9,
-   "preco_antigo": 4899.9,
+   "preco": 4199.9,
+   "preco_antigo": 4799.9,
    "estoque": 21,
    "imagem_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80",
    "destaque": 0,
@@ -209,8 +214,8 @@
    "nome": "MacBook Air 13\" Chip M3 8GB 256GB",
    "descricao": "Chip Apple M3, tela Liquid Retina e até 18 horas de bateria. Sem ventoinha: silêncio total mesmo sob carga.",
    "marca": "Apple",
-   "preco": 8999,
-   "preco_antigo": 9999,
+   "preco": 7499,
+   "preco_antigo": 8499,
    "estoque": 8,
    "imagem_url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80",
    "destaque": 0,
@@ -221,8 +226,8 @@
    "nome": "Smartphone 5G 256GB Tela AMOLED 120Hz",
    "descricao": "Câmera principal de 50MP com estabilização óptica, 8GB de RAM e bateria de 5000mAh com carregamento rápido de 45W.",
    "marca": "Samsung",
-   "preco": 2499.9,
-   "preco_antigo": 2999.9,
+   "preco": 2299.9,
+   "preco_antigo": 2799.9,
    "estoque": 44,
    "imagem_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
    "destaque": 0,
@@ -233,8 +238,8 @@
    "nome": "iPhone 15 128GB",
    "descricao": "Dynamic Island, câmera de 48MP e conector USB-C. Chip A16 Bionic com desempenho e eficiência de ponta.",
    "marca": "Apple",
-   "preco": 5299,
-   "preco_antigo": 5999,
+   "preco": 4499,
+   "preco_antigo": 5299,
    "estoque": 16,
    "imagem_url": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80",
    "destaque": 0,
@@ -245,8 +250,8 @@
    "nome": "Smartwatch com GPS e Monitor Cardíaco",
    "descricao": "Tela AMOLED always-on, GPS integrado, mais de 100 modos de treino e até 10 dias de bateria. Resistente à água 5ATM.",
    "marca": "Garmin",
-   "preco": 1199.9,
-   "preco_antigo": 1499.9,
+   "preco": 1699.9,
+   "preco_antigo": 1999.9,
    "estoque": 27,
    "imagem_url": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=80",
    "destaque": 0,
@@ -257,8 +262,8 @@
    "nome": "Tablet 11\" 128GB com Caneta",
    "descricao": "Tela 2.5K de 90Hz, quatro alto-falantes e caneta inclusa. Perfeito para estudos, anotações e streaming.",
    "marca": "Xiaomi",
-   "preco": 1899.9,
-   "preco_antigo": 2299.9,
+   "preco": 1799.9,
+   "preco_antigo": 2199.9,
    "estoque": 23,
    "imagem_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80",
    "destaque": 0,
@@ -270,7 +275,7 @@
    "descricao": "SSD ultrarrápido de 1TB, suporte a 4K 120fps e Ray Tracing. Inclui controle DualSense com feedback háptico.",
    "marca": "Sony",
    "preco": 3799.9,
-   "preco_antigo": 4499.9,
+   "preco_antigo": 4399.9,
    "estoque": 11,
    "imagem_url": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80",
    "destaque": 0,
@@ -281,7 +286,7 @@
    "nome": "Controle Sem Fio DualSense",
    "descricao": "Feedback háptico, gatilhos adaptáveis e microfone embutido. Compatível com PS5 e PC.",
    "marca": "Sony",
-   "preco": 429.9,
+   "preco": 399.9,
    "preco_antigo": 499.9,
    "estoque": 63,
    "imagem_url": "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=800&q=80",
@@ -293,8 +298,8 @@
    "nome": "Cadeira Gamer Reclinável 180°",
    "descricao": "Estrutura em aço, espuma de alta densidade, apoio de braço 4D e almofadas lombar e cervical. Suporta até 150kg.",
    "marca": "ThunderX3",
-   "preco": 1099.9,
-   "preco_antigo": 1399.9,
+   "preco": 1299.9,
+   "preco_antigo": 1599.9,
    "estoque": 15,
    "imagem_url": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&q=80",
    "destaque": 0,
@@ -305,8 +310,8 @@
    "nome": "Fone de Ouvido Bluetooth com Cancelamento de Ruído",
    "descricao": "Cancelamento ativo de ruído, modo ambiente e até 40 horas de bateria. Conexão multiponto e microfone para chamadas nítidas.",
    "marca": "JBL",
-   "preco": 799.9,
-   "preco_antigo": 999.9,
+   "preco": 649.9,
+   "preco_antigo": 799.9,
    "estoque": 33,
    "imagem_url": "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80",
    "destaque": 1,
@@ -317,8 +322,8 @@
    "nome": "Caixa de Som Bluetooth Portátil à Prova d'Água",
    "descricao": "Som potente com graves profundos, resistência IP67 e até 12 horas de bateria. Ideal para festas, viagens e áreas externas.",
    "marca": "JBL",
-   "preco": 549.9,
-   "preco_antigo": 699.9,
+   "preco": 649.9,
+   "preco_antigo": 799.9,
    "estoque": 41,
    "imagem_url": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&q=80",
    "destaque": 0,
@@ -329,8 +334,8 @@
    "nome": "Microfone Condensador USB para Streaming",
    "descricao": "Captação cardioide, entrada para fone com monitoramento e controle de ganho. Conexão USB plug and play para lives, podcasts e reuniões.",
    "marca": "HyperX",
-   "preco": 599.9,
-   "preco_antigo": 749.9,
+   "preco": 499.9,
+   "preco_antigo": 649.9,
    "estoque": 25,
    "imagem_url": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&q=80",
    "destaque": 0,
@@ -341,8 +346,8 @@
    "nome": "Webcam Full HD 1080p com Microfone",
    "descricao": "Vídeo Full HD a 30fps, foco automático e correção de luz. Microfone duplo com redução de ruído para aulas e reuniões.",
    "marca": "Logitech",
-   "preco": 429.9,
-   "preco_antigo": 529.9,
+   "preco": 369.9,
+   "preco_antigo": 449.9,
    "estoque": 46,
    "imagem_url": "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=800&q=80",
    "destaque": 0,
@@ -353,12 +358,348 @@
    "nome": "Monitor 24\" Full HD 100Hz IPS",
    "descricao": "Painel IPS Full HD com 100Hz, 1ms MPRT e bordas finas. Ótima entrada para trabalho, estudo e jogos casuais. Saídas HDMI e VGA.",
    "marca": "AOC",
-   "preco": 699.9,
-   "preco_antigo": 849.9,
+   "preco": 549.9,
+   "preco_antigo": 699.9,
    "estoque": 29,
    "imagem_url": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&q=80",
    "destaque": 0,
    "id_produto": 25
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Capa Silicone com MagSafe para iPhone 15",
+   "descricao": "Silicone macio com forro de microfibra, bordas elevadas que protegem a tela e a câmera, e ímãs compatíveis com carregadores MagSafe.",
+   "marca": "Spigen",
+   "preco": 129.9,
+   "preco_antigo": 169.9,
+   "estoque": 60,
+   "imagem_url": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 26
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Capa Anti-Impacto para Smartphone 5G",
+   "descricao": "Proteção militar contra quedas, cantos reforçados e acabamento fosco que não escorrega. Acompanha película de vidro.",
+   "marca": "Spigen",
+   "preco": 79.9,
+   "preco_antigo": 109.9,
+   "estoque": 75,
+   "imagem_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 27
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Carregador USB-C 65W GaN com 2 Portas",
+   "descricao": "Carrega notebook, tablet e celular ao mesmo tempo. Tecnologia GaN: pequeno, frio e rápido. Compatível com MacBook, Ultrafino e smartphones.",
+   "marca": "Anker",
+   "preco": 249.9,
+   "preco_antigo": 319.9,
+   "estoque": 48,
+   "imagem_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 28
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Cabo USB-C para USB-C 2m 100W",
+   "descricao": "Cabo trançado com carga de até 100W e dados a 480 Mbps. Serve para notebooks, tablets, smartphones e iPhone 15.",
+   "marca": "Baseus",
+   "preco": 69.9,
+   "preco_antigo": 99.9,
+   "estoque": 120,
+   "imagem_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 29
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Mochila Antifurto para Notebook 15,6\"",
+   "descricao": "Compartimento acolchoado para notebook, zíper oculto, porta USB externa e tecido impermeável. Cabe notebook gamer de 15,6\".",
+   "marca": "Targus",
+   "preco": 229.9,
+   "preco_antigo": 299.9,
+   "estoque": 34,
+   "imagem_url": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 30
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Capa Sleeve para Notebook 14\"",
+   "descricao": "Neoprene resistente a respingos, interior em feltro e bolso frontal para carregador. Para ultrafinos e MacBook Air 13\".",
+   "marca": "Targus",
+   "preco": 119.9,
+   "preco_antigo": 159.9,
+   "estoque": 52,
+   "imagem_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 31
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Hub USB-C 7 em 1 com HDMI 4K",
+   "descricao": "HDMI 4K, 3 USB-A, leitor SD/microSD e entrada USB-C com passagem de carga de 100W. Amplia as portas do notebook ultrafino e do MacBook.",
+   "marca": "Baseus",
+   "preco": 259.9,
+   "preco_antigo": 339.9,
+   "estoque": 41,
+   "imagem_url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 32
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Base Cooler para Notebook com 6 Ventoinhas",
+   "descricao": "Reduz a temperatura do notebook gamer em até 10°C, com altura ajustável, iluminação LED e 2 portas USB.",
+   "marca": "Multilaser",
+   "preco": 189.9,
+   "preco_antigo": 249.9,
+   "estoque": 29,
+   "imagem_url": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 33
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Mousepad Gamer Speed XL 90x40cm",
+   "descricao": "Superfície de microfibra otimizada para velocidade e precisão, base antiderrapante e bordas costuradas.",
+   "marca": "Redragon",
+   "preco": 99.9,
+   "preco_antigo": 139.9,
+   "estoque": 66,
+   "imagem_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 34
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Suporte Articulado para Monitor até 32\"",
+   "descricao": "Braço a gás com ajuste de altura, inclinação e rotação. Libera espaço na mesa e melhora a postura.",
+   "marca": "ELG",
+   "preco": 279.9,
+   "preco_antigo": 359.9,
+   "estoque": 23,
+   "imagem_url": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 35
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Cabo HDMI 2.1 8K 2m",
+   "descricao": "Suporta 4K a 120Hz e 8K a 60Hz, VRR e ALLM. Ideal para monitor gamer, PlayStation 5 e placa de vídeo.",
+   "marca": "Ugreen",
+   "preco": 79.9,
+   "preco_antigo": 109.9,
+   "estoque": 90,
+   "imagem_url": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 36
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Carregador Sem Fio Magnético 15W",
+   "descricao": "Base magnética que encaixa no iPhone e carrega sem fio com até 15W. Acompanha cabo USB-C.",
+   "marca": "Anker",
+   "preco": 219.9,
+   "preco_antigo": 279.9,
+   "estoque": 38,
+   "imagem_url": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 37
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Power Bank 20.000mAh 65W USB-C",
+   "descricao": "Recarrega celular, tablet e até notebook USB-C. Duas saídas USB-C e uma USB-A, com visor de bateria.",
+   "marca": "Anker",
+   "preco": 349.9,
+   "preco_antigo": 429.9,
+   "estoque": 27,
+   "imagem_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 38
+  },
+  {
+   "id_categoria": 8,
+   "nome": "Capa com Suporte para Tablet 11\"",
+   "descricao": "Capa com tampa inteligente, função de suporte e espaço para guardar a caneta. Compatível com o Tablet 11\" Xiaomi.",
+   "marca": "Xiaomi",
+   "preco": 89.9,
+   "preco_antigo": 119.9,
+   "estoque": 44,
+   "imagem_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 39
+  },
+  {
+   "id_categoria": 1,
+   "nome": "Fonte 850W 80 Plus Gold Modular",
+   "descricao": "Fonte totalmente modular com certificação 80 Plus Gold, conector PCIe 5.0 12VHPWR e ventoinha silenciosa. Energia de sobra para RTX 4070 SUPER.",
+   "marca": "Corsair",
+   "preco": 899.9,
+   "preco_antigo": 1099.9,
+   "estoque": 18,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 40
+  },
+  {
+   "id_categoria": 1,
+   "nome": "Cooler para Processador Dual Tower AM5/LGA1700",
+   "descricao": "Seis heatpipes, duas ventoinhas de 120mm e compatibilidade com soquetes AM5 e Intel. Mantém o Ryzen 7 fresco em jogos.",
+   "marca": "DeepCool",
+   "preco": 329.9,
+   "preco_antigo": 399.9,
+   "estoque": 26,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 41
+  },
+  {
+   "id_categoria": 1,
+   "nome": "Placa-Mãe B650M AM5 DDR5 Wi-Fi",
+   "descricao": "Soquete AM5, memória DDR5, slot M.2 PCIe 4.0 e Wi-Fi 6E. Combina com o Ryzen 7 7800X3D.",
+   "marca": "Gigabyte",
+   "preco": 999.9,
+   "preco_antigo": 1199.9,
+   "estoque": 15,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 42
+  },
+  {
+   "id_categoria": 1,
+   "nome": "Gabinete Mid Tower Vidro Temperado + 4 Fans",
+   "descricao": "Painel lateral de vidro, 4 ventoinhas ARGB e suporte a placas de vídeo de até 40cm. Ótimo fluxo de ar.",
+   "marca": "Pichau",
+   "preco": 399.9,
+   "preco_antigo": 499.9,
+   "estoque": 21,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 43
+  },
+  {
+   "id_categoria": 1,
+   "nome": "SSD Externo Portátil 1TB USB-C",
+   "descricao": "Leitura de até 1.050 MB/s, resistente a quedas e compatível com PC, Mac, PlayStation 5 e celular.",
+   "marca": "Samsung",
+   "preco": 599.9,
+   "preco_antigo": 749.9,
+   "estoque": 36,
+   "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 44
+  },
+  {
+   "id_categoria": 2,
+   "nome": "Mouse Gamer com Fio 7.200 DPI RGB",
+   "descricao": "6 botões programáveis, sensor óptico e iluminação RGB. Ótimo custo-benefício para jogos e trabalho.",
+   "marca": "Redragon",
+   "preco": 119.9,
+   "preco_antigo": 159.9,
+   "estoque": 70,
+   "imagem_url": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 45
+  },
+  {
+   "id_categoria": 2,
+   "nome": "Teclado Mecânico 60% Sem Fio",
+   "descricao": "Formato compacto, Bluetooth e 2.4GHz, switches intercambiáveis e bateria de longa duração. Ótimo para mesa pequena e notebook.",
+   "marca": "Redragon",
+   "preco": 329.9,
+   "preco_antigo": 419.9,
+   "estoque": 28,
+   "imagem_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 46
+  },
+  {
+   "id_categoria": 2,
+   "nome": "Mouse Sem Fio Compacto Bluetooth",
+   "descricao": "Silencioso, conexão Bluetooth ou receptor USB e até 18 meses de bateria. Combina com notebook ultrafino e MacBook.",
+   "marca": "Logitech",
+   "preco": 139.9,
+   "preco_antigo": 179.9,
+   "estoque": 55,
+   "imagem_url": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 47
+  },
+  {
+   "id_categoria": 6,
+   "nome": "Jogo God of War Ragnarök PS5",
+   "descricao": "Aventura épica de Kratos e Atreus pelos nove reinos. Mídia física para PlayStation 5.",
+   "marca": "Sony",
+   "preco": 199.9,
+   "preco_antigo": 259.9,
+   "estoque": 40,
+   "imagem_url": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 48
+  },
+  {
+   "id_categoria": 6,
+   "nome": "Jogo EA SPORTS FC 26 PS5",
+   "descricao": "O futebol mais completo para PlayStation 5, com modos online e carreira. Mídia física.",
+   "marca": "EA Sports",
+   "preco": 299.9,
+   "preco_antigo": 349.9,
+   "estoque": 45,
+   "imagem_url": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 49
+  },
+  {
+   "id_categoria": 6,
+   "nome": "Base de Carregamento Dupla para DualSense",
+   "descricao": "Carrega dois controles ao mesmo tempo, com indicador LED e design compacto. Evita ficar sem bateria no meio do jogo.",
+   "marca": "Sony",
+   "preco": 199.9,
+   "preco_antigo": 259.9,
+   "estoque": 32,
+   "imagem_url": "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 50
+  },
+  {
+   "id_categoria": 7,
+   "nome": "Headset Gamer Sem Fio para PS5 e PC",
+   "descricao": "Áudio 3D, microfones com redução de ruído e conexão sem fio de baixa latência. Compatível com PS5 e PC.",
+   "marca": "Sony",
+   "preco": 649.9,
+   "preco_antigo": 799.9,
+   "estoque": 22,
+   "imagem_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 51
+  },
+  {
+   "id_categoria": 7,
+   "nome": "Fone Bluetooth TWS com Cancelamento de Ruído",
+   "descricao": "Fones intra-auriculares com ANC, estojo de carga e até 24 horas de bateria. Combina com smartphones e notebooks.",
+   "marca": "JBL",
+   "preco": 349.9,
+   "preco_antigo": 449.9,
+   "estoque": 49,
+   "imagem_url": "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 52
+  },
+  {
+   "id_categoria": 7,
+   "nome": "Braço Articulado para Microfone",
+   "descricao": "Braço de mesa com mola interna, cabo embutido e rotação 360°. Compatível com microfones USB.",
+   "marca": "Elgato",
+   "preco": 199.9,
+   "preco_antigo": 259.9,
+   "estoque": 31,
+   "imagem_url": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&q=80",
+   "destaque": 0,
+   "id_produto": 53
   }
  ],
  "produto_relacionado": [
@@ -561,6 +902,478 @@
   {
    "id_produto": 25,
    "id_produto_relacionado": 24
+  },
+  {
+   "id_produto": 1,
+   "id_produto_relacionado": 40
+  },
+  {
+   "id_produto": 1,
+   "id_produto_relacionado": 43
+  },
+  {
+   "id_produto": 2,
+   "id_produto_relacionado": 41
+  },
+  {
+   "id_produto": 2,
+   "id_produto_relacionado": 42
+  },
+  {
+   "id_produto": 3,
+   "id_produto_relacionado": 44
+  },
+  {
+   "id_produto": 4,
+   "id_produto_relacionado": 42
+  },
+  {
+   "id_produto": 5,
+   "id_produto_relacionado": 34
+  },
+  {
+   "id_produto": 5,
+   "id_produto_relacionado": 45
+  },
+  {
+   "id_produto": 5,
+   "id_produto_relacionado": 46
+  },
+  {
+   "id_produto": 6,
+   "id_produto_relacionado": 34
+  },
+  {
+   "id_produto": 6,
+   "id_produto_relacionado": 46
+  },
+  {
+   "id_produto": 7,
+   "id_produto_relacionado": 34
+  },
+  {
+   "id_produto": 8,
+   "id_produto_relacionado": 51
+  },
+  {
+   "id_produto": 9,
+   "id_produto_relacionado": 35
+  },
+  {
+   "id_produto": 9,
+   "id_produto_relacionado": 36
+  },
+  {
+   "id_produto": 10,
+   "id_produto_relacionado": 35
+  },
+  {
+   "id_produto": 10,
+   "id_produto_relacionado": 36
+  },
+  {
+   "id_produto": 11,
+   "id_produto_relacionado": 30
+  },
+  {
+   "id_produto": 11,
+   "id_produto_relacionado": 33
+  },
+  {
+   "id_produto": 11,
+   "id_produto_relacionado": 34
+  },
+  {
+   "id_produto": 11,
+   "id_produto_relacionado": 45
+  },
+  {
+   "id_produto": 12,
+   "id_produto_relacionado": 28
+  },
+  {
+   "id_produto": 12,
+   "id_produto_relacionado": 31
+  },
+  {
+   "id_produto": 12,
+   "id_produto_relacionado": 32
+  },
+  {
+   "id_produto": 12,
+   "id_produto_relacionado": 47
+  },
+  {
+   "id_produto": 13,
+   "id_produto_relacionado": 29
+  },
+  {
+   "id_produto": 13,
+   "id_produto_relacionado": 31
+  },
+  {
+   "id_produto": 13,
+   "id_produto_relacionado": 32
+  },
+  {
+   "id_produto": 13,
+   "id_produto_relacionado": 47
+  },
+  {
+   "id_produto": 14,
+   "id_produto_relacionado": 27
+  },
+  {
+   "id_produto": 14,
+   "id_produto_relacionado": 28
+  },
+  {
+   "id_produto": 14,
+   "id_produto_relacionado": 38
+  },
+  {
+   "id_produto": 15,
+   "id_produto_relacionado": 26
+  },
+  {
+   "id_produto": 15,
+   "id_produto_relacionado": 29
+  },
+  {
+   "id_produto": 15,
+   "id_produto_relacionado": 37
+  },
+  {
+   "id_produto": 16,
+   "id_produto_relacionado": 29
+  },
+  {
+   "id_produto": 17,
+   "id_produto_relacionado": 38
+  },
+  {
+   "id_produto": 17,
+   "id_produto_relacionado": 39
+  },
+  {
+   "id_produto": 18,
+   "id_produto_relacionado": 36
+  },
+  {
+   "id_produto": 18,
+   "id_produto_relacionado": 48
+  },
+  {
+   "id_produto": 18,
+   "id_produto_relacionado": 49
+  },
+  {
+   "id_produto": 18,
+   "id_produto_relacionado": 50
+  },
+  {
+   "id_produto": 18,
+   "id_produto_relacionado": 51
+  },
+  {
+   "id_produto": 19,
+   "id_produto_relacionado": 50
+  },
+  {
+   "id_produto": 21,
+   "id_produto_relacionado": 52
+  },
+  {
+   "id_produto": 23,
+   "id_produto_relacionado": 53
+  },
+  {
+   "id_produto": 26,
+   "id_produto_relacionado": 15
+  },
+  {
+   "id_produto": 26,
+   "id_produto_relacionado": 29
+  },
+  {
+   "id_produto": 26,
+   "id_produto_relacionado": 37
+  },
+  {
+   "id_produto": 27,
+   "id_produto_relacionado": 14
+  },
+  {
+   "id_produto": 27,
+   "id_produto_relacionado": 28
+  },
+  {
+   "id_produto": 28,
+   "id_produto_relacionado": 12
+  },
+  {
+   "id_produto": 28,
+   "id_produto_relacionado": 14
+  },
+  {
+   "id_produto": 28,
+   "id_produto_relacionado": 27
+  },
+  {
+   "id_produto": 28,
+   "id_produto_relacionado": 29
+  },
+  {
+   "id_produto": 29,
+   "id_produto_relacionado": 13
+  },
+  {
+   "id_produto": 29,
+   "id_produto_relacionado": 15
+  },
+  {
+   "id_produto": 29,
+   "id_produto_relacionado": 16
+  },
+  {
+   "id_produto": 29,
+   "id_produto_relacionado": 26
+  },
+  {
+   "id_produto": 29,
+   "id_produto_relacionado": 28
+  },
+  {
+   "id_produto": 29,
+   "id_produto_relacionado": 38
+  },
+  {
+   "id_produto": 30,
+   "id_produto_relacionado": 11
+  },
+  {
+   "id_produto": 30,
+   "id_produto_relacionado": 33
+  },
+  {
+   "id_produto": 31,
+   "id_produto_relacionado": 12
+  },
+  {
+   "id_produto": 31,
+   "id_produto_relacionado": 13
+  },
+  {
+   "id_produto": 31,
+   "id_produto_relacionado": 32
+  },
+  {
+   "id_produto": 32,
+   "id_produto_relacionado": 12
+  },
+  {
+   "id_produto": 32,
+   "id_produto_relacionado": 13
+  },
+  {
+   "id_produto": 32,
+   "id_produto_relacionado": 31
+  },
+  {
+   "id_produto": 32,
+   "id_produto_relacionado": 47
+  },
+  {
+   "id_produto": 33,
+   "id_produto_relacionado": 11
+  },
+  {
+   "id_produto": 33,
+   "id_produto_relacionado": 30
+  },
+  {
+   "id_produto": 34,
+   "id_produto_relacionado": 5
+  },
+  {
+   "id_produto": 34,
+   "id_produto_relacionado": 6
+  },
+  {
+   "id_produto": 34,
+   "id_produto_relacionado": 7
+  },
+  {
+   "id_produto": 34,
+   "id_produto_relacionado": 11
+  },
+  {
+   "id_produto": 34,
+   "id_produto_relacionado": 45
+  },
+  {
+   "id_produto": 34,
+   "id_produto_relacionado": 46
+  },
+  {
+   "id_produto": 35,
+   "id_produto_relacionado": 9
+  },
+  {
+   "id_produto": 35,
+   "id_produto_relacionado": 10
+  },
+  {
+   "id_produto": 36,
+   "id_produto_relacionado": 9
+  },
+  {
+   "id_produto": 36,
+   "id_produto_relacionado": 10
+  },
+  {
+   "id_produto": 36,
+   "id_produto_relacionado": 18
+  },
+  {
+   "id_produto": 37,
+   "id_produto_relacionado": 15
+  },
+  {
+   "id_produto": 37,
+   "id_produto_relacionado": 26
+  },
+  {
+   "id_produto": 38,
+   "id_produto_relacionado": 14
+  },
+  {
+   "id_produto": 38,
+   "id_produto_relacionado": 17
+  },
+  {
+   "id_produto": 38,
+   "id_produto_relacionado": 29
+  },
+  {
+   "id_produto": 39,
+   "id_produto_relacionado": 17
+  },
+  {
+   "id_produto": 40,
+   "id_produto_relacionado": 1
+  },
+  {
+   "id_produto": 40,
+   "id_produto_relacionado": 43
+  },
+  {
+   "id_produto": 41,
+   "id_produto_relacionado": 2
+  },
+  {
+   "id_produto": 41,
+   "id_produto_relacionado": 42
+  },
+  {
+   "id_produto": 42,
+   "id_produto_relacionado": 2
+  },
+  {
+   "id_produto": 42,
+   "id_produto_relacionado": 4
+  },
+  {
+   "id_produto": 42,
+   "id_produto_relacionado": 41
+  },
+  {
+   "id_produto": 43,
+   "id_produto_relacionado": 1
+  },
+  {
+   "id_produto": 43,
+   "id_produto_relacionado": 40
+  },
+  {
+   "id_produto": 44,
+   "id_produto_relacionado": 3
+  },
+  {
+   "id_produto": 45,
+   "id_produto_relacionado": 5
+  },
+  {
+   "id_produto": 45,
+   "id_produto_relacionado": 11
+  },
+  {
+   "id_produto": 45,
+   "id_produto_relacionado": 34
+  },
+  {
+   "id_produto": 46,
+   "id_produto_relacionado": 5
+  },
+  {
+   "id_produto": 46,
+   "id_produto_relacionado": 6
+  },
+  {
+   "id_produto": 46,
+   "id_produto_relacionado": 34
+  },
+  {
+   "id_produto": 47,
+   "id_produto_relacionado": 12
+  },
+  {
+   "id_produto": 47,
+   "id_produto_relacionado": 13
+  },
+  {
+   "id_produto": 47,
+   "id_produto_relacionado": 32
+  },
+  {
+   "id_produto": 48,
+   "id_produto_relacionado": 18
+  },
+  {
+   "id_produto": 48,
+   "id_produto_relacionado": 49
+  },
+  {
+   "id_produto": 49,
+   "id_produto_relacionado": 18
+  },
+  {
+   "id_produto": 49,
+   "id_produto_relacionado": 48
+  },
+  {
+   "id_produto": 50,
+   "id_produto_relacionado": 18
+  },
+  {
+   "id_produto": 50,
+   "id_produto_relacionado": 19
+  },
+  {
+   "id_produto": 51,
+   "id_produto_relacionado": 8
+  },
+  {
+   "id_produto": 51,
+   "id_produto_relacionado": 18
+  },
+  {
+   "id_produto": 52,
+   "id_produto_relacionado": 21
+  },
+  {
+   "id_produto": 53,
+   "id_produto_relacionado": 23
   }
  ],
  "cliente": [
@@ -687,7 +1500,7 @@
  ],
  "pedido": [
   {
-   "numero": "VTZ-1001",
+   "numero": "VTX-1001",
    "id_cliente": 8,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -701,7 +1514,7 @@
    "id_pedido": 1
   },
   {
-   "numero": "VTZ-1002",
+   "numero": "VTX-1002",
    "id_cliente": 14,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -715,7 +1528,7 @@
    "id_pedido": 2
   },
   {
-   "numero": "VTZ-1003",
+   "numero": "VTX-1003",
    "id_cliente": 13,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -729,7 +1542,7 @@
    "id_pedido": 3
   },
   {
-   "numero": "VTZ-1004",
+   "numero": "VTX-1004",
    "id_cliente": 3,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -743,7 +1556,7 @@
    "id_pedido": 4
   },
   {
-   "numero": "VTZ-1005",
+   "numero": "VTX-1005",
    "id_cliente": 4,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -757,7 +1570,7 @@
    "id_pedido": 5
   },
   {
-   "numero": "VTZ-1006",
+   "numero": "VTX-1006",
    "id_cliente": 13,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -771,7 +1584,7 @@
    "id_pedido": 6
   },
   {
-   "numero": "VTZ-1007",
+   "numero": "VTX-1007",
    "id_cliente": 14,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -785,7 +1598,7 @@
    "id_pedido": 7
   },
   {
-   "numero": "VTZ-1008",
+   "numero": "VTX-1008",
    "id_cliente": 4,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -799,7 +1612,7 @@
    "id_pedido": 8
   },
   {
-   "numero": "VTZ-1009",
+   "numero": "VTX-1009",
    "id_cliente": 14,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -813,7 +1626,7 @@
    "id_pedido": 9
   },
   {
-   "numero": "VTZ-1010",
+   "numero": "VTX-1010",
    "id_cliente": 4,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -827,7 +1640,7 @@
    "id_pedido": 10
   },
   {
-   "numero": "VTZ-1011",
+   "numero": "VTX-1011",
    "id_cliente": 5,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -841,7 +1654,7 @@
    "id_pedido": 11
   },
   {
-   "numero": "VTZ-1012",
+   "numero": "VTX-1012",
    "id_cliente": 5,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -855,7 +1668,7 @@
    "id_pedido": 12
   },
   {
-   "numero": "VTZ-1013",
+   "numero": "VTX-1013",
    "id_cliente": 6,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -869,7 +1682,7 @@
    "id_pedido": 13
   },
   {
-   "numero": "VTZ-1014",
+   "numero": "VTX-1014",
    "id_cliente": 4,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -883,7 +1696,7 @@
    "id_pedido": 14
   },
   {
-   "numero": "VTZ-1015",
+   "numero": "VTX-1015",
    "id_cliente": 1,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -897,7 +1710,7 @@
    "id_pedido": 15
   },
   {
-   "numero": "VTZ-1016",
+   "numero": "VTX-1016",
    "id_cliente": 5,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -911,7 +1724,7 @@
    "id_pedido": 16
   },
   {
-   "numero": "VTZ-1017",
+   "numero": "VTX-1017",
    "id_cliente": 12,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -925,7 +1738,7 @@
    "id_pedido": 17
   },
   {
-   "numero": "VTZ-1018",
+   "numero": "VTX-1018",
    "id_cliente": 4,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -939,7 +1752,7 @@
    "id_pedido": 18
   },
   {
-   "numero": "VTZ-1019",
+   "numero": "VTX-1019",
    "id_cliente": 13,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -953,7 +1766,7 @@
    "id_pedido": 19
   },
   {
-   "numero": "VTZ-1020",
+   "numero": "VTX-1020",
    "id_cliente": 4,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -967,7 +1780,7 @@
    "id_pedido": 20
   },
   {
-   "numero": "VTZ-1021",
+   "numero": "VTX-1021",
    "id_cliente": 10,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -981,7 +1794,7 @@
    "id_pedido": 21
   },
   {
-   "numero": "VTZ-1022",
+   "numero": "VTX-1022",
    "id_cliente": 9,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -995,7 +1808,7 @@
    "id_pedido": 22
   },
   {
-   "numero": "VTZ-1023",
+   "numero": "VTX-1023",
    "id_cliente": 13,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -1009,7 +1822,7 @@
    "id_pedido": 23
   },
   {
-   "numero": "VTZ-1024",
+   "numero": "VTX-1024",
    "id_cliente": 5,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1023,7 +1836,7 @@
    "id_pedido": 24
   },
   {
-   "numero": "VTZ-1025",
+   "numero": "VTX-1025",
    "id_cliente": 13,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1037,7 +1850,7 @@
    "id_pedido": 25
   },
   {
-   "numero": "VTZ-1026",
+   "numero": "VTX-1026",
    "id_cliente": 5,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -1051,7 +1864,7 @@
    "id_pedido": 26
   },
   {
-   "numero": "VTZ-1027",
+   "numero": "VTX-1027",
    "id_cliente": 4,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -1065,7 +1878,7 @@
    "id_pedido": 27
   },
   {
-   "numero": "VTZ-1028",
+   "numero": "VTX-1028",
    "id_cliente": 12,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1079,7 +1892,7 @@
    "id_pedido": 28
   },
   {
-   "numero": "VTZ-1029",
+   "numero": "VTX-1029",
    "id_cliente": 8,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1093,7 +1906,7 @@
    "id_pedido": 29
   },
   {
-   "numero": "VTZ-1030",
+   "numero": "VTX-1030",
    "id_cliente": 14,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1107,7 +1920,7 @@
    "id_pedido": 30
   },
   {
-   "numero": "VTZ-1031",
+   "numero": "VTX-1031",
    "id_cliente": 9,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -1121,7 +1934,7 @@
    "id_pedido": 31
   },
   {
-   "numero": "VTZ-1032",
+   "numero": "VTX-1032",
    "id_cliente": 6,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1135,7 +1948,7 @@
    "id_pedido": 32
   },
   {
-   "numero": "VTZ-1033",
+   "numero": "VTX-1033",
    "id_cliente": 14,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1149,7 +1962,7 @@
    "id_pedido": 33
   },
   {
-   "numero": "VTZ-1034",
+   "numero": "VTX-1034",
    "id_cliente": 9,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -1163,7 +1976,7 @@
    "id_pedido": 34
   },
   {
-   "numero": "VTZ-1035",
+   "numero": "VTX-1035",
    "id_cliente": 6,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1177,7 +1990,7 @@
    "id_pedido": 35
   },
   {
-   "numero": "VTZ-1036",
+   "numero": "VTX-1036",
    "id_cliente": 3,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1191,7 +2004,7 @@
    "id_pedido": 36
   },
   {
-   "numero": "VTZ-1037",
+   "numero": "VTX-1037",
    "id_cliente": 5,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1205,7 +2018,7 @@
    "id_pedido": 37
   },
   {
-   "numero": "VTZ-1038",
+   "numero": "VTX-1038",
    "id_cliente": 1,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1219,7 +2032,7 @@
    "id_pedido": 38
   },
   {
-   "numero": "VTZ-1039",
+   "numero": "VTX-1039",
    "id_cliente": 12,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1233,7 +2046,7 @@
    "id_pedido": 39
   },
   {
-   "numero": "VTZ-1040",
+   "numero": "VTX-1040",
    "id_cliente": 4,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1247,7 +2060,7 @@
    "id_pedido": 40
   },
   {
-   "numero": "VTZ-1041",
+   "numero": "VTX-1041",
    "id_cliente": 9,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1261,7 +2074,7 @@
    "id_pedido": 41
   },
   {
-   "numero": "VTZ-1042",
+   "numero": "VTX-1042",
    "id_cliente": 15,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1275,7 +2088,7 @@
    "id_pedido": 42
   },
   {
-   "numero": "VTZ-1043",
+   "numero": "VTX-1043",
    "id_cliente": 7,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1289,7 +2102,7 @@
    "id_pedido": 43
   },
   {
-   "numero": "VTZ-1044",
+   "numero": "VTX-1044",
    "id_cliente": 8,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1303,7 +2116,7 @@
    "id_pedido": 44
   },
   {
-   "numero": "VTZ-1045",
+   "numero": "VTX-1045",
    "id_cliente": 6,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1317,7 +2130,7 @@
    "id_pedido": 45
   },
   {
-   "numero": "VTZ-1046",
+   "numero": "VTX-1046",
    "id_cliente": 8,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1331,7 +2144,7 @@
    "id_pedido": 46
   },
   {
-   "numero": "VTZ-1047",
+   "numero": "VTX-1047",
    "id_cliente": 2,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1345,7 +2158,7 @@
    "id_pedido": 47
   },
   {
-   "numero": "VTZ-1048",
+   "numero": "VTX-1048",
    "id_cliente": 1,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1359,7 +2172,7 @@
    "id_pedido": 48
   },
   {
-   "numero": "VTZ-1049",
+   "numero": "VTX-1049",
    "id_cliente": 9,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -1373,7 +2186,7 @@
    "id_pedido": 49
   },
   {
-   "numero": "VTZ-1050",
+   "numero": "VTX-1050",
    "id_cliente": 4,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1387,7 +2200,7 @@
    "id_pedido": 50
   },
   {
-   "numero": "VTZ-1051",
+   "numero": "VTX-1051",
    "id_cliente": 13,
    "id_entregador": 3,
    "tipo_entrega": "entrega",
@@ -1401,7 +2214,7 @@
    "id_pedido": 51
   },
   {
-   "numero": "VTZ-1052",
+   "numero": "VTX-1052",
    "id_cliente": 9,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -1415,7 +2228,7 @@
    "id_pedido": 52
   },
   {
-   "numero": "VTZ-1053",
+   "numero": "VTX-1053",
    "id_cliente": 9,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -1429,7 +2242,7 @@
    "id_pedido": 53
   },
   {
-   "numero": "VTZ-1054",
+   "numero": "VTX-1054",
    "id_cliente": 7,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -1443,7 +2256,7 @@
    "id_pedido": 54
   },
   {
-   "numero": "VTZ-1055",
+   "numero": "VTX-1055",
    "id_cliente": 3,
    "id_entregador": null,
    "tipo_entrega": "entrega",
@@ -1457,7 +2270,7 @@
    "id_pedido": 55
   },
   {
-   "numero": "VTZ-1056",
+   "numero": "VTX-1056",
    "id_cliente": 12,
    "id_entregador": null,
    "tipo_entrega": "retirada",
@@ -1469,6 +2282,216 @@
    "data_criacao": "2026-11-05 20:30:04",
    "data_atualizacao": "2026-11-06 03:30:04",
    "id_pedido": 56
+  },
+  {
+   "numero": "VTX-1057",
+   "id_cliente": 1,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 4848.8,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-06 10:12:00",
+   "data_atualizacao": "2026-11-06 10:12:00",
+   "id_pedido": 57
+  },
+  {
+   "numero": "VTX-1058",
+   "id_cliente": 2,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 6839.6,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-07 14:20:00",
+   "data_atualizacao": "2026-11-07 14:20:00",
+   "id_pedido": 58
+  },
+  {
+   "numero": "VTX-1059",
+   "id_cliente": 3,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 4719.6,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-07 16:45:00",
+   "data_atualizacao": "2026-11-07 16:45:00",
+   "id_pedido": 59
+  },
+  {
+   "numero": "VTX-1060",
+   "id_cliente": 4,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 7758.7,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-08 09:30:00",
+   "data_atualizacao": "2026-11-08 09:30:00",
+   "id_pedido": 60
+  },
+  {
+   "numero": "VTX-1061",
+   "id_cliente": 5,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 2629.7,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-08 11:05:00",
+   "data_atualizacao": "2026-11-08 11:05:00",
+   "id_pedido": 61
+  },
+  {
+   "numero": "VTX-1062",
+   "id_cliente": 6,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 5999.7,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-09 13:40:00",
+   "data_atualizacao": "2026-11-09 13:40:00",
+   "id_pedido": 62
+  },
+  {
+   "numero": "VTX-1063",
+   "id_cliente": 7,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 3029.7,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-09 15:15:00",
+   "data_atualizacao": "2026-11-09 15:15:00",
+   "id_pedido": 63
+  },
+  {
+   "numero": "VTX-1064",
+   "id_cliente": 8,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 4499.6,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-10 12:00:00",
+   "data_atualizacao": "2026-11-10 12:00:00",
+   "id_pedido": 64
+  },
+  {
+   "numero": "VTX-1065",
+   "id_cliente": 9,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 1959.7,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-10 17:30:00",
+   "data_atualizacao": "2026-11-10 17:30:00",
+   "id_pedido": 65
+  },
+  {
+   "numero": "VTX-1066",
+   "id_cliente": 10,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 9049.6,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-11 10:50:00",
+   "data_atualizacao": "2026-11-11 10:50:00",
+   "id_pedido": 66
+  },
+  {
+   "numero": "VTX-1067",
+   "id_cliente": 11,
+   "id_entregador": null,
+   "tipo_entrega": "retirada",
+   "endereco_entrega": null,
+   "frete": 0,
+   "valor_total": 2239.7,
+   "status": "entregue",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-12 14:10:00",
+   "data_atualizacao": "2026-11-12 14:10:00",
+   "id_pedido": 67
+  },
+  {
+   "numero": "VTX-1068",
+   "id_cliente": 12,
+   "id_entregador": 3,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 6519.7,
+   "status": "saiu_para_entrega",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-13 16:20:00",
+   "data_atualizacao": "2026-11-13 16:20:00",
+   "id_pedido": 68
+  },
+  {
+   "numero": "VTX-1069",
+   "id_cliente": 13,
+   "id_entregador": null,
+   "tipo_entrega": "retirada",
+   "endereco_entrega": null,
+   "frete": 0,
+   "valor_total": 4698.8,
+   "status": "confirmado",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-14 11:35:00",
+   "data_atualizacao": "2026-11-14 11:35:00",
+   "id_pedido": 69
+  },
+  {
+   "numero": "VTX-1070",
+   "id_cliente": 14,
+   "id_entregador": null,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 7898.8,
+   "status": "pendente",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-14 18:00:00",
+   "data_atualizacao": "2026-11-14 18:00:00",
+   "id_pedido": 70
+  },
+  {
+   "numero": "VTX-1071",
+   "id_cliente": 2,
+   "id_entregador": null,
+   "tipo_entrega": "entrega",
+   "endereco_entrega": "Rua Augusta, 100 - Consolação, São Paulo - SP",
+   "frete": 0,
+   "valor_total": 2729.7,
+   "status": "pendente",
+   "motivo_cancelamento": null,
+   "data_criacao": "2026-11-15 09:10:00",
+   "data_atualizacao": "2026-11-15 09:10:00",
+   "id_pedido": 71
   }
  ],
  "item_pedido": [
@@ -2206,6 +3229,349 @@
    "quantidade": 1,
    "preco_unitario": 1899.9,
    "id_item": 105
+  },
+  {
+   "id_pedido": 57,
+   "id_produto": 15,
+   "quantidade": 1,
+   "preco_unitario": 4499,
+   "id_item": 106
+  },
+  {
+   "id_pedido": 57,
+   "id_produto": 26,
+   "quantidade": 1,
+   "preco_unitario": 129.9,
+   "id_item": 107
+  },
+  {
+   "id_pedido": 57,
+   "id_produto": 37,
+   "quantidade": 1,
+   "preco_unitario": 219.9,
+   "id_item": 108
+  },
+  {
+   "id_pedido": 58,
+   "id_produto": 11,
+   "quantidade": 1,
+   "preco_unitario": 6299.9,
+   "id_item": 109
+  },
+  {
+   "id_pedido": 58,
+   "id_produto": 30,
+   "quantidade": 1,
+   "preco_unitario": 229.9,
+   "id_item": 110
+  },
+  {
+   "id_pedido": 58,
+   "id_produto": 33,
+   "quantidade": 1,
+   "preco_unitario": 189.9,
+   "id_item": 111
+  },
+  {
+   "id_pedido": 58,
+   "id_produto": 45,
+   "quantidade": 1,
+   "preco_unitario": 119.9,
+   "id_item": 112
+  },
+  {
+   "id_pedido": 59,
+   "id_produto": 12,
+   "quantidade": 1,
+   "preco_unitario": 4199.9,
+   "id_item": 113
+  },
+  {
+   "id_pedido": 59,
+   "id_produto": 31,
+   "quantidade": 1,
+   "preco_unitario": 119.9,
+   "id_item": 114
+  },
+  {
+   "id_pedido": 59,
+   "id_produto": 32,
+   "quantidade": 1,
+   "preco_unitario": 259.9,
+   "id_item": 115
+  },
+  {
+   "id_pedido": 59,
+   "id_produto": 47,
+   "quantidade": 1,
+   "preco_unitario": 139.9,
+   "id_item": 116
+  },
+  {
+   "id_pedido": 60,
+   "id_produto": 13,
+   "quantidade": 1,
+   "preco_unitario": 7499,
+   "id_item": 117
+  },
+  {
+   "id_pedido": 60,
+   "id_produto": 31,
+   "quantidade": 1,
+   "preco_unitario": 119.9,
+   "id_item": 118
+  },
+  {
+   "id_pedido": 60,
+   "id_produto": 29,
+   "quantidade": 2,
+   "preco_unitario": 69.9,
+   "id_item": 119
+  },
+  {
+   "id_pedido": 61,
+   "id_produto": 14,
+   "quantidade": 1,
+   "preco_unitario": 2299.9,
+   "id_item": 120
+  },
+  {
+   "id_pedido": 61,
+   "id_produto": 27,
+   "quantidade": 1,
+   "preco_unitario": 79.9,
+   "id_item": 121
+  },
+  {
+   "id_pedido": 61,
+   "id_produto": 28,
+   "quantidade": 1,
+   "preco_unitario": 249.9,
+   "id_item": 122
+  },
+  {
+   "id_pedido": 62,
+   "id_produto": 1,
+   "quantidade": 1,
+   "preco_unitario": 4699.9,
+   "id_item": 123
+  },
+  {
+   "id_pedido": 62,
+   "id_produto": 40,
+   "quantidade": 1,
+   "preco_unitario": 899.9,
+   "id_item": 124
+  },
+  {
+   "id_pedido": 62,
+   "id_produto": 43,
+   "quantidade": 1,
+   "preco_unitario": 399.9,
+   "id_item": 125
+  },
+  {
+   "id_pedido": 63,
+   "id_produto": 2,
+   "quantidade": 1,
+   "preco_unitario": 1699.9,
+   "id_item": 126
+  },
+  {
+   "id_pedido": 63,
+   "id_produto": 42,
+   "quantidade": 1,
+   "preco_unitario": 999.9,
+   "id_item": 127
+  },
+  {
+   "id_pedido": 63,
+   "id_produto": 41,
+   "quantidade": 1,
+   "preco_unitario": 329.9,
+   "id_item": 128
+  },
+  {
+   "id_pedido": 64,
+   "id_produto": 18,
+   "quantidade": 1,
+   "preco_unitario": 3799.9,
+   "id_item": 129
+  },
+  {
+   "id_pedido": 64,
+   "id_produto": 48,
+   "quantidade": 1,
+   "preco_unitario": 199.9,
+   "id_item": 130
+  },
+  {
+   "id_pedido": 64,
+   "id_produto": 49,
+   "quantidade": 1,
+   "preco_unitario": 299.9,
+   "id_item": 131
+  },
+  {
+   "id_pedido": 64,
+   "id_produto": 50,
+   "quantidade": 1,
+   "preco_unitario": 199.9,
+   "id_item": 132
+  },
+  {
+   "id_pedido": 65,
+   "id_produto": 9,
+   "quantidade": 1,
+   "preco_unitario": 1599.9,
+   "id_item": 133
+  },
+  {
+   "id_pedido": 65,
+   "id_produto": 35,
+   "quantidade": 1,
+   "preco_unitario": 279.9,
+   "id_item": 134
+  },
+  {
+   "id_pedido": 65,
+   "id_produto": 36,
+   "quantidade": 1,
+   "preco_unitario": 79.9,
+   "id_item": 135
+  },
+  {
+   "id_pedido": 66,
+   "id_produto": 5,
+   "quantidade": 1,
+   "preco_unitario": 8499.9,
+   "id_item": 136
+  },
+  {
+   "id_pedido": 66,
+   "id_produto": 45,
+   "quantidade": 1,
+   "preco_unitario": 119.9,
+   "id_item": 137
+  },
+  {
+   "id_pedido": 66,
+   "id_produto": 34,
+   "quantidade": 1,
+   "preco_unitario": 99.9,
+   "id_item": 138
+  },
+  {
+   "id_pedido": 66,
+   "id_produto": 46,
+   "quantidade": 1,
+   "preco_unitario": 329.9,
+   "id_item": 139
+  },
+  {
+   "id_pedido": 67,
+   "id_produto": 17,
+   "quantidade": 1,
+   "preco_unitario": 1799.9,
+   "id_item": 140
+  },
+  {
+   "id_pedido": 67,
+   "id_produto": 39,
+   "quantidade": 1,
+   "preco_unitario": 89.9,
+   "id_item": 141
+  },
+  {
+   "id_pedido": 67,
+   "id_produto": 38,
+   "quantidade": 1,
+   "preco_unitario": 349.9,
+   "id_item": 142
+  },
+  {
+   "id_pedido": 68,
+   "id_produto": 11,
+   "quantidade": 1,
+   "preco_unitario": 6299.9,
+   "id_item": 143
+  },
+  {
+   "id_pedido": 68,
+   "id_produto": 34,
+   "quantidade": 1,
+   "preco_unitario": 99.9,
+   "id_item": 144
+  },
+  {
+   "id_pedido": 68,
+   "id_produto": 45,
+   "quantidade": 1,
+   "preco_unitario": 119.9,
+   "id_item": 145
+  },
+  {
+   "id_pedido": 69,
+   "id_produto": 15,
+   "quantidade": 1,
+   "preco_unitario": 4499,
+   "id_item": 146
+  },
+  {
+   "id_pedido": 69,
+   "id_produto": 26,
+   "quantidade": 1,
+   "preco_unitario": 129.9,
+   "id_item": 147
+  },
+  {
+   "id_pedido": 69,
+   "id_produto": 29,
+   "quantidade": 1,
+   "preco_unitario": 69.9,
+   "id_item": 148
+  },
+  {
+   "id_pedido": 70,
+   "id_produto": 13,
+   "quantidade": 1,
+   "preco_unitario": 7499,
+   "id_item": 149
+  },
+  {
+   "id_pedido": 70,
+   "id_produto": 32,
+   "quantidade": 1,
+   "preco_unitario": 259.9,
+   "id_item": 150
+  },
+  {
+   "id_pedido": 70,
+   "id_produto": 47,
+   "quantidade": 1,
+   "preco_unitario": 139.9,
+   "id_item": 151
+  },
+  {
+   "id_pedido": 71,
+   "id_produto": 14,
+   "quantidade": 1,
+   "preco_unitario": 2299.9,
+   "id_item": 152
+  },
+  {
+   "id_pedido": 71,
+   "id_produto": 27,
+   "quantidade": 1,
+   "preco_unitario": 79.9,
+   "id_item": 153
+  },
+  {
+   "id_pedido": 71,
+   "id_produto": 38,
+   "quantidade": 1,
+   "preco_unitario": 349.9,
+   "id_item": 154
   }
  ],
  "pagamento": [
@@ -2600,6 +3966,111 @@
    "parcelas": 1,
    "valor": 1899.9,
    "id_pagamento": 56
+  },
+  {
+   "id_pedido": 57,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 4848.8,
+   "id_pagamento": 57
+  },
+  {
+   "id_pedido": 58,
+   "forma": "credito",
+   "parcelas": 6,
+   "valor": 6839.6,
+   "id_pagamento": 58
+  },
+  {
+   "id_pedido": 59,
+   "forma": "credito",
+   "parcelas": 4,
+   "valor": 4719.6,
+   "id_pagamento": 59
+  },
+  {
+   "id_pedido": 60,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 7758.7,
+   "id_pagamento": 60
+  },
+  {
+   "id_pedido": 61,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 2629.7,
+   "id_pagamento": 61
+  },
+  {
+   "id_pedido": 62,
+   "forma": "credito",
+   "parcelas": 10,
+   "valor": 5999.7,
+   "id_pagamento": 62
+  },
+  {
+   "id_pedido": 63,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 3029.7,
+   "id_pagamento": 63
+  },
+  {
+   "id_pedido": 64,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 4499.6,
+   "id_pagamento": 64
+  },
+  {
+   "id_pedido": 65,
+   "forma": "credito",
+   "parcelas": 3,
+   "valor": 1959.7,
+   "id_pagamento": 65
+  },
+  {
+   "id_pedido": 66,
+   "forma": "credito",
+   "parcelas": 10,
+   "valor": 9049.6,
+   "id_pagamento": 66
+  },
+  {
+   "id_pedido": 67,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 2239.7,
+   "id_pagamento": 67
+  },
+  {
+   "id_pedido": 68,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 6519.7,
+   "id_pagamento": 68
+  },
+  {
+   "id_pedido": 69,
+   "forma": "debito",
+   "parcelas": 1,
+   "valor": 4698.8,
+   "id_pagamento": 69
+  },
+  {
+   "id_pedido": 70,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 7898.8,
+   "id_pagamento": 70
+  },
+  {
+   "id_pedido": 71,
+   "forma": "pix",
+   "parcelas": 1,
+   "valor": 2729.7,
+   "id_pagamento": 71
   }
  ]
 }

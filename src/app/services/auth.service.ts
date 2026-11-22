@@ -15,7 +15,7 @@ export interface AuthUser {
 
 interface Session { token: string; user: AuthUser; }
 
-const SESSION_KEY = 'voltz_session';
+const SESSION_KEY = 'vantix_session';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

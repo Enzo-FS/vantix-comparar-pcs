@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { CartItem, MenuItem } from '../models';
 
-const STORAGE_KEY = 'voltz_cart';
+const STORAGE_KEY = 'vantix_cart';
 
 // Regras de frete da loja — altere aqui e vale para carrinho e checkout.
 export const SHIPPING_FEE = 29.9;

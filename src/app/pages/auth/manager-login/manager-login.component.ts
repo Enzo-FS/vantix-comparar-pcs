@@ -6,9 +6,9 @@ import { AuthService } from '../../../services/auth.service';
 import { ToastService } from '../../../services/toast.service';
 
 // Usuários do 02_dados.sql (tabela usuario_painel):
-// gerente@voltz.com    / voltz2024
-// estoque@voltz.com    / voltz2024
-// logistica@voltz.com / voltz2024
+// gerente@vantix.com    / vantix2024
+// estoque@vantix.com    / vantix2024
+// logistica@vantix.com / vantix2024
 
 interface PortalConfig {
   label: string;
@@ -46,7 +46,7 @@ const PORTALS = {
     label: 'Portal da Logística',
     subtitle: 'Despache pacotes, acompanhe envios e confirme entregas com facilidade.',
     redirect: '/logistica/painel',
-    bgImage: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=900&q=85',
+    bgImage: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=900&q=85',
     accentColor: '#0d9488',
     accentColorDark: '#115e59',
     emailHint: 'logistica@voltz.com',
@@ -183,7 +183,7 @@ const LOGIN_TEMPLATE = `
                 </div>
                 <div style="background:var(--bg-elevated);border-radius:var(--r-md);padding:.5rem .75rem">
                   <p style="font-size:.62rem;color:var(--text-tertiary);margin-bottom:2px;letter-spacing:.05em">SENHA</p>
-                  <strong style="font-family:var(--font-mono);color:var(--text-primary)">voltz2024</strong>
+                  <strong style="font-family:var(--font-mono);color:var(--text-primary)">vantix2024</strong>
                 </div>
               </div>
               <button (click)="fillDemo()"
@@ -232,9 +232,7 @@ const LOGIN_STYLES = `
 abstract class PortalLoginBase {
   protected abstract readonly config: PortalConfig;
 
-  private auth  = inject(AuthService);
-  private toast = inject(ToastService);
-  protected router = inject(Router);
+
 
   email = '';
   password = '';
@@ -276,35 +274,3 @@ abstract class PortalLoginBase {
   }
 }
 
-@Component({
-  selector: 'app-manager-login',
-  standalone: true,
-  imports: [FormsModule, NgIf, NgFor, RouterLink],
-  template: LOGIN_TEMPLATE,
-  styles: [LOGIN_STYLES],
-})
-export class ManagerLoginComponent extends PortalLoginBase {
-  protected readonly config = PORTALS.manager;
-}
-
-@Component({
-  selector: 'app-kitchen-login',
-  standalone: true,
-  imports: [FormsModule, NgIf, NgFor, RouterLink],
-  template: LOGIN_TEMPLATE,
-  styles: [LOGIN_STYLES],
-})
-export class KitchenLoginComponent extends PortalLoginBase {
-  protected readonly config = PORTALS.kitchen;
-}
-
-@Component({
-  selector: 'app-delivery-login',
-  standalone: true,
-  imports: [FormsModule, NgIf, NgFor, RouterLink],
-  template: LOGIN_TEMPLATE,
-  styles: [LOGIN_STYLES],
-})
-export class DeliveryLoginComponent extends PortalLoginBase {
-  protected readonly config = PORTALS.delivery;
-}

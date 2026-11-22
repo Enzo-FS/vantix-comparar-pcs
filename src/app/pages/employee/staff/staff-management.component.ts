@@ -150,7 +150,7 @@ const STATUS_CONFIG = {
 
           <div class="form-group">
             <label class="form-label">E-mail de login *</label>
-            <input class="form-input" [(ngModel)]="form.email" type="email" placeholder="colaborador@voltz.com">
+            <input class="form-input" [(ngModel)]="form.email" type="email" placeholder="colaborador@vantix.com">
           </div>
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">

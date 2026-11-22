@@ -1,4 +1,4 @@
-package com.voltz.api.controller;
+package com.vantix.api.controller;
 
 import java.util.List;
 import java.util.Map;

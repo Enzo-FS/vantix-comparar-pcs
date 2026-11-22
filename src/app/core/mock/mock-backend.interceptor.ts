@@ -4,8 +4,8 @@
 // docs/API_CONTRATO.md, com os dados de database/02_dados.sql
 // (gerados em mock-seed.json por scripts/sql-to-mock.mjs) e imita as
 // regras do banco: trigger de estoque, FK RESTRICT, UNIQUE de e-mail etc.
-// O estado fica no localStorage; para zerar rode voltzMockReset() no console.
-// Para simular a API fora do ar (RNF10): voltzMockOffline(true) / voltzMockOffline(false).
+// O estado fica no localStorage; para zerar rode vantixMockReset() no console.
+// Para simular a API fora do ar (RNF10): vantixMockOffline(true) / vantixMockOffline(false).
 // ============================================================
 import {
   HttpErrorResponse, HttpInterceptorFn, HttpRequest, HttpResponse,
@@ -31,8 +31,8 @@ interface Db {
   item_pedido: Item[]; pagamento: Pagamento[];
 }
 
-const STORAGE_KEY = 'voltz_mock_db_v1';
-const DEMO_PASSWORD = 'voltz2024'; // senha dos usuários do 02_dados.sql
+const STORAGE_KEY = 'vantix_mock_db_v1';
+const DEMO_PASSWORD = 'vantix2024'; // senha dos usuários do 02_dados.sql
 
 class ApiError { constructor(public status: number, public mensagem: string) {} }
 
@@ -57,16 +57,16 @@ function load(): Db {
 function save(): void {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(db)); } catch { /* ignora */ }
 }
-(window as unknown as Record<string, unknown>)['voltzMockReset'] = () => {
+(window as unknown as Record<string, unknown>)['vantixMockReset'] = () => {
   db = freshDb(); save(); location.reload();
 };
 
 // Simula a API fora do ar: toda chamada falha como erro de rede (status 0), igual ao servidor desligado.
-const OFFLINE_KEY = 'voltz_mock_offline';
+const OFFLINE_KEY = 'vantix_mock_offline';
 function isOffline(): boolean {
   try { return localStorage.getItem(OFFLINE_KEY) === '1'; } catch { return false; }
 }
-(window as unknown as Record<string, unknown>)['voltzMockOffline'] = (on = true) => {
+(window as unknown as Record<string, unknown>)['vantixMockOffline'] = (on = true) => {
   try { on ? localStorage.setItem(OFFLINE_KEY, '1') : localStorage.removeItem(OFFLINE_KEY); } catch { /* ignora */ }
   return on ? 'API simulada FORA do ar' : 'API simulada de volta';
 };
@@ -298,7 +298,7 @@ route('POST', '/pedidos', req => {
     const maxNum = db.pedido.reduce((m, p) => Math.max(m, Number(p.numero.replace(/\D/g, '')) || 0), 1000);
 
     const pedido: Pedido = {
-      id_pedido: idPedido, numero: `VTZ-${maxNum + 1}`, id_cliente: c.id_cliente, id_entregador: null,
+      id_pedido: idPedido, numero: `VTX-${maxNum + 1}`, id_cliente: c.id_cliente, id_entregador: null,
       tipo_entrega: retirada ? 'retirada' : 'entrega', endereco_entrega: retirada ? null : (cli.endereco ?? null),
       frete, valor_total: total, status: 'pendente', motivo_cancelamento: null,
       observacoes: b.observacoes ?? null, data_criacao: now(), data_atualizacao: now(),
