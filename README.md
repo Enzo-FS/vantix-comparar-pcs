@@ -2,7 +2,7 @@ VANTIX Tech Store — Angular 17 + Java (Spring Boot) + MySQL
 
 🌐 Acesse o site: [VANTIX Tech Store](https://vantixtechstore.netlify.app)
 
-Loja virtual de tecnologia (hardware, periféricos, notebooks, smartphones e games). O design system e a arquitetura foram mantidos; mudaram a paleta (azul + navy + off-white), a tipografia e o domínio.
+Loja virtual de tecnologia (hardware, periféricos, notebooks, smartphones e games).
 
 ## Novidades: Monte seu PC
 
