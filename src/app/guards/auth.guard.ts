@@ -5,7 +5,7 @@ import { UserRole } from '../models';
 
 const ROLE_ROUTES: Record<string, string> = {
   manager:  '/gerente/insights',
-  kitchen:  '/estoque/painel',
+  kitchen:  '/estoque/controle',
   delivery: '/logistica/painel',
 };
 

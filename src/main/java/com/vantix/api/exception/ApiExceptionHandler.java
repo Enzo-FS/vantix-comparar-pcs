@@ -37,6 +37,12 @@ public class ApiExceptionHandler {
         return resposta(HttpStatus.BAD_REQUEST, "Requisição inválida. Confira os dados enviados.");
     }
 
+    /** Regra do banco violada (CHECK, FK, UNIQUE) que nao foi tratada antes. */
+    @ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, String>> integridade(Exception e) {
+        return resposta(HttpStatus.CONFLICT, "A operação viola uma regra do banco de dados. Confira os dados.");
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> inesperado(Exception e) {
         e.printStackTrace();

@@ -1,0 +1,2232 @@
+{
+ "produtosNovos": [
+  {
+   "id_produto": 54,
+   "id_categoria": 1,
+   "nome": "Processador Intel Core i3-12100 LGA1700",
+   "descricao": "4 núcleos, 8 threads, até 4,3 GHz e vídeo integrado UHD 730. Ótimo para escritório, estudo e jogos leves.",
+   "marca": "Intel",
+   "preco": 649.9,
+   "preco_antigo": 799.9,
+   "estoque": 30,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 55,
+   "id_categoria": 1,
+   "nome": "Processador AMD Ryzen 5 5600 AM4",
+   "descricao": "6 núcleos, 12 threads e até 4,4 GHz. Custo-benefício clássico para jogos em Full HD na plataforma AM4 (DDR4).",
+   "marca": "AMD",
+   "preco": 699.9,
+   "preco_antigo": 899.9,
+   "estoque": 35,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 56,
+   "id_categoria": 1,
+   "nome": "Processador Intel Core i5-12400F LGA1700",
+   "descricao": "6 núcleos, 12 threads e até 4,4 GHz. Sem vídeo integrado: use com placa de vídeo dedicada.",
+   "marca": "Intel",
+   "preco": 799.9,
+   "preco_antigo": 999.9,
+   "estoque": 28,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 57,
+   "id_categoria": 1,
+   "nome": "Processador AMD Ryzen 5 7600 AM5",
+   "descricao": "6 núcleos, 12 threads, até 5,1 GHz e suporte a DDR5 e PCIe 5.0. Base moderna para jogos em 1080p e 1440p.",
+   "marca": "AMD",
+   "preco": 1199.9,
+   "preco_antigo": 1399.9,
+   "estoque": 24,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 58,
+   "id_categoria": 1,
+   "nome": "Processador Intel Core i7-14700K LGA1700",
+   "descricao": "20 núcleos (8P + 12E), 28 threads e até 5,6 GHz. Para jogos no máximo, streaming e edição pesada.",
+   "marca": "Intel",
+   "preco": 2599.9,
+   "preco_antigo": 2999.9,
+   "estoque": 12,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 59,
+   "id_categoria": 1,
+   "nome": "Placa de Vídeo GeForce GTX 1650 4GB",
+   "descricao": "Entrada para jogos competitivos em Full HD. Consome pouco e não precisa de conector extra de energia.",
+   "marca": "NVIDIA",
+   "preco": 899.9,
+   "preco_antigo": 1099.9,
+   "estoque": 25,
+   "imagem_url": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 60,
+   "id_categoria": 1,
+   "nome": "Placa de Vídeo Radeon RX 6600 8GB",
+   "descricao": "8GB GDDR6 e ótimo desempenho em 1080p com qualidade alta.",
+   "marca": "AMD",
+   "preco": 1299.9,
+   "preco_antigo": 1599.9,
+   "estoque": 20,
+   "imagem_url": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 61,
+   "id_categoria": 1,
+   "nome": "Placa de Vídeo GeForce RTX 4060 8GB",
+   "descricao": "DLSS 3, Ray Tracing e baixo consumo. Ideal para 1080p no alto com taxas altas.",
+   "marca": "NVIDIA",
+   "preco": 1899.9,
+   "preco_antigo": 2199.9,
+   "estoque": 22,
+   "imagem_url": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 62,
+   "id_categoria": 1,
+   "nome": "Placa de Vídeo Radeon RX 7800 XT 16GB",
+   "descricao": "16GB GDDR6 para jogar em 1440p no ultra com folga de memória.",
+   "marca": "AMD",
+   "preco": 3699.9,
+   "preco_antigo": 4199.9,
+   "estoque": 10,
+   "imagem_url": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 63,
+   "id_categoria": 1,
+   "nome": "Placa de Vídeo GeForce RTX 4090 24GB",
+   "descricao": "A mais rápida da linha: 4K com Ray Tracing, IA e renderização 3D sem limites.",
+   "marca": "NVIDIA",
+   "preco": 12999.9,
+   "preco_antigo": 14999.9,
+   "estoque": 4,
+   "imagem_url": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 64,
+   "id_categoria": 1,
+   "nome": "Placa-Mãe A520M AM4 DDR4",
+   "descricao": "Soquete AM4, 2 slots DDR4 e M.2 NVMe. Formato Micro-ATX.",
+   "marca": "ASRock",
+   "preco": 499.9,
+   "preco_antigo": 599.9,
+   "estoque": 18,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 65,
+   "id_categoria": 1,
+   "nome": "Placa-Mãe B760M LGA1700 DDR4",
+   "descricao": "Soquete LGA1700 (Intel 12ª a 14ª geração), 4 slots DDR4 e 2 M.2. Formato Micro-ATX.",
+   "marca": "MSI",
+   "preco": 799.9,
+   "preco_antigo": 949.9,
+   "estoque": 20,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 66,
+   "id_categoria": 1,
+   "nome": "Placa-Mãe Z790 LGA1700 DDR5 ATX Wi-Fi",
+   "descricao": "Chipset Z790 para overclock, DDR5, PCIe 5.0, Wi-Fi 6E e 4 slots M.2. Formato ATX.",
+   "marca": "ASUS",
+   "preco": 2299.9,
+   "preco_antigo": 2699.9,
+   "estoque": 9,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 67,
+   "id_categoria": 1,
+   "nome": "Placa-Mãe X670E AM5 DDR5 ATX Wi-Fi",
+   "descricao": "Topo de linha AM5: PCIe 5.0 na placa de vídeo e no M.2, Wi-Fi 6E e VRM reforçado. Formato ATX.",
+   "marca": "ASUS",
+   "preco": 2899.9,
+   "preco_antigo": 3299.9,
+   "estoque": 7,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 68,
+   "id_categoria": 1,
+   "nome": "Placa-Mãe B650I AM5 DDR5 Mini-ITX",
+   "descricao": "AM5 em formato compacto Mini-ITX, com DDR5, Wi-Fi 6E e M.2 PCIe 4.0.",
+   "marca": "Gigabyte",
+   "preco": 1599.9,
+   "preco_antigo": 1899.9,
+   "estoque": 8,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 69,
+   "id_categoria": 1,
+   "nome": "Memória DDR4 8GB 3200MHz",
+   "descricao": "Módulo único de 8GB DDR4 3200MHz.",
+   "marca": "Kingston",
+   "preco": 159.9,
+   "preco_antigo": 199.9,
+   "estoque": 60,
+   "imagem_url": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 70,
+   "id_categoria": 1,
+   "nome": "Memória DDR4 16GB (2x8GB) 3200MHz",
+   "descricao": "Kit dual channel DDR4 3200MHz.",
+   "marca": "Kingston",
+   "preco": 299.9,
+   "preco_antigo": 369.9,
+   "estoque": 45,
+   "imagem_url": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 71,
+   "id_categoria": 1,
+   "nome": "Memória DDR4 32GB (2x16GB) 3600MHz RGB",
+   "descricao": "Kit dual channel DDR4 3600MHz com iluminação RGB.",
+   "marca": "Corsair",
+   "preco": 549.9,
+   "preco_antigo": 649.9,
+   "estoque": 30,
+   "imagem_url": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 72,
+   "id_categoria": 1,
+   "nome": "Memória DDR5 16GB (2x8GB) 5600MHz",
+   "descricao": "Kit dual channel DDR5 5600MHz para AM5 e Intel 12ª geração ou mais nova.",
+   "marca": "Kingston",
+   "preco": 449.9,
+   "preco_antigo": 549.9,
+   "estoque": 35,
+   "imagem_url": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 73,
+   "id_categoria": 1,
+   "nome": "Memória DDR5 64GB (2x32GB) 6000MHz RGB",
+   "descricao": "Kit de 64GB DDR5 para edição de vídeo, 3D e máquinas virtuais.",
+   "marca": "Corsair",
+   "preco": 1999.9,
+   "preco_antigo": 2399.9,
+   "estoque": 10,
+   "imagem_url": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 74,
+   "id_categoria": 1,
+   "nome": "SSD SATA 480GB 2,5\"",
+   "descricao": "Leitura de até 500 MB/s. Upgrade barato para tirar o PC da lentidão.",
+   "marca": "Kingston",
+   "preco": 219.9,
+   "preco_antigo": 279.9,
+   "estoque": 50,
+   "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 75,
+   "id_categoria": 1,
+   "nome": "SSD NVMe 1TB PCIe 4.0",
+   "descricao": "Leitura de até 5.000 MB/s em formato M.2 2280.",
+   "marca": "WD",
+   "preco": 449.9,
+   "preco_antigo": 549.9,
+   "estoque": 45,
+   "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 76,
+   "id_categoria": 1,
+   "nome": "SSD NVMe 4TB PCIe 4.0 com Dissipador",
+   "descricao": "Leitura de até 7.450 MB/s e dissipador incluso. Espaço para a biblioteca inteira de jogos.",
+   "marca": "Samsung",
+   "preco": 1899.9,
+   "preco_antigo": 2299.9,
+   "estoque": 12,
+   "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 77,
+   "id_categoria": 1,
+   "nome": "HD Interno 1TB 7200RPM",
+   "descricao": "HD de 3,5\" SATA para arquivos, fotos e backups.",
+   "marca": "Seagate",
+   "preco": 299.9,
+   "preco_antigo": 369.9,
+   "estoque": 30,
+   "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 78,
+   "id_categoria": 1,
+   "nome": "HD Interno 2TB 7200RPM",
+   "descricao": "HD de 3,5\" SATA com 256MB de cache.",
+   "marca": "Seagate",
+   "preco": 429.9,
+   "preco_antigo": 499.9,
+   "estoque": 25,
+   "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 79,
+   "id_categoria": 1,
+   "nome": "HD Interno 4TB 5400RPM",
+   "descricao": "Silencioso e econômico, ideal para guardar muitos arquivos.",
+   "marca": "WD",
+   "preco": 649.9,
+   "preco_antigo": 799.9,
+   "estoque": 18,
+   "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 80,
+   "id_categoria": 1,
+   "nome": "HD NAS 8TB 7200RPM",
+   "descricao": "Feito para funcionar 24 horas por dia em servidores de arquivos.",
+   "marca": "WD",
+   "preco": 1499.9,
+   "preco_antigo": 1799.9,
+   "estoque": 8,
+   "imagem_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 81,
+   "id_categoria": 1,
+   "nome": "Fonte 500W 80 Plus White",
+   "descricao": "Fonte ATX de 500W com PFC ativo. Para PCs de escritório e jogos leves.",
+   "marca": "PCYES",
+   "preco": 299.9,
+   "preco_antigo": 369.9,
+   "estoque": 30,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 82,
+   "id_categoria": 1,
+   "nome": "Fonte 650W 80 Plus Bronze",
+   "descricao": "Fonte ATX de 650W com proteções OVP, UVP e SCP.",
+   "marca": "Corsair",
+   "preco": 449.9,
+   "preco_antigo": 549.9,
+   "estoque": 28,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 83,
+   "id_categoria": 1,
+   "nome": "Fonte 750W 80 Plus Gold Modular",
+   "descricao": "Totalmente modular, silenciosa e com capacitores japoneses.",
+   "marca": "MSI",
+   "preco": 649.9,
+   "preco_antigo": 799.9,
+   "estoque": 20,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 84,
+   "id_categoria": 1,
+   "nome": "Fonte 1000W 80 Plus Gold ATX 3.0",
+   "descricao": "Padrão ATX 3.0 com conector 12VHPWR nativo para placas de vídeo topo de linha.",
+   "marca": "Corsair",
+   "preco": 1299.9,
+   "preco_antigo": 1499.9,
+   "estoque": 10,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 85,
+   "id_categoria": 1,
+   "nome": "Cooler Box 120mm AM4/AM5/LGA1700",
+   "descricao": "Air cooler simples de 120mm com 4 heatpipes.",
+   "marca": "DeepCool",
+   "preco": 99.9,
+   "preco_antigo": 139.9,
+   "estoque": 50,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 86,
+   "id_categoria": 1,
+   "nome": "Water Cooler 240mm ARGB",
+   "descricao": "Radiador de 240mm, duas fans ARGB e bomba silenciosa.",
+   "marca": "DeepCool",
+   "preco": 449.9,
+   "preco_antigo": 549.9,
+   "estoque": 20,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 87,
+   "id_categoria": 1,
+   "nome": "Water Cooler 360mm ARGB",
+   "descricao": "Radiador de 360mm e três fans ARGB para processadores de alto consumo.",
+   "marca": "Corsair",
+   "preco": 899.9,
+   "preco_antigo": 1099.9,
+   "estoque": 12,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 88,
+   "id_categoria": 1,
+   "nome": "Cooler Low Profile para Mini-ITX",
+   "descricao": "Apenas 47mm de altura. Feito para gabinetes compactos.",
+   "marca": "Noctua",
+   "preco": 349.9,
+   "preco_antigo": 429.9,
+   "estoque": 15,
+   "imagem_url": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 89,
+   "id_categoria": 1,
+   "nome": "Gabinete Micro ATX com 3 Fans",
+   "descricao": "Lateral em vidro e 3 fans inclusas. Aceita placas Micro-ATX e Mini-ITX.",
+   "marca": "Pichau",
+   "preco": 249.9,
+   "preco_antigo": 319.9,
+   "estoque": 25,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 90,
+   "id_categoria": 1,
+   "nome": "Gabinete Mini-ITX Compacto",
+   "descricao": "Apenas 14 litros. Aceita placas Mini-ITX e placas de vídeo de até 32cm.",
+   "marca": "Cooler Master",
+   "preco": 499.9,
+   "preco_antigo": 599.9,
+   "estoque": 10,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  },
+  {
+   "id_produto": 91,
+   "id_categoria": 1,
+   "nome": "Gabinete Full Tower ATX Airflow 6 Fans",
+   "descricao": "Frente em mesh, 6 fans e espaço para radiador de 360mm. Aceita ATX, Micro-ATX e Mini-ITX.",
+   "marca": "Lian Li",
+   "preco": 899.9,
+   "preco_antigo": 1099.9,
+   "estoque": 8,
+   "imagem_url": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "destaque": 0,
+   "disponivel": 1
+  }
+ ],
+ "especificacoes": [
+  {
+   "id": 1,
+   "idProduto": 1,
+   "tipoPeca": "gpu",
+   "consumoWatts": 220,
+   "scoreDesempenho": 76,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": 12,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 2,
+   "idProduto": 2,
+   "tipoPeca": "cpu",
+   "consumoWatts": 120,
+   "scoreDesempenho": 92,
+   "soquete": "AM5",
+   "tipoMemoria": "DDR5",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 3,
+   "idProduto": 3,
+   "tipoPeca": "ssd",
+   "consumoWatts": 7,
+   "scoreDesempenho": 85,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 2000,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 4,
+   "idProduto": 4,
+   "tipoPeca": "ram",
+   "consumoWatts": 10,
+   "scoreDesempenho": 80,
+   "soquete": null,
+   "tipoMemoria": "DDR5",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 32,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 5,
+   "idProduto": 40,
+   "tipoPeca": "fonte",
+   "consumoWatts": 0,
+   "scoreDesempenho": 85,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": 850,
+   "eficienciaFonte": 0.9
+  },
+  {
+   "id": 6,
+   "idProduto": 41,
+   "tipoPeca": "cooler",
+   "consumoWatts": 6,
+   "scoreDesempenho": 75,
+   "soquete": "AM5/LGA1700",
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 7,
+   "idProduto": 42,
+   "tipoPeca": "placa_mae",
+   "consumoWatts": 45,
+   "scoreDesempenho": 70,
+   "soquete": "AM5",
+   "tipoMemoria": "DDR5",
+   "formato": "mATX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 8,
+   "idProduto": 43,
+   "tipoPeca": "gabinete",
+   "consumoWatts": 8,
+   "scoreDesempenho": 70,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": "ATX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 9,
+   "idProduto": 44,
+   "tipoPeca": "ssd",
+   "consumoWatts": 3,
+   "scoreDesempenho": 45,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 1000,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 10,
+   "idProduto": 54,
+   "tipoPeca": "cpu",
+   "consumoWatts": 60,
+   "scoreDesempenho": 38,
+   "soquete": "LGA1700",
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 11,
+   "idProduto": 55,
+   "tipoPeca": "cpu",
+   "consumoWatts": 65,
+   "scoreDesempenho": 52,
+   "soquete": "AM4",
+   "tipoMemoria": "DDR4",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 12,
+   "idProduto": 56,
+   "tipoPeca": "cpu",
+   "consumoWatts": 65,
+   "scoreDesempenho": 56,
+   "soquete": "LGA1700",
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 13,
+   "idProduto": 57,
+   "tipoPeca": "cpu",
+   "consumoWatts": 88,
+   "scoreDesempenho": 68,
+   "soquete": "AM5",
+   "tipoMemoria": "DDR5",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 14,
+   "idProduto": 58,
+   "tipoPeca": "cpu",
+   "consumoWatts": 170,
+   "scoreDesempenho": 90,
+   "soquete": "LGA1700",
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 15,
+   "idProduto": 59,
+   "tipoPeca": "gpu",
+   "consumoWatts": 75,
+   "scoreDesempenho": 25,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": 4,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 16,
+   "idProduto": 60,
+   "tipoPeca": "gpu",
+   "consumoWatts": 132,
+   "scoreDesempenho": 45,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": 8,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 17,
+   "idProduto": 61,
+   "tipoPeca": "gpu",
+   "consumoWatts": 115,
+   "scoreDesempenho": 55,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": 8,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 18,
+   "idProduto": 62,
+   "tipoPeca": "gpu",
+   "consumoWatts": 263,
+   "scoreDesempenho": 80,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": 16,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 19,
+   "idProduto": 63,
+   "tipoPeca": "gpu",
+   "consumoWatts": 450,
+   "scoreDesempenho": 100,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": 24,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 20,
+   "idProduto": 64,
+   "tipoPeca": "placa_mae",
+   "consumoWatts": 30,
+   "scoreDesempenho": 40,
+   "soquete": "AM4",
+   "tipoMemoria": "DDR4",
+   "formato": "mATX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 21,
+   "idProduto": 65,
+   "tipoPeca": "placa_mae",
+   "consumoWatts": 35,
+   "scoreDesempenho": 55,
+   "soquete": "LGA1700",
+   "tipoMemoria": "DDR4",
+   "formato": "mATX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 22,
+   "idProduto": 66,
+   "tipoPeca": "placa_mae",
+   "consumoWatts": 70,
+   "scoreDesempenho": 88,
+   "soquete": "LGA1700",
+   "tipoMemoria": "DDR5",
+   "formato": "ATX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 23,
+   "idProduto": 67,
+   "tipoPeca": "placa_mae",
+   "consumoWatts": 80,
+   "scoreDesempenho": 92,
+   "soquete": "AM5",
+   "tipoMemoria": "DDR5",
+   "formato": "ATX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 24,
+   "idProduto": 68,
+   "tipoPeca": "placa_mae",
+   "consumoWatts": 40,
+   "scoreDesempenho": 72,
+   "soquete": "AM5",
+   "tipoMemoria": "DDR5",
+   "formato": "ITX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 25,
+   "idProduto": 69,
+   "tipoPeca": "ram",
+   "consumoWatts": 3,
+   "scoreDesempenho": 30,
+   "soquete": null,
+   "tipoMemoria": "DDR4",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 8,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 26,
+   "idProduto": 70,
+   "tipoPeca": "ram",
+   "consumoWatts": 6,
+   "scoreDesempenho": 45,
+   "soquete": null,
+   "tipoMemoria": "DDR4",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 16,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 27,
+   "idProduto": 71,
+   "tipoPeca": "ram",
+   "consumoWatts": 8,
+   "scoreDesempenho": 60,
+   "soquete": null,
+   "tipoMemoria": "DDR4",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 32,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 28,
+   "idProduto": 72,
+   "tipoPeca": "ram",
+   "consumoWatts": 8,
+   "scoreDesempenho": 65,
+   "soquete": null,
+   "tipoMemoria": "DDR5",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 16,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 29,
+   "idProduto": 73,
+   "tipoPeca": "ram",
+   "consumoWatts": 10,
+   "scoreDesempenho": 92,
+   "soquete": null,
+   "tipoMemoria": "DDR5",
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 64,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 30,
+   "idProduto": 74,
+   "tipoPeca": "ssd",
+   "consumoWatts": 3,
+   "scoreDesempenho": 35,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 480,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 31,
+   "idProduto": 75,
+   "tipoPeca": "ssd",
+   "consumoWatts": 6,
+   "scoreDesempenho": 70,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 1000,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 32,
+   "idProduto": 76,
+   "tipoPeca": "ssd",
+   "consumoWatts": 8,
+   "scoreDesempenho": 92,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 4000,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 33,
+   "idProduto": 77,
+   "tipoPeca": "hdd",
+   "consumoWatts": 6,
+   "scoreDesempenho": 30,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 1000,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 34,
+   "idProduto": 78,
+   "tipoPeca": "hdd",
+   "consumoWatts": 7,
+   "scoreDesempenho": 35,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 2000,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 35,
+   "idProduto": 79,
+   "tipoPeca": "hdd",
+   "consumoWatts": 6,
+   "scoreDesempenho": 32,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 4000,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 36,
+   "idProduto": 80,
+   "tipoPeca": "hdd",
+   "consumoWatts": 9,
+   "scoreDesempenho": 40,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": 8000,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 37,
+   "idProduto": 81,
+   "tipoPeca": "fonte",
+   "consumoWatts": 0,
+   "scoreDesempenho": 40,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": 500,
+   "eficienciaFonte": 0.8
+  },
+  {
+   "id": 38,
+   "idProduto": 82,
+   "tipoPeca": "fonte",
+   "consumoWatts": 0,
+   "scoreDesempenho": 60,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": 650,
+   "eficienciaFonte": 0.85
+  },
+  {
+   "id": 39,
+   "idProduto": 83,
+   "tipoPeca": "fonte",
+   "consumoWatts": 0,
+   "scoreDesempenho": 78,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": 750,
+   "eficienciaFonte": 0.9
+  },
+  {
+   "id": 40,
+   "idProduto": 84,
+   "tipoPeca": "fonte",
+   "consumoWatts": 0,
+   "scoreDesempenho": 92,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": 1000,
+   "eficienciaFonte": 0.9
+  },
+  {
+   "id": 41,
+   "idProduto": 85,
+   "tipoPeca": "cooler",
+   "consumoWatts": 4,
+   "scoreDesempenho": 35,
+   "soquete": "AM4/AM5/LGA1700",
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 42,
+   "idProduto": 86,
+   "tipoPeca": "cooler",
+   "consumoWatts": 10,
+   "scoreDesempenho": 80,
+   "soquete": "AM4/AM5/LGA1700",
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 43,
+   "idProduto": 87,
+   "tipoPeca": "cooler",
+   "consumoWatts": 15,
+   "scoreDesempenho": 92,
+   "soquete": "AM4/AM5/LGA1700",
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 44,
+   "idProduto": 88,
+   "tipoPeca": "cooler",
+   "consumoWatts": 3,
+   "scoreDesempenho": 60,
+   "soquete": "AM4/AM5/LGA1700",
+   "tipoMemoria": null,
+   "formato": null,
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 45,
+   "idProduto": 89,
+   "tipoPeca": "gabinete",
+   "consumoWatts": 6,
+   "scoreDesempenho": 50,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": "mATX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 46,
+   "idProduto": 90,
+   "tipoPeca": "gabinete",
+   "consumoWatts": 2,
+   "scoreDesempenho": 60,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": "ITX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  },
+  {
+   "id": 47,
+   "idProduto": 91,
+   "tipoPeca": "gabinete",
+   "consumoWatts": 12,
+   "scoreDesempenho": 85,
+   "soquete": null,
+   "tipoMemoria": null,
+   "formato": "ATX",
+   "vramGb": null,
+   "capacidadeGb": null,
+   "potenciaFonteW": null,
+   "eficienciaFonte": null
+  }
+ ],
+ "tarifas": [
+  {
+   "id": 1,
+   "uf": "AC",
+   "distribuidora": "Energisa Acre",
+   "valorKwh": 0.98
+  },
+  {
+   "id": 2,
+   "uf": "AL",
+   "distribuidora": "Equatorial Alagoas",
+   "valorKwh": 0.89
+  },
+  {
+   "id": 3,
+   "uf": "AM",
+   "distribuidora": "Amazonas Energia",
+   "valorKwh": 1.05
+  },
+  {
+   "id": 4,
+   "uf": "AP",
+   "distribuidora": "CEA Equatorial",
+   "valorKwh": 0.92
+  },
+  {
+   "id": 5,
+   "uf": "BA",
+   "distribuidora": "Neoenergia Coelba",
+   "valorKwh": 0.93
+  },
+  {
+   "id": 6,
+   "uf": "CE",
+   "distribuidora": "Enel Ceará",
+   "valorKwh": 0.88
+  },
+  {
+   "id": 7,
+   "uf": "DF",
+   "distribuidora": "Neoenergia Brasília",
+   "valorKwh": 0.8
+  },
+  {
+   "id": 8,
+   "uf": "ES",
+   "distribuidora": "EDP Espírito Santo",
+   "valorKwh": 0.86
+  },
+  {
+   "id": 9,
+   "uf": "GO",
+   "distribuidora": "Equatorial Goiás",
+   "valorKwh": 0.9
+  },
+  {
+   "id": 10,
+   "uf": "MA",
+   "distribuidora": "Equatorial Maranhão",
+   "valorKwh": 0.91
+  },
+  {
+   "id": 11,
+   "uf": "MG",
+   "distribuidora": "Cemig",
+   "valorKwh": 0.95
+  },
+  {
+   "id": 12,
+   "uf": "MS",
+   "distribuidora": "Energisa Mato Grosso do Sul",
+   "valorKwh": 1.02
+  },
+  {
+   "id": 13,
+   "uf": "MT",
+   "distribuidora": "Energisa Mato Grosso",
+   "valorKwh": 1.04
+  },
+  {
+   "id": 14,
+   "uf": "PA",
+   "distribuidora": "Equatorial Pará",
+   "valorKwh": 1.1
+  },
+  {
+   "id": 15,
+   "uf": "PB",
+   "distribuidora": "Energisa Paraíba",
+   "valorKwh": 0.83
+  },
+  {
+   "id": 16,
+   "uf": "PE",
+   "distribuidora": "Neoenergia Pernambuco",
+   "valorKwh": 0.87
+  },
+  {
+   "id": 17,
+   "uf": "PI",
+   "distribuidora": "Equatorial Piauí",
+   "valorKwh": 0.97
+  },
+  {
+   "id": 18,
+   "uf": "PR",
+   "distribuidora": "Copel",
+   "valorKwh": 0.78
+  },
+  {
+   "id": 19,
+   "uf": "RJ",
+   "distribuidora": "Light",
+   "valorKwh": 1.06
+  },
+  {
+   "id": 20,
+   "uf": "RN",
+   "distribuidora": "Neoenergia Cosern",
+   "valorKwh": 0.81
+  },
+  {
+   "id": 21,
+   "uf": "RO",
+   "distribuidora": "Energisa Rondônia",
+   "valorKwh": 0.94
+  },
+  {
+   "id": 22,
+   "uf": "RR",
+   "distribuidora": "Roraima Energia",
+   "valorKwh": 0.74
+  },
+  {
+   "id": 23,
+   "uf": "RS",
+   "distribuidora": "CEEE Equatorial",
+   "valorKwh": 0.85
+  },
+  {
+   "id": 24,
+   "uf": "SC",
+   "distribuidora": "Celesc",
+   "valorKwh": 0.72
+  },
+  {
+   "id": 25,
+   "uf": "SE",
+   "distribuidora": "Energisa Sergipe",
+   "valorKwh": 0.84
+  },
+  {
+   "id": 26,
+   "uf": "SP",
+   "distribuidora": "Enel São Paulo",
+   "valorKwh": 0.82
+  },
+  {
+   "id": 27,
+   "uf": "TO",
+   "distribuidora": "Energisa Tocantins",
+   "valorKwh": 1
+  }
+ ],
+ "softwares": [
+  {
+   "id": 1,
+   "nome": "Counter-Strike 2",
+   "tipo": "jogo",
+   "categoria": "FPS competitivo",
+   "imagemUrl": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80",
+   "popularidade": 98,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 25,
+     "scoreGpuMin": 15,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 85,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 45,
+     "scoreGpuMin": 35,
+     "ramMinGb": 16,
+     "vramMinGb": 4,
+     "armazenamentoGb": 85,
+     "fpsEstimado": 144
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 65,
+     "scoreGpuMin": 55,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 85,
+     "fpsEstimado": 300
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "nome": "Valorant",
+   "tipo": "jogo",
+   "categoria": "FPS competitivo",
+   "imagemUrl": "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=800&q=80",
+   "popularidade": 95,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 20,
+     "scoreGpuMin": 10,
+     "ramMinGb": 4,
+     "vramMinGb": 1,
+     "armazenamentoGb": 35,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 35,
+     "scoreGpuMin": 25,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 35,
+     "fpsEstimado": 144
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 55,
+     "scoreGpuMin": 45,
+     "ramMinGb": 16,
+     "vramMinGb": 4,
+     "armazenamentoGb": 35,
+     "fpsEstimado": 240
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "nome": "Fortnite",
+   "tipo": "jogo",
+   "categoria": "Battle royale",
+   "imagemUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80",
+   "popularidade": 92,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 30,
+     "scoreGpuMin": 20,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 40,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 50,
+     "scoreGpuMin": 45,
+     "ramMinGb": 16,
+     "vramMinGb": 4,
+     "armazenamentoGb": 40,
+     "fpsEstimado": 90
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 75,
+     "scoreGpuMin": 75,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 40,
+     "fpsEstimado": 144
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "nome": "League of Legends",
+   "tipo": "jogo",
+   "categoria": "MOBA",
+   "imagemUrl": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=800&q=80",
+   "popularidade": 90,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 15,
+     "scoreGpuMin": 8,
+     "ramMinGb": 4,
+     "vramMinGb": 1,
+     "armazenamentoGb": 20,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 30,
+     "scoreGpuMin": 20,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 20,
+     "fpsEstimado": 144
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 45,
+     "scoreGpuMin": 35,
+     "ramMinGb": 16,
+     "vramMinGb": 4,
+     "armazenamentoGb": 20,
+     "fpsEstimado": 240
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "nome": "Minecraft",
+   "tipo": "jogo",
+   "categoria": "Sandbox",
+   "imagemUrl": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "popularidade": 88,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 20,
+     "scoreGpuMin": 10,
+     "ramMinGb": 4,
+     "vramMinGb": 1,
+     "armazenamentoGb": 10,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 35,
+     "scoreGpuMin": 25,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 10,
+     "fpsEstimado": 120
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 60,
+     "scoreGpuMin": 60,
+     "ramMinGb": 16,
+     "vramMinGb": 6,
+     "armazenamentoGb": 10,
+     "fpsEstimado": 200
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "nome": "GTA V",
+   "tipo": "jogo",
+   "categoria": "Mundo aberto",
+   "imagemUrl": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80",
+   "popularidade": 85,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 30,
+     "scoreGpuMin": 20,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 110,
+     "fpsEstimado": 40
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 45,
+     "scoreGpuMin": 40,
+     "ramMinGb": 16,
+     "vramMinGb": 4,
+     "armazenamentoGb": 110,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 65,
+     "scoreGpuMin": 60,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 110,
+     "fpsEstimado": 120
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "nome": "EA SPORTS FC 26",
+   "tipo": "jogo",
+   "categoria": "Esporte",
+   "imagemUrl": "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=800&q=80",
+   "popularidade": 82,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 35,
+     "scoreGpuMin": 30,
+     "ramMinGb": 8,
+     "vramMinGb": 4,
+     "armazenamentoGb": 100,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 55,
+     "scoreGpuMin": 50,
+     "ramMinGb": 12,
+     "vramMinGb": 6,
+     "armazenamentoGb": 100,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 70,
+     "scoreGpuMin": 70,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 100,
+     "fpsEstimado": 120
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "nome": "Call of Duty: Warzone",
+   "tipo": "jogo",
+   "categoria": "Battle royale",
+   "imagemUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80",
+   "popularidade": 80,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 40,
+     "scoreGpuMin": 30,
+     "ramMinGb": 8,
+     "vramMinGb": 4,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 60,
+     "scoreGpuMin": 55,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 90
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 80,
+     "scoreGpuMin": 80,
+     "ramMinGb": 16,
+     "vramMinGb": 10,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 144
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "nome": "Cyberpunk 2077",
+   "tipo": "jogo",
+   "categoria": "RPG",
+   "imagemUrl": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=800&q=80",
+   "popularidade": 78,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 45,
+     "scoreGpuMin": 40,
+     "ramMinGb": 12,
+     "vramMinGb": 6,
+     "armazenamentoGb": 70,
+     "fpsEstimado": 30
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 65,
+     "scoreGpuMin": 60,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 70,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 88,
+     "scoreGpuMin": 95,
+     "ramMinGb": 16,
+     "vramMinGb": 12,
+     "armazenamentoGb": 70,
+     "fpsEstimado": 90
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "nome": "Red Dead Redemption 2",
+   "tipo": "jogo",
+   "categoria": "Mundo aberto",
+   "imagemUrl": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+   "popularidade": 75,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 40,
+     "scoreGpuMin": 35,
+     "ramMinGb": 8,
+     "vramMinGb": 4,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 30
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 60,
+     "scoreGpuMin": 55,
+     "ramMinGb": 12,
+     "vramMinGb": 6,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 80,
+     "scoreGpuMin": 85,
+     "ramMinGb": 16,
+     "vramMinGb": 10,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 90
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "nome": "Elden Ring",
+   "tipo": "jogo",
+   "categoria": "RPG",
+   "imagemUrl": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80",
+   "popularidade": 72,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 40,
+     "scoreGpuMin": 35,
+     "ramMinGb": 12,
+     "vramMinGb": 3,
+     "armazenamentoGb": 60,
+     "fpsEstimado": 30
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 60,
+     "scoreGpuMin": 55,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 60,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 80,
+     "scoreGpuMin": 80,
+     "ramMinGb": 16,
+     "vramMinGb": 10,
+     "armazenamentoGb": 60,
+     "fpsEstimado": 60
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "nome": "Baldur's Gate 3",
+   "tipo": "jogo",
+   "categoria": "RPG",
+   "imagemUrl": "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=800&q=80",
+   "popularidade": 70,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 40,
+     "scoreGpuMin": 35,
+     "ramMinGb": 8,
+     "vramMinGb": 4,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 30
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 60,
+     "scoreGpuMin": 50,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 80,
+     "scoreGpuMin": 80,
+     "ramMinGb": 16,
+     "vramMinGb": 10,
+     "armazenamentoGb": 150,
+     "fpsEstimado": 90
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "nome": "Forza Horizon 5",
+   "tipo": "jogo",
+   "categoria": "Corrida",
+   "imagemUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80",
+   "popularidade": 68,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 35,
+     "scoreGpuMin": 30,
+     "ramMinGb": 8,
+     "vramMinGb": 4,
+     "armazenamentoGb": 110,
+     "fpsEstimado": 30
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 55,
+     "scoreGpuMin": 50,
+     "ramMinGb": 16,
+     "vramMinGb": 6,
+     "armazenamentoGb": 110,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 75,
+     "scoreGpuMin": 80,
+     "ramMinGb": 16,
+     "vramMinGb": 10,
+     "armazenamentoGb": 110,
+     "fpsEstimado": 90
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "nome": "Hogwarts Legacy",
+   "tipo": "jogo",
+   "categoria": "RPG",
+   "imagemUrl": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=800&q=80",
+   "popularidade": 65,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 45,
+     "scoreGpuMin": 40,
+     "ramMinGb": 16,
+     "vramMinGb": 4,
+     "armazenamentoGb": 85,
+     "fpsEstimado": 30
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 65,
+     "scoreGpuMin": 60,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 85,
+     "fpsEstimado": 60
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 85,
+     "scoreGpuMin": 85,
+     "ramMinGb": 32,
+     "vramMinGb": 12,
+     "armazenamentoGb": 85,
+     "fpsEstimado": 90
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "nome": "OBS Studio",
+   "tipo": "programa",
+   "categoria": "Streaming",
+   "imagemUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80",
+   "popularidade": 60,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 30,
+     "scoreGpuMin": 15,
+     "ramMinGb": 4,
+     "vramMinGb": 1,
+     "armazenamentoGb": 1,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 50,
+     "scoreGpuMin": 35,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 1,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 70,
+     "scoreGpuMin": 55,
+     "ramMinGb": 16,
+     "vramMinGb": 6,
+     "armazenamentoGb": 1,
+     "fpsEstimado": null
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "nome": "Adobe Photoshop",
+   "tipo": "programa",
+   "categoria": "Edição de imagem",
+   "imagemUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80",
+   "popularidade": 58,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 30,
+     "scoreGpuMin": 10,
+     "ramMinGb": 8,
+     "vramMinGb": 1,
+     "armazenamentoGb": 20,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 50,
+     "scoreGpuMin": 30,
+     "ramMinGb": 16,
+     "vramMinGb": 2,
+     "armazenamentoGb": 20,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 70,
+     "scoreGpuMin": 50,
+     "ramMinGb": 32,
+     "vramMinGb": 4,
+     "armazenamentoGb": 20,
+     "fpsEstimado": null
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "nome": "Adobe Premiere Pro",
+   "tipo": "programa",
+   "categoria": "Edição de vídeo",
+   "imagemUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&q=80",
+   "popularidade": 55,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 40,
+     "scoreGpuMin": 25,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 30,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 60,
+     "scoreGpuMin": 45,
+     "ramMinGb": 16,
+     "vramMinGb": 4,
+     "armazenamentoGb": 30,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 85,
+     "scoreGpuMin": 70,
+     "ramMinGb": 32,
+     "vramMinGb": 8,
+     "armazenamentoGb": 50,
+     "fpsEstimado": null
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "nome": "Blender",
+   "tipo": "programa",
+   "categoria": "Modelagem 3D",
+   "imagemUrl": "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=800&q=80",
+   "popularidade": 50,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 35,
+     "scoreGpuMin": 20,
+     "ramMinGb": 8,
+     "vramMinGb": 2,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 60,
+     "scoreGpuMin": 55,
+     "ramMinGb": 16,
+     "vramMinGb": 8,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 85,
+     "scoreGpuMin": 85,
+     "ramMinGb": 32,
+     "vramMinGb": 12,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "nome": "DaVinci Resolve",
+   "tipo": "programa",
+   "categoria": "Edição de vídeo",
+   "imagemUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80",
+   "popularidade": 45,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 40,
+     "scoreGpuMin": 35,
+     "ramMinGb": 16,
+     "vramMinGb": 2,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 65,
+     "scoreGpuMin": 55,
+     "ramMinGb": 32,
+     "vramMinGb": 8,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 85,
+     "scoreGpuMin": 85,
+     "ramMinGb": 32,
+     "vramMinGb": 12,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "nome": "AutoCAD",
+   "tipo": "programa",
+   "categoria": "CAD",
+   "imagemUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80",
+   "popularidade": 40,
+   "requisitos": [
+    {
+     "nivel": "minimo",
+     "scoreCpuMin": 35,
+     "scoreGpuMin": 15,
+     "ramMinGb": 8,
+     "vramMinGb": 1,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "recomendado",
+     "scoreCpuMin": 55,
+     "scoreGpuMin": 35,
+     "ramMinGb": 16,
+     "vramMinGb": 4,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    },
+    {
+     "nivel": "ultra",
+     "scoreCpuMin": 75,
+     "scoreGpuMin": 55,
+     "ramMinGb": 32,
+     "vramMinGb": 8,
+     "armazenamentoGb": 10,
+     "fpsEstimado": null
+    }
+   ]
+  }
+ ],
+ "montagens": [
+  {
+   "id": 1,
+   "idCliente": null,
+   "nome": "PC Básico",
+   "horasUsoDia": 4,
+   "uf": "SP",
+   "exemplo": true,
+   "itens": [
+    {
+     "idProduto": 54,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 65,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 70,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 59,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 74,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 81,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 85,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 89,
+     "quantidade": 1
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "idCliente": null,
+   "nome": "PC Intermediário",
+   "horasUsoDia": 4,
+   "uf": "SP",
+   "exemplo": true,
+   "itens": [
+    {
+     "idProduto": 57,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 42,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 4,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 61,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 75,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 82,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 41,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 43,
+     "quantidade": 1
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "idCliente": null,
+   "nome": "PC Avançado",
+   "horasUsoDia": 6,
+   "uf": "SP",
+   "exemplo": true,
+   "itens": [
+    {
+     "idProduto": 2,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 67,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 73,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 63,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 3,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 78,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 40,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 87,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 91,
+     "quantidade": 1
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "idCliente": 1,
+   "nome": "Upgrade do meu PC (rascunho)",
+   "horasUsoDia": 3,
+   "uf": "SP",
+   "exemplo": false,
+   "itens": [
+    {
+     "idProduto": 55,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 42,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 72,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 60,
+     "quantidade": 1
+    },
+    {
+     "idProduto": 81,
+     "quantidade": 1
+    }
+   ]
+  }
+ ],
+ "clienteComConta": {
+  "idUsuario": 4,
+  "idCliente": 1,
+  "nome": "Ana Beatriz Souza",
+  "email": "ana.beatriz.souza@email.com"
+ }
+}

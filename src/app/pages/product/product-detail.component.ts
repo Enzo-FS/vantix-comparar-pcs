@@ -7,6 +7,7 @@ import { MenuService } from '../../services/menu.service';
 import { CartService } from '../../services/cart.service';
 import { ToastService } from '../../services/toast.service';
 import { ImgFallbackDirective } from '../../components/ui/img-fallback.directive';
+import { SpecProdutoComponent } from '../../components/pc/spec-produto.component';
 import { AlsoBoughtComponent } from '../../components/ui/also-bought.component';
 import { apiErrorMessage } from '../../core/api/auth.interceptor';
 
@@ -16,7 +17,7 @@ const LOW_STOCK = 10;
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [NgIf, RouterLink, ImgFallbackDirective, AlsoBoughtComponent],
+  imports: [NgIf, RouterLink, ImgFallbackDirective, AlsoBoughtComponent, SpecProdutoComponent],
   template: `
     <div class="pd-page">
       <div class="container">
@@ -87,6 +88,8 @@ const LOW_STOCK = 10;
                 <h2>Descrição</h2>
                 <p>{{ p.description || 'Sem descrição cadastrada.' }}</p>
               </div>
+
+              <app-spec-produto [produtoId]="p.id"></app-spec-produto>
 
               <ul class="pd-perks">
                 <li>🚚 Frete grátis acima de R$ 299 · envio em até 24h</li>

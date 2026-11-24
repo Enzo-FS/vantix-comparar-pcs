@@ -52,6 +52,7 @@ public class PedidoController {
     public Map<String, Object> mudarStatus(@PathVariable int id, @RequestBody StatusRequest r,
                                            Authentication auth) {
         boolean gerente = auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_GERENTE"));
-        return service.mudarStatus(id, r.status(), r.idEntregador(), r.motivoCancelamento(), gerente);
+        return service.mudarStatus(id, r.status(), r.idEntregador(), r.motivoCancelamento(), gerente,
+                (Integer) auth.getPrincipal());
     }
 }

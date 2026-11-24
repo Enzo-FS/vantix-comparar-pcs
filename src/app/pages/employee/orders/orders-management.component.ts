@@ -154,12 +154,12 @@ const NEXT_LABEL: Partial<Record<OrderStatus, string>> = {
             <!-- Actions -->
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.625rem">
               <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-                <button *ngIf="nextStatus(order.status)"
+                <button *ngIf="nextStatusOf(order)"
                   (click)="advance(order)"
                   [disabled]="updating === order.id"
                   style="padding:.5rem 1rem;background:var(--brand-600);color:#fff;border:none;border-radius:var(--r-lg);font-size:.78rem;font-weight:600;cursor:pointer;transition:opacity .15s"
                   [style.opacity]="updating === order.id ? '.6' : '1'">
-                  {{ updating === order.id ? 'Atualizando...' : nextLabel(order.status) }}
+                  {{ updating === order.id ? 'Atualizando...' : nextLabelOf(order) }}
                 </button>
                 <button *ngIf="order.status !== 'cancelled' && order.status !== 'delivered'"
                   (click)="cancel(order)"
@@ -247,6 +247,13 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
   cfg(status: string) { return STATUS_CONFIG[status as OrderStatus] ?? STATUS_CONFIG['pending']; }
   nextStatus(status: string): OrderStatus | undefined { return NEXT_STATUS[status as OrderStatus]; }
   nextLabel(status: string): string { return NEXT_LABEL[status as OrderStatus] ?? ''; }
+  /** Retirada na loja: "Pronto" vai direto para "Entregue" (não passa pela logística). */
+  nextStatusOf(o: Order): OrderStatus | undefined {
+    return o.status === 'ready' && o.orderType === 'retirada' ? 'delivered' : this.nextStatus(o.status);
+  }
+  nextLabelOf(o: Order): string {
+    return o.status === 'ready' && o.orderType === 'retirada' ? 'Entregue na loja' : this.nextLabel(o.status);
+  }
 
   countByStatus(tab: OrderStatus | 'all'): number {
     if (tab === 'all') return this.allOrders().length;
@@ -254,7 +261,7 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
   }
 
   async advance(order: Order) {
-    const next = this.nextStatus(order.status);
+    const next = this.nextStatusOf(order);
     if (!next || this.updating) return;
     this.updating = order.id;
     try { await this.ordersService.updateStatus(order.id, next); }

@@ -1801,3 +1801,78 @@ select.form-input   { cursor: pointer; }
   .pill-label { display: none; }
   .pill-icon-sm { display: inline; }
 }
+
+// ============================================================
+// MONTE SEU PC (custo de energia, comparação, "Roda ou não?", Verificação do PC)
+// Cores de status próprias do tema claro (as do tema navy têm pouco contraste no branco).
+// ============================================================
+.light-mode, .pc-claro {
+  --pc-ok: #15803d;   --pc-ok-bg: #f0fdf4;   --pc-ok-borda: #86efac;
+  --pc-alerta: #b45309; --pc-alerta-bg: #fffbeb; --pc-alerta-borda: #fcd34d;
+  --pc-erro: #b91c1c; --pc-erro-bg: #fef2f2; --pc-erro-borda: #fca5a5;
+}
+.pc-page { padding: 2rem 0 5rem; background: var(--stone-50); min-height: 70vh; }
+.pc-titulo { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.1rem); color: var(--stone-900); }
+.pc-sub { color: var(--stone-500); font-size: .92rem; }
+
+.pc-tabs { display: flex; gap: .375rem; padding: .3rem; background: #fff; border: 1px solid var(--stone-200);
+  border-radius: var(--r-xl); width: fit-content; max-width: 100%; overflow-x: auto; }
+.pc-tabs a { padding: .55rem 1.1rem; border-radius: var(--r-lg); font-size: .85rem; font-weight: 600;
+  color: var(--stone-500); white-space: nowrap; transition: all var(--transition-fast); }
+.pc-tabs a:hover { color: var(--stone-900); background: var(--stone-100); }
+.pc-tabs a.ativo { background: var(--brand-600); color: #fff; }
+
+.pc-card { background: #fff; border: 1px solid var(--stone-200); border-radius: var(--r-xl); }
+.pc-card-body { padding: 1.25rem; }
+.pc-rotulo { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone-500); font-weight: 600; }
+.pc-numero { font-family: var(--font-display); font-weight: 700; color: var(--stone-900); }
+
+.pc-selo { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .7rem; border-radius: var(--r-full);
+  font-size: .78rem; font-weight: 700; border: 1.5px solid; }
+.pc-selo-verde, .pc-ok-box   { color: var(--pc-ok); background: var(--pc-ok-bg); border-color: var(--pc-ok-borda); }
+.pc-selo-amarelo, .pc-alerta-box { color: var(--pc-alerta); background: var(--pc-alerta-bg); border-color: var(--pc-alerta-borda); }
+.pc-selo-vermelho, .pc-selo-sem_fonte, .pc-erro-box { color: var(--pc-erro); background: var(--pc-erro-bg); border-color: var(--pc-erro-borda); }
+.pc-ok-box, .pc-alerta-box, .pc-erro-box { border: 1.5px solid; border-radius: var(--r-lg); padding: .75rem .9rem; font-size: .85rem; }
+
+.pc-check { display: flex; gap: .6rem; align-items: flex-start; font-size: .85rem; color: var(--stone-700); padding: .45rem 0; }
+.pc-check + .pc-check { border-top: 1px dashed var(--stone-200); }
+.pc-check-icone { width: 1.35rem; height: 1.35rem; border-radius: 50%; display: inline-flex; align-items: center;
+  justify-content: center; font-size: .72rem; font-weight: 800; flex-shrink: 0; margin-top: .05rem; }
+.pc-check-ok .pc-check-icone     { background: var(--pc-ok-bg); color: var(--pc-ok); border: 1px solid var(--pc-ok-borda); }
+.pc-check-erro .pc-check-icone   { background: var(--pc-erro-bg); color: var(--pc-erro); border: 1px solid var(--pc-erro-borda); }
+.pc-check-alerta .pc-check-icone { background: var(--pc-alerta-bg); color: var(--pc-alerta); border: 1px solid var(--pc-alerta-borda); }
+.pc-check-na { color: var(--stone-400); }
+.pc-check-na .pc-check-icone     { background: var(--stone-100); color: var(--stone-400); }
+
+.pc-nivel { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem;
+  min-width: 9.5rem; padding: 1rem 1.25rem; border-radius: var(--r-xl); border: 2px solid; text-align: center; }
+.pc-nivel strong { font-family: var(--font-display); font-size: 1.6rem; line-height: 1.1; }
+.pc-nivel small { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; opacity: .8; }
+.pc-nivel-nao_roda    { color: var(--pc-erro); background: var(--pc-erro-bg); border-color: var(--pc-erro-borda); }
+.pc-nivel-minimo      { color: var(--pc-alerta); background: var(--pc-alerta-bg); border-color: var(--pc-alerta-borda); }
+.pc-nivel-recomendado { color: var(--brand-700); background: var(--brand-50); border-color: var(--brand-200); }
+.pc-nivel-ultra       { color: var(--pc-ok); background: var(--pc-ok-bg); border-color: var(--pc-ok-borda); }
+.pc-nivel-mini { min-width: 0; padding: .2rem .6rem; border-width: 1.5px; border-radius: var(--r-full); flex-direction: row; }
+.pc-nivel-mini strong { font-size: .78rem; }
+
+.pc-campo { display: flex; flex-direction: column; gap: .35rem; }
+.pc-campo label { font-size: .75rem; font-weight: 600; color: var(--stone-600); }
+.pc-select { height: 2.5rem; padding: 0 .75rem; border-radius: var(--r-md); border: 1px solid var(--stone-300);
+  background: #fff; color: var(--stone-900); font-size: .88rem; }
+.pc-select:focus-visible, .pc-range:focus-visible { outline: 2px solid var(--brand-500); outline-offset: 2px; }
+.pc-range { width: 100%; accent-color: var(--brand-600); }
+
+.pc-steps { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+.pc-step { display: flex; align-items: center; gap: .5rem; font-size: .8rem; font-weight: 600; color: var(--stone-400); }
+.pc-step-n { width: 1.7rem; height: 1.7rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--stone-200); color: var(--stone-500); font-size: .72rem; }
+.pc-step.feito .pc-step-n { background: var(--brand-100); color: var(--brand-700); }
+.pc-step.feito { color: var(--stone-600); }
+.pc-step.atual .pc-step-n { background: var(--brand-600); color: #fff; }
+.pc-step.atual { color: var(--stone-900); }
+.pc-step-linha { width: 2rem; height: 2px; background: var(--stone-200); border-radius: 2px; }
+.pc-step-linha.feito { background: var(--brand-300); }
+
+.pc-mini-produto { display: flex; gap: .75rem; align-items: center; padding: .6rem; border: 1px solid var(--stone-200);
+  border-radius: var(--r-lg); background: #fff; }
+.pc-mini-produto img { width: 3rem; height: 3rem; object-fit: cover; border-radius: var(--r-md); flex-shrink: 0; background: var(--stone-100); }

@@ -5,7 +5,7 @@ funciona sem nenhuma mudança: basta trocar `useMock: true` por `false` em
 `src/environments/environment.ts`.
 
 - URL base: `http://localhost:8080/api` (configurável em `environment.ts`)
-- JSON com nomes em **camelCase**, seguindo as colunas do MySQL (`database/01_estrutura.sql`)
+- JSON com nomes em **camelCase**, seguindo as colunas do MySQL (`database/schema.sql`; modelo em `docs/MER.md`)
 - Datas em ISO 8601: `"2026-11-05T20:18:29"`
 - Valores em dinheiro como número: `4899.9`
 - **CORS**: liberar `http://localhost:4200` com os métodos `GET, POST, PUT, PATCH, DELETE` e o header `Authorization`
@@ -26,7 +26,7 @@ funciona sem nenhuma mudança: basta trocar `useMock: true` por `false` em
 
 ## Valores dos enums (iguais ao MySQL)
 
-- `papel`: `gerente` | `estoque` | `logistica`
+- `papel`: `gerente` | `estoque` | `logistica` | `cliente` (cliente com conta; só para salvar montagens)
 - `status`: `pendente` | `confirmado` | `em_preparacao` | `pronto` | `saiu_para_entrega` | `entregue` | `cancelado`
 - `forma` (pagamento): `credito` | `debito` | `pix` | `boleto`
 - `tipoEntrega`: `entrega` | `retirada`
@@ -133,10 +133,17 @@ O gerente não pode desativar o próprio usuário → `409`.
                "endereco": "Av. Paulista, 1000 — Bela Vista, São Paulo — SP, CEP 01310-100" },
   "itens": [ { "idProduto": 1, "quantidade": 1 }, { "idProduto": 2, "quantidade": 2 } ],
   "pagamento": { "forma": "credito", "parcelas": 3 },
+  "enderecoEntrega": { "cep": "01310100", "logradouro": "Av. Paulista", "numero": "1000", "complemento": "Apto 12",
+                       "bairro": "Bela Vista", "cidade": "São Paulo", "uf": "SP" },
   "tipoEntrega": "entrega",
-  "observacoes": "Deixar na portaria"
+  "observacoes": "Deixar na portaria",
+  "montagem": { "uf": "RJ", "horasUsoDia": 6 }
 }
 ```
+- `enderecoEntrega` (novo): endereço em campos separados, gravado em `endereco` e copiado em `entrega`.
+  Se não vier, a API tenta separar o texto de `cliente.endereco` (formato antigo).
+- `montagem` (novo, opcional): UF e horas escolhidas na **Verificação do PC**. As peças de hardware do pedido
+  (produtos com `especificacao_tecnica`) viram uma `montagem` ligada ao pedido (`pedido.montagem_id`).
 Tudo numa **única transação** (`@Transactional`):
 1. Procurar o cliente pelo `email`. Se existir, atualizar nome, telefone e endereço; se não, inserir.
 2. **Preço, frete, total e número são calculados pela API.** Não confiar em valores vindos do navegador.
@@ -157,7 +164,7 @@ Resposta `201`: o pedido completo (formato abaixo).
 {
   "id": 57, "numero": "VTX-1057", "status": "confirmado", "tipoEntrega": "entrega",
   "enderecoEntrega": "Av. Paulista, 1000 ...", "frete": 0, "valorTotal": 7299.8,
-  "observacoes": null, "motivoCancelamento": null, "idEntregador": null,
+  "observacoes": null, "motivoCancelamento": null, "idEntregador": null, "idMontagem": 5,
   "dataCriacao": "2026-11-11T17:46:02", "dataAtualizacao": "2026-11-11T17:46:02",
   "cliente": { "id": 16, "nome": "Cliente Demo", "email": "cliente@email.com", "telefone": "(11) 91234-5678", "endereco": "..." },
   "itens": [ { "idProduto": 1, "nome": "Placa de Vídeo ...", "imagemUrl": "https://...", "quantidade": 1, "precoUnitario": 4899.9, "subtotal": 4899.9 } ],
@@ -185,7 +192,8 @@ Transições permitidas (outras → `409`):
 | `pendente` | `confirmado` | Gerente ("Aprovar pagamento", boleto) |
 | `confirmado` | `em_preparacao` | Estoque ("Iniciar separação") |
 | `em_preparacao` | `pronto` | Estoque ("Embalado") |
-| `pronto` | `saiu_para_entrega` | Logística ("Despachar pacote", envia `idEntregador`) |
+| `pronto` | `saiu_para_entrega` | Logística ("Despachar pacote", envia `idEntregador`). **Só entrega.** |
+| `pronto` | `entregue` | Estoque/gerente ("Entregue ao cliente"). **Só retirada na loja.** |
 | `saiu_para_entrega` | `entregue` | Logística ("Confirmar entrega") |
 | `pendente`, `confirmado`, `em_preparacao`, `pronto` | `cancelado` | Só gerente, com `motivoCancelamento` |
 
@@ -221,8 +229,60 @@ Sem esses parâmetros = todo o período. Só o gerente acessa. O painel atualiza
 
 ---
 
+## 5.1 Controle de estoque (Portal do Estoque e gerente)
+
+Acesso: papéis `estoque` e `gerente`. Usa as tabelas `estoque` e `movimentacao_estoque`.
+
+| Rota | Corpo / parâmetros | O que faz |
+|---|---|---|
+| `GET /api/estoque` | — | Saldo de cada produto: `idProduto`, `nome`, `marca`, `categoria`, `imagemUrl`, `disponivel`, `quantidade`, `estoqueMinimo`, `baixo`, `atualizadoEm` (abaixo do mínimo primeiro) |
+| `GET /api/estoque/movimentacoes` | `?produto=&tipo=entrada\|saida\|devolucao\|ajuste&limite=200` | Histórico: `tipo`, `quantidade` (negativa nas saídas), `saldoApos`, `motivo`, `pedido` (número), `usuario` (null = sistema), `criadoEm` |
+| `POST /api/estoque/{idProduto}/entrada` | `{ "quantidade": 10, "motivo": "NF 555" }` | Recebimento de mercadoria |
+| `POST /api/estoque/{idProduto}/ajuste` | `{ "novaQuantidade": 12, "motivo": "Avaria" }` | Contagem de inventário (motivo obrigatório; igual ao saldo → `400`) |
+| `PATCH /api/estoque/{idProduto}/minimo` | `{ "estoqueMinimo": 5 }` | Estoque mínimo (alerta e relatório de estoque baixo) |
+
+Saídas e devoluções de vendas continuam sendo gravadas pela trigger `trg_pedido_estoque`.
+
+---
+
+## 6. Monte seu PC (inovações)
+
+Regras e fórmulas em [regras-inovacoes.md](regras-inovacoes.md). Cálculos em `com.vantix.api.pc.RegrasPc` (Java)
+e `src/app/core/pc/regras.ts` (front e mock), com os mesmos testes.
+
+| Rota | Acesso | O que faz |
+|---|---|---|
+| `GET /api/especificacoes?tipo=cpu` | público | Peças com dados técnicos (`idProduto`, `nome`, `preco`, `estoque`, `tipoPeca`, `consumoWatts`, `scoreDesempenho`, `soquete`, `tipoMemoria`, `formato`, `vramGb`, `capacidadeGb`, `potenciaFonteW`, `eficienciaFonte`) |
+| `PUT /api/especificacoes/{idProduto}` | gerente | Cria ou altera a especificação de um produto |
+| `DELETE /api/especificacoes/{idProduto}` | gerente | Remove a especificação (o produto continua à venda) |
+| `GET /api/tarifas` | público | `[{ "id", "uf", "distribuidora", "valorKwh" }]` |
+| `PUT /api/tarifas/{uf}` | gerente | `{ "distribuidora", "valorKwh" }` |
+| `GET /api/softwares` | público | Jogos/programas com `requisitos` (3 níveis), por popularidade |
+| `POST /api/softwares`, `PUT /api/softwares/{id}`, `DELETE /api/softwares/{id}` | gerente | Cadastro com os 3 requisitos |
+| `GET /api/montagens` | público | Montagens de exemplo + as do cliente logado |
+| `GET /api/montagens/{id}` | público* | Uma montagem (`itens: [{ idProduto, quantidade }]`) |
+| `POST /api/montagens` | cliente | `{ "nome", "uf", "horasUsoDia", "itens" }` |
+| `DELETE /api/montagens/{id}` | cliente (dono) | Apaga a própria montagem |
+| `GET /api/montagens/{id}/consumo?uf=&horas=` | público* | Consumo, custo, selo da fonte, compatibilidade e desempenho |
+| `POST /api/montagens/avaliar` | público | O mesmo, para uma montagem ainda não salva (`{ uf, horasUsoDia, itens }`) |
+| `GET /api/comparar?a=&b=&uf=&horas=` | público* | Métricas A×B (diferença % e melhor de cada linha) + texto de resumo |
+| `GET /api/roda?montagem=&software=` | público* | Nível atingido, FPS, tabela por nível, peça que limita e até 3 `sugestoes` |
+
+\* Montagens de exemplo são públicas. As de cliente só o dono (logado) ou um funcionário veem; para os outros, `404`.
+
+Exemplo de `GET /api/roda?montagem=1&software=7` (PC Básico × EA SPORTS FC 26):
+```json
+{ "resultado": { "nivel": "nao_roda", "fpsEstimado": null,
+    "limitante": { "criterio": "gpu", "tipoPeca": "gpu", "proximoNivel": "minimo", "exigido": 30, "atual": 25, "deficit": 16.7 },
+    "niveis": [ { "nivel": "minimo", "atendido": false, "fpsEstimado": 60,
+                  "criterios": [ { "criterio": "cpu", "rotulo": "Processador (score)", "exigido": 35, "montagem": 38, "ok": true } ] } ] },
+  "sugestoes": [ { "idProduto": 60, "nome": "Placa de Vídeo Radeon RX 6600 8GB", "preco": 1299.90 } ] }
+```
+
+---
+
 ## Observações para a Letícia (SQL)
 
 - A trigger só roda em `UPDATE`. Por isso o pedido é inserido como `pendente` e atualizado para `confirmado` logo depois (passo 4 do `POST /pedidos`).
-- O pedido `VTX-1056` do `02_dados.sql` é `retirada` com status `saiu_para_entrega`. Retirada normalmente não "sai para entrega"; trocar para `entregue` ou `tipo_entrega = 'entrega'`.
-- O plano cita uma coluna `tags` em PRODUTO, mas ela não existe no `01_estrutura.sql`. O front não depende dela.
+- O pedido `VTX-1056` do `02_dados.sql` é `retirada` com status `saiu_para_entrega`. Na migração ele foi mantido como veio (o histórico explica a inconsistência); a API aceita concluí-lo (`saiu_para_entrega` → `entregue`).
+- O plano cita uma coluna `tags` em PRODUTO, mas ela não existe no banco. O front não depende dela.

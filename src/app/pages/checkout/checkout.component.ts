@@ -9,6 +9,8 @@ import { ToastService } from '../../services/toast.service';
 import { CustomerService } from '../../services/customer.service';
 import { CartItem } from '../../models';
 import { apiErrorMessage } from '../../core/api/auth.interceptor';
+import { PcService } from '../../services/pc.service';
+import { CheckoutStepsComponent } from '../../components/pc/checkout-steps.component';
 
 type PayMethod = 'pix' | 'credit' | 'debit' | 'boleto';
 const MAX_INSTALLMENTS = 10;
@@ -16,10 +18,11 @@ const MAX_INSTALLMENTS = 10;
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [FormsModule, NgIf, NgFor, RouterLink, ImgFallbackDirective],
+  imports: [FormsModule, NgIf, NgFor, RouterLink, ImgFallbackDirective, CheckoutStepsComponent],
   template: `
     <div style="padding:2.5rem 0 5rem;background:var(--stone-50);min-height:100vh">
       <div class="container">
+        <app-checkout-steps [atual]="currentStep === 3 ? 'pagamento' : 'checkout'" [comVerificacao]="temHardware"></app-checkout-steps>
 
         <!-- Header -->
         <div style="margin-bottom:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
@@ -542,14 +545,25 @@ export class CheckoutComponent implements OnInit {
     private toast: ToastService,
     private router: Router,
     private customers: CustomerService,
+    private pc: PcService,
   ) {}
+
+  /** O carrinho tem peças de hardware (passou pela Verificação do PC). */
+  temHardware = false;
 
   get emailValid() { return /^\S+@\S+\.\S+$/.test(this.form.email.trim()); }
 
   ngOnInit() {
     this.cartItems = this.cart.getItems();
     this.subtotal  = this.cart.getTotal();
-    if (!this.cartItems.length) this.router.navigate(['/carrinho']);
+    if (!this.cartItems.length) { this.router.navigate(['/carrinho']); return; }
+    // Etapa obrigatória: carrinho com hardware passa pela Verificação do PC antes do checkout.
+    this.pc.carregar().then(() => {
+      this.temHardware = this.pc.temHardware(this.cartItems);
+      if (this.temHardware && !this.pc.verificado(this.cartItems)) {
+        this.router.navigate(['/verificacao'], { replaceUrl: true });
+      }
+    });
     // Cliente já identificado: preenche nome, telefone e e-mail
     const c = this.customers.customer();
     if (c) {
@@ -664,9 +678,17 @@ export class CheckoutComponent implements OnInit {
         `, CEP ${this.form.zipCode}`,
       ].filter(Boolean).join(' ');
 
+      const verif = this.pc.verificacao();
       const order = await this.orders.addOrder({
         items:        this.cartItems,
         customer:     { name: this.form.name.trim(), phone: this.form.phone, email: this.form.email.trim().toLowerCase(), address: addr },
+        address: {
+          cep: this.form.zipCode.replace(/\D/g, '') || null, logradouro: this.form.address.trim(), numero: this.form.number.trim(),
+          complemento: this.form.complement.trim() || null, bairro: this.form.neighborhood.trim(),
+          cidade: this.form.city.trim(), uf: this.form.state.trim().toUpperCase(),
+        },
+        // Peças de hardware viram uma montagem salva com o pedido, com a UF e as horas da Verificação do PC.
+        pcSetup: this.temHardware && verif ? { uf: verif.uf, horasUsoDia: verif.horasUsoDia } : null,
         payment:      { method: this.form.payment, installments },
         observations: this.form.observations,
       });

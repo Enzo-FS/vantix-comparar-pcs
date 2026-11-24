@@ -6,7 +6,7 @@ import { UserRole } from '../models';
 import { FuncionarioRequest, UsuarioApi } from '../core/api/api.types';
 import { parseApiDate, roleFromApi, roleToApi } from '../core/api/mappers';
 
-export type StaffRole = Exclude<UserRole, null>;
+export type StaffRole = Exclude<UserRole, null | 'customer'>;
 
 export interface StaffMember {
   id: string;
@@ -37,7 +37,7 @@ export class StaffService {
       id:        String(u.id),
       name:      u.nome,
       email:     u.email,
-      role:      roleFromApi(u.papel),
+      role:      roleFromApi(u.papel) as StaffRole,
       active:    u.ativo !== false,
       createdAt: u.dataCriacao ? parseApiDate(u.dataCriacao) : undefined,
     })).sort((a, b) => a.name.localeCompare(b.name));

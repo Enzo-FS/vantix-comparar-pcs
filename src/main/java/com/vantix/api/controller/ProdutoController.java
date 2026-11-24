@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.security.core.Authentication;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -52,11 +53,13 @@ public class ProdutoController {
     public record DisponivelRequest(@NotNull(message = "Informe se o produto está disponível.") Boolean disponivel) { }
 
     static final String SELECT_PRODUTO = """
-            SELECT p.id_produto AS id, p.id_categoria AS idCategoria, c.nome AS categoria,
+            SELECT p.id AS id, p.categoria_id AS idCategoria, c.nome AS categoria,
                    p.nome AS nome, p.descricao AS descricao, p.marca AS marca,
-                   p.preco AS preco, p.preco_antigo AS precoAntigo, p.estoque AS estoque,
+                   p.preco AS preco, p.preco_antigo AS precoAntigo, COALESCE(e.quantidade, 0) AS estoque,
                    p.imagem_url AS imagemUrl, p.destaque AS destaque, p.disponivel AS disponivel
-            FROM produto p JOIN categoria c ON c.id_categoria = p.id_categoria
+            FROM produto p
+            JOIN categoria c ON c.id = p.categoria_id
+            LEFT JOIN estoque e ON e.produto_id = p.id
             """;
 
     private final NamedParameterJdbcTemplate jdbc;
@@ -70,7 +73,7 @@ public class ProdutoController {
     @GetMapping("/categorias")
     public List<Map<String, Object>> categorias() {
         return simples.queryForList(
-                "SELECT id_categoria AS id, nome, descricao FROM categoria ORDER BY nome");
+                "SELECT id, nome, descricao FROM categoria ORDER BY nome");
     }
 
     @GetMapping("/produtos")
@@ -105,35 +108,51 @@ public class ProdutoController {
 
     @PostMapping("/produtos")
     @ResponseStatus(HttpStatus.CREATED)
-    public Map<String, Object> criar(@Valid @RequestBody ProdutoRequest r) {
+    @Transactional
+    public Map<String, Object> criar(@Valid @RequestBody ProdutoRequest r, Authentication auth) {
         conferirCategoria(r.idCategoria());
         var keys = new org.springframework.jdbc.support.GeneratedKeyHolder();
         jdbc.update("""
-                INSERT INTO produto (id_categoria, nome, descricao, marca, preco, preco_antigo, estoque,
+                INSERT INTO produto (categoria_id, nome, descricao, marca, preco, preco_antigo,
                                      imagem_url, destaque, disponivel)
-                VALUES (:idCategoria, :nome, :descricao, :marca, :preco, :precoAntigo, :estoque,
+                VALUES (:idCategoria, :nome, :descricao, :marca, :preco, :precoAntigo,
                         :imagemUrl, :destaque, :disponivel)
-                """, parametros(r), keys, new String[] {"id_produto"});
-        return porId(keys.getKey().intValue());
+                """, parametros(r), keys, new String[] {"id"});
+        int id = keys.getKey().intValue();
+        simples.update("INSERT INTO estoque (produto_id, quantidade) VALUES (?, ?)", id, r.estoque());
+        movimentar(id, r.estoque(), r.estoque(), "entrada", "Cadastro do produto", auth);
+        return porId(id);
     }
 
     @PutMapping("/produtos/{id}")
-    public Map<String, Object> atualizar(@PathVariable int id, @Valid @RequestBody ProdutoRequest r) {
+    @Transactional
+    public Map<String, Object> atualizar(@PathVariable int id, @Valid @RequestBody ProdutoRequest r,
+                                         Authentication auth) {
         porId(id);
         conferirCategoria(r.idCategoria());
         jdbc.update("""
-                UPDATE produto SET id_categoria = :idCategoria, nome = :nome, descricao = :descricao,
-                       marca = :marca, preco = :preco, preco_antigo = :precoAntigo, estoque = :estoque,
+                UPDATE produto SET categoria_id = :idCategoria, nome = :nome, descricao = :descricao,
+                       marca = :marca, preco = :preco, preco_antigo = :precoAntigo,
                        imagem_url = :imagemUrl, destaque = :destaque, disponivel = :disponivel
-                WHERE id_produto = :id
+                WHERE id = :id
                 """, parametros(r).addValue("id", id));
+        // Estoque: grava o novo saldo e registra o ajuste em movimentacao_estoque
+        List<Integer> atual = simples.queryForList(
+                "SELECT quantidade FROM estoque WHERE produto_id = ? FOR UPDATE", Integer.class, id);
+        if (atual.isEmpty()) {
+            simples.update("INSERT INTO estoque (produto_id, quantidade) VALUES (?, ?)", id, r.estoque());
+            movimentar(id, r.estoque(), r.estoque(), "entrada", "Saldo inicial", auth);
+        } else if (atual.get(0) != r.estoque().intValue()) {
+            simples.update("UPDATE estoque SET quantidade = ? WHERE produto_id = ?", r.estoque(), id);
+            movimentar(id, r.estoque() - atual.get(0), r.estoque(), "ajuste", "Ajuste manual pelo gerente", auth);
+        }
         return porId(id);
     }
 
     @PatchMapping("/produtos/{id}/disponivel")
     public Map<String, Object> disponibilidade(@PathVariable int id, @Valid @RequestBody DisponivelRequest r) {
         porId(id);
-        simples.update("UPDATE produto SET disponivel = ? WHERE id_produto = ?", r.disponivel(), id);
+        simples.update("UPDATE produto SET disponivel = ? WHERE id = ?", r.disponivel(), id);
         return porId(id);
     }
 
@@ -142,9 +161,10 @@ public class ProdutoController {
     public void excluir(@PathVariable int id) {
         porId(id);
         try {
-            simples.update("DELETE FROM produto WHERE id_produto = ?", id);
+            simples.update("DELETE FROM produto WHERE id = ?", id);
         } catch (DataIntegrityViolationException e) {
-            throw ApiException.conflict("Este produto já tem pedidos e não pode ser excluído. Desative-o.");
+            throw ApiException.conflict(
+                    "Este produto já tem pedidos ou está em montagens e não pode ser excluído. Desative-o.");
         }
     }
 
@@ -164,8 +184,18 @@ public class ProdutoController {
                 .addValue("disponivel", r.disponivel() == null || r.disponivel());
     }
 
+    private void movimentar(int produtoId, int quantidade, int saldo, String tipo, String motivo, Authentication auth) {
+        if (quantidade == 0) {
+            return;
+        }
+        simples.update("""
+                INSERT INTO movimentacao_estoque (produto_id, usuario_id, tipo, quantidade, saldo_apos, motivo)
+                VALUES (?, ?, ?, ?, ?, ?)
+                """, produtoId, auth != null ? auth.getPrincipal() : null, tipo, quantidade, saldo, motivo);
+    }
+
     private void conferirCategoria(int idCategoria) {
-        Integer n = simples.queryForObject("SELECT COUNT(*) FROM categoria WHERE id_categoria = ?",
+        Integer n = simples.queryForObject("SELECT COUNT(*) FROM categoria WHERE id = ?",
                 Integer.class, idCategoria);
         if (n == null || n == 0) {
             throw ApiException.badRequest("Categoria não encontrada.");
@@ -173,7 +203,7 @@ public class ProdutoController {
     }
 
     private Map<String, Object> porId(int id) {
-        List<Map<String, Object>> l = jdbc.queryForList(SELECT_PRODUTO + " WHERE p.id_produto = :id",
+        List<Map<String, Object>> l = jdbc.queryForList(SELECT_PRODUTO + " WHERE p.id = :id",
                 new MapSqlParameterSource("id", id));
         if (l.isEmpty()) {
             throw ApiException.notFound("Produto não encontrado.");

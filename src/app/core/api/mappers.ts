@@ -25,11 +25,11 @@ export const statusFromApi = (s: StatusApi): OrderStatus => STATUS_FROM_API[s] ?
 
 // ── Papéis ──────────────────────────────────────────────────
 const ROLE_TO_API: Record<Exclude<UserRole, null>, PapelApi> = {
-  manager: 'gerente', kitchen: 'estoque', delivery: 'logistica',
+  manager: 'gerente', kitchen: 'estoque', delivery: 'logistica', customer: 'cliente',
 };
 export const roleToApi   = (r: Exclude<UserRole, null>): PapelApi => ROLE_TO_API[r];
 export const roleFromApi = (p: PapelApi): Exclude<UserRole, null> =>
-  p === 'gerente' ? 'manager' : p === 'estoque' ? 'kitchen' : 'delivery';
+  p === 'gerente' ? 'manager' : p === 'estoque' ? 'kitchen' : p === 'logistica' ? 'delivery' : 'customer';
 
 // ── Pagamento ───────────────────────────────────────────────
 const PAY_TO_API: Record<PaymentMethod, FormaPagamentoApi> = {

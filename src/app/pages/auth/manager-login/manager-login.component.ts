@@ -29,18 +29,18 @@ const PORTALS = {
     bgImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85',
     accentColor: '#1d5bd6',
     accentColorDark: '#173d8c',
-    emailHint: 'gerente@voltz.com',
+    emailHint: 'gerente@vantix.com',
     features: ['Dashboard com métricas em tempo real', 'Gestão completa do catálogo', 'Controle de pedidos e entregas'],
   },
   kitchen: {
     label: 'Portal do Estoque',
-    subtitle: 'Kanban em tempo real. Da separação à embalagem de cada pedido.',
-    redirect: '/estoque/painel',
+    subtitle: 'Controle o saldo de cada produto, registre a chegada de mercadoria e separe os pedidos aprovados.',
+    redirect: '/estoque/controle',
     bgImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85',
     accentColor: '#0284c7',
     accentColorDark: '#075985',
-    emailHint: 'estoque@voltz.com',
-    features: ['Kanban visual de pedidos', 'Separação e conferência em tempo real', 'Notificações de novos pedidos'],
+    emailHint: 'estoque@vantix.com',
+    features: ['Saldo, estoque mínimo e alertas', 'Entradas, ajustes e histórico de movimentações', 'Separação dos pedidos aprovados'],
   },
   delivery: {
     label: 'Portal da Logística',
@@ -49,7 +49,7 @@ const PORTALS = {
     bgImage: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=900&q=85',
     accentColor: '#0d9488',
     accentColorDark: '#115e59',
-    emailHint: 'logistica@voltz.com',
+    emailHint: 'logistica@vantix.com',
     features: ['Pacotes prontos para envio', 'Acompanhamento de rotas', 'Histórico de entregas'],
   },
 } satisfies Record<string, PortalConfig>;
@@ -231,8 +231,9 @@ const LOGIN_STYLES = `
  */
 abstract class PortalLoginBase {
   protected abstract readonly config: PortalConfig;
-
-
+  private auth  = inject(AuthService);
+  private toast = inject(ToastService);
+  protected router = inject(Router);
 
   email = '';
   password = '';
@@ -250,7 +251,7 @@ abstract class PortalLoginBase {
 
   fillDemo() {
     this.email    = this.emailPlaceholder;
-    this.password = 'voltz2024';
+    this.password = 'vantix2024';
   }
 
   async login() {
@@ -274,3 +275,35 @@ abstract class PortalLoginBase {
   }
 }
 
+@Component({
+  selector: 'app-manager-login',
+  standalone: true,
+  imports: [FormsModule, NgIf, NgFor, RouterLink],
+  template: LOGIN_TEMPLATE,
+  styles: [LOGIN_STYLES],
+})
+export class ManagerLoginComponent extends PortalLoginBase {
+  protected readonly config = PORTALS.manager;
+}
+
+@Component({
+  selector: 'app-kitchen-login',
+  standalone: true,
+  imports: [FormsModule, NgIf, NgFor, RouterLink],
+  template: LOGIN_TEMPLATE,
+  styles: [LOGIN_STYLES],
+})
+export class KitchenLoginComponent extends PortalLoginBase {
+  protected readonly config = PORTALS.kitchen;
+}
+
+@Component({
+  selector: 'app-delivery-login',
+  standalone: true,
+  imports: [FormsModule, NgIf, NgFor, RouterLink],
+  template: LOGIN_TEMPLATE,
+  styles: [LOGIN_STYLES],
+})
+export class DeliveryLoginComponent extends PortalLoginBase {
+  protected readonly config = PORTALS.delivery;
+}

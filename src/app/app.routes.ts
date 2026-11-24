@@ -11,9 +11,21 @@ export const routes: Routes = [
       { path: 'produtos',  loadComponent: () => import('./pages/menu/menu.component').then(m => m.MenuComponent) },
       { path: 'produtos/:id', loadComponent: () => import('./pages/product/product-detail.component').then(m => m.ProductDetailComponent) },
       { path: 'carrinho',  loadComponent: () => import('./pages/cart/cart.component').then(m => m.CartComponent) },
+      { path: 'verificacao', loadComponent: () => import('./pages/verificacao/verificacao.component').then(m => m.VerificacaoComponent) },
       { path: 'checkout',  loadComponent: () => import('./pages/checkout/checkout.component').then(m => m.CheckoutComponent) },
       { path: 'confirmacao', loadComponent: () => import('./pages/confirmation/confirmation.component').then(m => m.ConfirmationComponent) },
       { path: 'meus-pedidos', loadComponent: () => import('./pages/my-orders/my-orders.component').then(m => m.MyOrdersComponent) },
+      // Monte seu PC: abas Montar, Comparar e Roda ou não?
+      {
+        path: 'monte-seu-pc',
+        loadComponent: () => import('./pages/pc/pc-shell.component').then(m => m.PcShellComponent),
+        children: [
+          { path: '',         redirectTo: 'montar', pathMatch: 'full' },
+          { path: 'montar',   loadComponent: () => import('./pages/pc/montar.component').then(m => m.MontarComponent) },
+          { path: 'comparar', loadComponent: () => import('./pages/pc/comparar.component').then(m => m.CompararComponent) },
+          { path: 'roda',     loadComponent: () => import('./pages/pc/roda.component').then(m => m.RodaComponent) },
+        ]
+      },
     ]
   },
 
@@ -36,9 +48,11 @@ export const routes: Routes = [
       { path: 'pedidos',   loadComponent: () => import('./pages/employee/orders/orders-management.component').then(m => m.OrdersManagementComponent) },
       { path: 'produtos',  loadComponent: () => import('./pages/employee/menu-management/menu-management.component').then(m => m.MenuManagementComponent) },
       { path: 'estoque',   loadComponent: () => import('./pages/employee/kitchen/kitchen-dashboard.component').then(m => m.KitchenDashboardComponent) },
+      { path: 'controle-estoque', loadComponent: () => import('./pages/employee/estoque/controle-estoque.component').then(m => m.ControleEstoqueComponent) },
       { path: 'entregas',  loadComponent: () => import('./pages/delivery/dashboard/delivery-dashboard.component').then(m => m.DeliveryDashboardComponent) },
       { path: 'insights',      loadComponent: () => import('./pages/employee/insights/insights-dashboard.component').then(m => m.InsightsDashboardComponent) },
       { path: 'funcionarios',  loadComponent: () => import('./pages/employee/staff/staff-management.component').then(m => m.StaffManagementComponent) },
+      { path: 'monte-seu-pc',  loadComponent: () => import('./pages/employee/pc-admin/pc-admin.component').then(m => m.PcAdminComponent) },
     ]
   },
 
@@ -48,8 +62,9 @@ export const routes: Routes = [
     loadComponent: () => import('./components/layout/employee-layout.component').then(m => m.EmployeeLayoutComponent),
     canActivate: [roleGuard('kitchen')],
     children: [
-      { path: '',      redirectTo: 'painel', pathMatch: 'full' },
-      { path: 'painel', loadComponent: () => import('./pages/employee/kitchen/kitchen-dashboard.component').then(m => m.KitchenDashboardComponent) },
+      { path: '',         redirectTo: 'controle', pathMatch: 'full' },
+      { path: 'controle', loadComponent: () => import('./pages/employee/estoque/controle-estoque.component').then(m => m.ControleEstoqueComponent) },
+      { path: 'painel',   loadComponent: () => import('./pages/employee/kitchen/kitchen-dashboard.component').then(m => m.KitchenDashboardComponent) },
     ]
   },
 
