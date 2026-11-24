@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * "Quem comprou tambem levou" (Frente 4). Rota publica.
+ * "Quem comprou tambem levou". Rota publica.
  * GET /api/recomendacoes?produtos=1,7&limite=4
- * Ordena por: vezes comprados juntos (vw_comprados_juntos) + 1 ponto por estar em produto_relacionado.
- * Remove os produtos informados, os indisponiveis e os sem estoque.
- * Libere /api/recomendacoes no SecurityConfig do Lucas (permitAll).
+ * Ordena por: vezes comprados juntos (vw_comprados_juntos) + o peso de cada linha da tabela recomendacao
+ * (manual e compatibilidade). Remove os produtos informados, os indisponiveis e os sem estoque.
  */
 @RestController
 @RequestMapping("/api/recomendacoes")
@@ -35,35 +34,36 @@ public class RecomendacaoController {
             return List.of();
         }
         String sql = """
-                SELECT p.id_produto AS id,
-                       p.id_categoria AS idCategoria,
+                SELECT p.id AS id,
+                       p.categoria_id AS idCategoria,
                        c.nome AS categoria,
                        p.nome AS nome,
                        p.descricao AS descricao,
                        p.marca AS marca,
                        p.preco AS preco,
                        p.preco_antigo AS precoAntigo,
-                       p.estoque AS estoque,
+                       e.quantidade AS estoque,
                        p.imagem_url AS imagemUrl,
                        p.destaque AS destaque,
                        p.disponivel AS disponivel
                 FROM (
-                    SELECT id_recomendado AS id, SUM(vezes) AS pontos
+                    SELECT recomendado_id AS id, SUM(vezes) AS pontos
                     FROM vw_comprados_juntos
-                    WHERE id_produto IN (:ids)
-                    GROUP BY id_recomendado
+                    WHERE produto_id IN (:ids)
+                    GROUP BY recomendado_id
                     UNION ALL
-                    SELECT id_produto_relacionado AS id, 1 AS pontos
-                    FROM produto_relacionado
-                    WHERE id_produto IN (:ids)
+                    SELECT produto_recomendado_id AS id, peso AS pontos
+                    FROM recomendacao
+                    WHERE produto_origem_id IN (:ids)
                 ) r
-                JOIN produto p ON p.id_produto = r.id
-                JOIN categoria c ON c.id_categoria = p.id_categoria
-                WHERE p.id_produto NOT IN (:ids)
+                JOIN produto p ON p.id = r.id
+                JOIN categoria c ON c.id = p.categoria_id
+                JOIN estoque e ON e.produto_id = p.id
+                WHERE p.id NOT IN (:ids)
                   AND p.disponivel = TRUE
-                  AND p.estoque > 0
-                GROUP BY p.id_produto, p.id_categoria, c.nome, p.nome, p.descricao, p.marca,
-                         p.preco, p.preco_antigo, p.estoque, p.imagem_url, p.destaque, p.disponivel
+                  AND e.quantidade > 0
+                GROUP BY p.id, p.categoria_id, c.nome, p.nome, p.descricao, p.marca,
+                         p.preco, p.preco_antigo, e.quantidade, p.imagem_url, p.destaque, p.disponivel
                 ORDER BY SUM(r.pontos) DESC, p.destaque DESC, p.nome
                 LIMIT :limite
                 """;

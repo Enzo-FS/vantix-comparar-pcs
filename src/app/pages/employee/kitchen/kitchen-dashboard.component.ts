@@ -18,7 +18,7 @@ import { Order, OrderStatus } from '../../../models';
       <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem" class="animate-fade-up">
         <div>
           <h1 style="font-family:var(--font-display);font-size:1.875rem;color:var(--text-primary);margin-bottom:.25rem">
-            Separação & Expedição
+            Separação de Pedidos
           </h1>
           <p style="color:var(--text-tertiary);font-size:var(--text-base)">
             Pedidos aprovados em tempo real: separe, confira e embale
@@ -205,10 +205,15 @@ import { Order, OrderStatus } from '../../../models';
                 {{ o.customer.address }}
               </div>
 
-              <!-- O despacho é feito pela Logística (aceita a entrega e vira "Em transporte"). -->
-              <div style="width:100%;text-align:center;padding:.45rem;border-radius:var(--r-md);background:var(--success-bg);color:var(--success-text);border:1px solid var(--success-border);font-size:var(--text-xs);font-weight:600">
+              <!-- Entrega: o despacho é feito pela Logística (aceita a entrega e vira "Em transporte"). -->
+              <div *ngIf="o.orderType !== 'retirada'" style="width:100%;text-align:center;padding:.45rem;border-radius:var(--r-md);background:var(--success-bg);color:var(--success-text);border:1px solid var(--success-border);font-size:var(--text-xs);font-weight:600">
                 🚚 Aguardando coleta da Logística
               </div>
+              <!-- Retirada na loja: o próprio estoque entrega ao cliente no balcão. -->
+              <button *ngIf="o.orderType === 'retirada'" class="btn btn-success btn-sm" style="width:100%;justify-content:center"
+                      (click)="advance(o.id, 'delivered')">
+                🏬 Entregue ao cliente (retirada)
+              </button>
             </div>
           </div>
         </div>

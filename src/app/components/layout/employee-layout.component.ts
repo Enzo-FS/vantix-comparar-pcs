@@ -308,7 +308,7 @@ export class EmployeeLayoutComponent implements OnInit, OnDestroy {
     } else if (u.role === 'kitchen') {
       this.roleLabel      = 'Líder de Estoque';
       this.roleSubtitle   = 'ESTOQUE';
-      this.dashboardRoute = '/estoque/painel';
+      this.dashboardRoute = '/estoque/controle';
       this.buildKitchenNav();
     }
 
@@ -332,10 +332,12 @@ export class EmployeeLayoutComponent implements OnInit, OnDestroy {
     if (url.includes('dashboard'))    return 'Dashboard';
     if (url.includes('pedidos'))      return 'Pedidos';
     if (url.includes('produtos'))     return 'Produtos';
-    if (url.includes('estoque'))      return 'Estoque';
+    if (url.includes('controle'))     return 'Controle de Estoque';
+    if (url.includes('estoque'))      return 'Separação de Pedidos';
     if (url.includes('entregas'))     return 'Entregas';
     if (url.includes('insights'))     return 'Insights';
     if (url.includes('funcionarios')) return 'Funcionários';
+    if (url.includes('monte-seu-pc')) return 'Monte seu PC';
     if (url.includes('painel'))       return 'Separação de Pedidos';
     return 'Dashboard';
   }
@@ -362,6 +364,11 @@ export class EmployeeLayoutComponent implements OnInit, OnDestroy {
             icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2"/><path d="M9 12h6M9 16h4"/></svg>`,
           },
           {
+            label: 'Controle de Estoque',
+            route: '/gerente/controle-estoque',
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg>`,
+          },
+          {
             label: 'Separação',
             route: '/gerente/estoque',
             icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg>`,
@@ -370,6 +377,11 @@ export class EmployeeLayoutComponent implements OnInit, OnDestroy {
             label: 'Entregas',
             route: '/gerente/entregas',
             icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg>`,
+          },
+          {
+            label: 'Monte seu PC',
+            route: '/gerente/monte-seu-pc',
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>`,
           },
         ]
       },
@@ -399,10 +411,20 @@ export class EmployeeLayoutComponent implements OnInit, OnDestroy {
   private buildKitchenNav() {
     this.navSections = [
       {
-        label: 'OPERAÇÕES',
+        label: 'ESTOQUE',
         items: [
           {
-            label: 'Separação de Pedidos',
+            label: 'Controle de Estoque',
+            route: '/estoque/controle',
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg>`,
+          },
+        ]
+      },
+      {
+        label: 'PEDIDOS',
+        items: [
+          {
+            label: 'Separação',
             route: '/estoque/painel',
             icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg>`,
             badgeSignal: () => this.pendingCount(),

@@ -1,6 +1,6 @@
 package com.vantix.api.config;
 
-import java.util.List;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,12 +21,16 @@ import com.vantix.api.security.JwtFilter;
 
 /**
  * Quem acessa o que (docs/API_CONTRATO.md):
- *  - publico: login, categorias, ler produtos, recomendacoes, criar pedido, "meus pedidos"
- *  - gerente: relatorios, funcionarios, escrita em produtos
- *  - qualquer usuario do painel logado: listar pedidos e mudar status
+ *  - publico: login, catalogo, recomendacoes, criar pedido, "meus pedidos",
+ *             e a leitura/calculo do "Monte seu PC" (especificacoes, tarifas, softwares, montagens, comparar, roda)
+ *  - cliente com conta: salvar e apagar as proprias montagens
+ *  - gerente: relatorios, funcionarios, escrita em produtos e nos cadastros do "Monte seu PC"
+ *  - funcionarios (gerente, estoque, logistica): listar pedidos e mudar status
  */
 @Configuration
 public class SecurityConfig {
+
+    private static final String[] FUNCIONARIOS = {"GERENTE", "ESTOQUE", "LOGISTICA"};
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -46,9 +50,18 @@ public class SecurityConfig {
                         "/api/recomendacoes").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/pedidos").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/pedidos/cliente").permitAll()
+                // Monte seu PC: leitura e calculos sao publicos
+                .requestMatchers(HttpMethod.GET, "/api/especificacoes", "/api/tarifas", "/api/softwares",
+                        "/api/montagens", "/api/montagens/*", "/api/montagens/*/consumo",
+                        "/api/comparar", "/api/roda").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/montagens/avaliar").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/montagens").hasRole("CLIENTE")
+                .requestMatchers(HttpMethod.DELETE, "/api/montagens/*").hasRole("CLIENTE")
+                .requestMatchers("/api/especificacoes/**", "/api/tarifas/**", "/api/softwares/**").hasRole("GERENTE")
+                .requestMatchers("/api/estoque", "/api/estoque/**").hasAnyRole("ESTOQUE", "GERENTE")
                 .requestMatchers("/api/relatorios/**", "/api/funcionarios/**").hasRole("GERENTE")
                 .requestMatchers("/api/produtos/**").hasRole("GERENTE")
-                .requestMatchers("/api/pedidos/**").authenticated()
+                .requestMatchers("/api/pedidos/**").hasAnyRole(FUNCIONARIOS)
                 .anyRequest().denyAll())
             .exceptionHandling(e -> e
                 .authenticationEntryPoint((req, res, ex) -> escrever(res, 401,
@@ -67,11 +80,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource(@Value("${vantix.cors.origem}") String origem) {
+    public CorsConfigurationSource corsConfigurationSource(@Value("${vantix.cors.origem}") String origens) {
         CorsConfiguration c = new CorsConfiguration();
-        c.setAllowedOrigins(List.of(origem));
-        c.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        c.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        c.setAllowedOrigins(Arrays.stream(origens.split(",")).map(String::trim).filter(s -> !s.isEmpty()).toList());
+        c.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        c.setAllowedHeaders(java.util.List.of("Authorization", "Content-Type"));
         UrlBasedCorsConfigurationSource fonte = new UrlBasedCorsConfigurationSource();
         fonte.registerCorsConfiguration("/**", c);
         return fonte;

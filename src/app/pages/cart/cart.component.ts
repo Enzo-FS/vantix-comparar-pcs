@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { PcService } from '../../services/pc.service';
+import { CheckoutStepsComponent } from '../../components/pc/checkout-steps.component';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { CartService, shippingFor, SHIPPING_FEE, FREE_SHIPPING_MIN } from '../../services/cart.service';
 import { ImgFallbackDirective } from '../../components/ui/img-fallback.directive';
@@ -10,7 +13,7 @@ import { combineLatest, map } from 'rxjs';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink, AsyncPipe, NgFor, NgIf, ImgFallbackDirective, AlsoBoughtComponent],
+  imports: [RouterLink, AsyncPipe, NgFor, NgIf, ImgFallbackDirective, AlsoBoughtComponent, CheckoutStepsComponent],
   template: `
     <div style="padding:2.5rem 0 4rem;background:var(--stone-50);min-height:60vh">
       <div class="container">
@@ -25,6 +28,7 @@ import { combineLatest, map } from 'rxjs';
         </div>
 
         <ng-container *ngIf="(items$ | async)?.length! > 0">
+          <app-checkout-steps atual="carrinho" [comVerificacao]="temHardware()"></app-checkout-steps>
           <div style="margin-bottom:2rem">
             <h1 style="font-family:var(--font-serif);font-size:2.25rem;color:var(--stone-900)">Seu Carrinho</h1>
             <p style="color:var(--stone-500)">Revise os itens antes de finalizar</p>
@@ -102,9 +106,12 @@ import { combineLatest, map } from 'rxjs';
                     </div>
                   </div>
 
-                  <a routerLink="/checkout" class="btn btn-primary" style="width:100%;justify-content:center;height:3rem;font-size:.95rem">
-                    Finalizar Pedido →
-                  </a>
+                  <button type="button" (click)="finalizar()" class="btn btn-primary" style="width:100%;justify-content:center;height:3rem;font-size:.95rem">
+                    {{ temHardware() ? 'Verificar PC e continuar →' : 'Finalizar Pedido →' }}
+                  </button>
+                  <p *ngIf="temHardware()" style="font-size:.75rem;color:var(--stone-500);margin-top:.5rem;text-align:center">
+                    Seu carrinho tem peças de hardware: antes do checkout conferimos compatibilidade, fonte e consumo.
+                  </p>
                 </div>
               </div>
             </div>
@@ -124,7 +131,13 @@ export class CartComponent {
   vm$ = combineLatest([this.cart.items, this.cart.total]).pipe(
     map(([_, subtotal]) => ({ subtotal, deliveryFee: shippingFor(subtotal), total: subtotal + shippingFor(subtotal) }))
   );
+  private pc = inject(PcService);
+  private router = inject(Router);
+  private itens = toSignal(this.cart.items, { initialValue: [] as CartItem[] });
+  /** Carrinho com peça de hardware passa pela Verificação do PC antes do checkout. */
+  temHardware = () => this.pc.temHardware(this.itens());
   constructor(private cart: CartService) {}
+  finalizar() { this.router.navigate([this.temHardware() ? '/verificacao' : '/checkout']); }
   updateQty(item: CartItem, qty: number) { this.cart.updateQuantity(item.id, qty); }
   remove(id: string) { this.cart.removeItem(id); }
   idsOf(items: CartItem[]) { return items.map(i => i.id); }

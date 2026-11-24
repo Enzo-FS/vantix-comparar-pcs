@@ -27,7 +27,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-/** Funcionarios (tabela usuario_painel). So o gerente acessa. Nunca devolve senha_hash. */
+/** Funcionarios (tabela usuario, perfis gerente/estoque/logistica). So o gerente acessa. Nunca devolve senha_hash. */
 @RestController
 @RequestMapping("/api/funcionarios")
 public class FuncionarioController {
@@ -43,8 +43,10 @@ public class FuncionarioController {
     public record AtivoRequest(@NotNull(message = "Informe se o funcionário está ativo.") Boolean ativo) { }
 
     private static final String SELECT = """
-            SELECT id_usuario AS id, nome, email, papel, ativo, data_criacao AS dataCriacao
-            FROM usuario_painel
+            SELECT u.id AS id, u.nome AS nome, u.email AS email, p.codigo AS papel, u.ativo AS ativo,
+                   u.criado_em AS dataCriacao
+            FROM usuario u JOIN perfil p ON p.id = u.perfil_id
+            WHERE p.codigo IN ('gerente', 'estoque', 'logistica')
             """;
 
     private final JdbcTemplate jdbc;
@@ -57,7 +59,7 @@ public class FuncionarioController {
 
     @GetMapping
     public List<Map<String, Object>> listar() {
-        return jdbc.queryForList(SELECT + " ORDER BY nome");
+        return jdbc.queryForList(SELECT + " ORDER BY u.nome");
     }
 
     @PostMapping
@@ -70,8 +72,9 @@ public class FuncionarioController {
         try {
             jdbc.update(con -> {
                 var ps = con.prepareStatement(
-                        "INSERT INTO usuario_painel (nome, email, senha_hash, papel, ativo) VALUES (?, ?, ?, ?, ?)",
-                        new String[] {"id_usuario"});
+                        "INSERT INTO usuario (nome, email, senha_hash, perfil_id, ativo) "
+                                + "VALUES (?, ?, ?, (SELECT id FROM perfil WHERE codigo = ?), ?)",
+                        new String[] {"id"});
                 ps.setString(1, r.nome().trim());
                 ps.setString(2, r.email().trim().toLowerCase());
                 ps.setString(3, encoder.encode(r.senha()));
@@ -97,10 +100,11 @@ public class FuncionarioController {
             throw ApiException.badRequest("A senha deve ter pelo menos 6 caracteres.");
         }
         try {
-            jdbc.update("UPDATE usuario_painel SET nome = ?, email = ?, papel = ?, ativo = ? WHERE id_usuario = ?",
+            jdbc.update("UPDATE usuario SET nome = ?, email = ?, perfil_id = (SELECT id FROM perfil WHERE codigo = ?), "
+                    + "ativo = ? WHERE id = ?",
                     r.nome().trim(), r.email().trim().toLowerCase(), r.papel(), ativo, id);
             if (r.senha() != null && !r.senha().isEmpty()) {
-                jdbc.update("UPDATE usuario_painel SET senha_hash = ? WHERE id_usuario = ?",
+                jdbc.update("UPDATE usuario SET senha_hash = ? WHERE id = ?",
                         encoder.encode(r.senha()), id);
             }
         } catch (DuplicateKeyException e) {
@@ -116,12 +120,12 @@ public class FuncionarioController {
         if (!r.ativo() && id == (Integer) auth.getPrincipal()) {
             throw ApiException.conflict("Você não pode desativar o seu próprio usuário.");
         }
-        jdbc.update("UPDATE usuario_painel SET ativo = ? WHERE id_usuario = ?", r.ativo(), id);
+        jdbc.update("UPDATE usuario SET ativo = ? WHERE id = ?", r.ativo(), id);
         return porId(id);
     }
 
     private Map<String, Object> porId(int id) {
-        List<Map<String, Object>> l = jdbc.queryForList(SELECT + " WHERE id_usuario = ?", id);
+        List<Map<String, Object>> l = jdbc.queryForList(SELECT + " AND u.id = ?", id);
         if (l.isEmpty()) {
             throw ApiException.notFound("Funcionário não encontrado.");
         }

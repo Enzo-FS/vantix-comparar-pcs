@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Relatorios do painel do gerente (Frente 4).
+ * Relatorios do painel do gerente (acesso so do gerente, ver SecurityConfig).
  * Segue docs/API_CONTRATO.md: todos aceitam ?inicio=AAAA-MM-DD&fim=AAAA-MM-DD (inclusivo).
- * Usa so JDBC, entao NAO depende das entidades Pedido/Produto do Lucas.
- * O acesso so para gerente deve ser configurado no SecurityConfig do Lucas: /api/relatorios/** -> GERENTE.
  */
 @RestController
 @RequestMapping("/api/relatorios")
@@ -50,7 +48,7 @@ public class RelatorioController {
                   COALESCE(ROUND(SUM(CASE WHEN status <> 'cancelado' THEN valor_total END)
                          / NULLIF(SUM(status <> 'cancelado'), 0), 2), 0) AS ticketMedio
                 FROM pedido
-                WHERE DATE(data_criacao) BETWEEN :inicio AND :fim
+                WHERE DATE(criado_em) BETWEEN :inicio AND :fim
                 """;
         return jdbc.queryForMap(sql, periodo(inicio, fim));
     }
@@ -60,13 +58,13 @@ public class RelatorioController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fim) {
         String sql = """
-                SELECT DATE_FORMAT(data_criacao, '%Y-%m-%d') AS dia,
+                SELECT DATE_FORMAT(criado_em, '%Y-%m-%d') AS dia,
                        COUNT(*) AS pedidos,
                        SUM(valor_total) AS faturamento
                 FROM pedido
                 WHERE status <> 'cancelado'
-                  AND DATE(data_criacao) BETWEEN :inicio AND :fim
-                GROUP BY DATE_FORMAT(data_criacao, '%Y-%m-%d')
+                  AND DATE(criado_em) BETWEEN :inicio AND :fim
+                GROUP BY DATE_FORMAT(criado_em, '%Y-%m-%d')
                 ORDER BY dia
                 """;
         return jdbc.queryForList(sql, periodo(inicio, fim));
@@ -79,7 +77,7 @@ public class RelatorioController {
         String sql = """
                 SELECT status, COUNT(*) AS pedidos
                 FROM pedido
-                WHERE DATE(data_criacao) BETWEEN :inicio AND :fim
+                WHERE DATE(criado_em) BETWEEN :inicio AND :fim
                 GROUP BY status
                 ORDER BY pedidos DESC
                 """;
@@ -92,17 +90,17 @@ public class RelatorioController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fim,
             @RequestParam(defaultValue = "5") int limite) {
         String sql = """
-                SELECT p.id_produto AS idProduto,
+                SELECT p.id AS idProduto,
                        p.nome AS nome,
                        c.nome AS categoria,
                        SUM(i.quantidade) AS unidadesVendidas,
                        SUM(i.subtotal) AS receita
-                FROM item_pedido i
-                JOIN pedido pe ON pe.id_pedido = i.id_pedido AND pe.status <> 'cancelado'
-                JOIN produto p ON p.id_produto = i.id_produto
-                JOIN categoria c ON c.id_categoria = p.id_categoria
-                WHERE DATE(pe.data_criacao) BETWEEN :inicio AND :fim
-                GROUP BY p.id_produto, p.nome, c.nome
+                FROM pedido_item i
+                JOIN pedido pe ON pe.id = i.pedido_id AND pe.status <> 'cancelado'
+                JOIN produto p ON p.id = i.produto_id
+                JOIN categoria c ON c.id = p.categoria_id
+                WHERE DATE(pe.criado_em) BETWEEN :inicio AND :fim
+                GROUP BY p.id, p.nome, c.nome
                 ORDER BY unidadesVendidas DESC, receita DESC
                 LIMIT :limite
                 """;
@@ -116,8 +114,8 @@ public class RelatorioController {
         String sql = """
                 SELECT pg.forma AS forma, COUNT(*) AS pedidos, SUM(pg.valor) AS valor
                 FROM pagamento pg
-                JOIN pedido pe ON pe.id_pedido = pg.id_pedido AND pe.status <> 'cancelado'
-                WHERE DATE(pe.data_criacao) BETWEEN :inicio AND :fim
+                JOIN pedido pe ON pe.id = pg.pedido_id AND pe.status <> 'cancelado'
+                WHERE DATE(pe.criado_em) BETWEEN :inicio AND :fim
                 GROUP BY pg.forma
                 ORDER BY pedidos DESC
                 """;
@@ -129,10 +127,10 @@ public class RelatorioController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fim) {
         String sql = """
-                SELECT HOUR(data_criacao) AS hora, COUNT(*) AS pedidos
+                SELECT HOUR(criado_em) AS hora, COUNT(*) AS pedidos
                 FROM pedido
-                WHERE DATE(data_criacao) BETWEEN :inicio AND :fim
-                GROUP BY HOUR(data_criacao)
+                WHERE DATE(criado_em) BETWEEN :inicio AND :fim
+                GROUP BY HOUR(criado_em)
                 ORDER BY hora
                 """;
         return jdbc.queryForList(sql, periodo(inicio, fim));
@@ -141,7 +139,7 @@ public class RelatorioController {
     @GetMapping("/estoque-baixo")
     public List<Map<String, Object>> estoqueBaixo() {
         String sql = """
-                SELECT id_produto AS idProduto, nome, estoque
+                SELECT produto_id AS idProduto, nome, estoque
                 FROM vw_estoque_baixo
                 ORDER BY estoque, nome
                 """;

@@ -5,7 +5,7 @@ import {
 } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { CartItem, Customer, Order, OrderStatus, PaymentMethod } from '../models';
-import { MudarStatusRequest, NovoPedidoRequest, PedidoApi } from '../core/api/api.types';
+import { EnderecoApi, MudarStatusRequest, NovoPedidoRequest, PedidoApi } from '../core/api/api.types';
 import { orderFromApi, paymentToApi, statusToApi } from '../core/api/mappers';
 
 /** Resultado de cada consulta de "Meus pedidos": a lista, ou null + mensagem quando a API falha. */
@@ -24,6 +24,10 @@ export function pollingErrorMessage(err: unknown): string {
 export interface NewOrderData {
   items: CartItem[];
   customer: Customer & { email: string };
+  /** Endereço em campos separados (a API grava na tabela endereco). */
+  address?: EnderecoApi;
+  /** UF e horas da Verificação do PC; a API salva as peças de hardware como montagem do pedido. */
+  pcSetup?: { uf: string; horasUsoDia: number } | null;
   payment: { method: PaymentMethod; installments: number };
   observations?: string;
 }
@@ -104,6 +108,8 @@ export class OrdersService {
         telefone: data.customer.phone,
         endereco: data.customer.address,
       },
+      enderecoEntrega: data.address ?? null,
+      montagem:    data.pcSetup ?? null,
       itens:       data.items.map(i => ({ idProduto: Number(i.id), quantidade: i.quantity })),
       pagamento:   { forma: paymentToApi(data.payment.method), parcelas: data.payment.installments },
       tipoEntrega: 'entrega',

@@ -12,7 +12,8 @@ export type OrderStatus =
   | 'delivered'
   | 'cancelled';
 
-export type UserRole = 'manager' | 'kitchen' | 'delivery' | null;
+/** customer = cliente com conta (só para salvar montagens do "Monte seu PC"). */
+export type UserRole = 'manager' | 'kitchen' | 'delivery' | 'customer' | null;
 export type PaymentMethod = 'credit' | 'debit' | 'pix' | 'boleto';
 export type MenuCategory =
   | 'Hardware'

@@ -128,7 +128,7 @@ export class PortalsComponent {
       link: '/login/kitchen',
       icon: '📦',
       label: 'Estoque',
-      desc: 'Kanban em tempo real. Controle visual da separação, conferência e embalagem de cada pedido.',
+      desc: 'Saldo de cada produto, entrada de mercadoria, ajustes de inventário e separação dos pedidos aprovados.',
       iconBg: 'rgba(2,132,199,.18)',
       accentColor: '#38bdf8',
     },

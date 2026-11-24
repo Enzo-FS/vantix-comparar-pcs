@@ -42,6 +42,7 @@ import { CustomerMenuComponent } from '../ui/customer-menu.component';
           <nav class="desktop-nav">
             <a routerLink="/"             routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">INÍCIO</a>
             <a routerLink="/produtos"     routerLinkActive="active">PRODUTOS</a>
+            <a routerLink="/monte-seu-pc" routerLinkActive="active" class="nav-pc">MONTE SEU PC</a>
             <a routerLink="/meus-pedidos" routerLinkActive="active">MEUS PEDIDOS</a>
           </nav>
 
@@ -111,6 +112,10 @@ import { CustomerMenuComponent } from '../ui/customer-menu.component';
           <a routerLink="/produtos"     routerLinkActive="mobile-nav-active" (click)="menuOpen=false" class="mobile-nav-link">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
             Produtos
+          </a>
+          <a routerLink="/monte-seu-pc" routerLinkActive="mobile-nav-active" (click)="menuOpen=false" class="mobile-nav-link">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+            Monte seu PC
           </a>
           <a routerLink="/carrinho"     routerLinkActive="mobile-nav-active" (click)="menuOpen=false" class="mobile-nav-link">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
@@ -214,6 +219,9 @@ import { CustomerMenuComponent } from '../ui/customer-menu.component';
       text-transform: uppercase;
     }
     .desktop-nav a:hover, .desktop-nav a.active { color: var(--brand-400); }
+    .desktop-nav a.nav-pc { color: #fff; }
+    .desktop-nav a.nav-pc.active, .desktop-nav a.nav-pc:hover { color: var(--brand-400); }
+    @media (max-width: 1024px) { .desktop-nav { gap: 1.5rem; } }
 
     .hamburger-btn {
       display: none;
