@@ -10,6 +10,7 @@ import { CheckoutStepsComponent } from '../../components/pc/checkout-steps.compo
 import { PcEnergiaComponent } from '../../components/pc/pc-energia.component';
 import { PcChecklistComponent } from '../../components/pc/pc-checklist.component';
 import { ImgFallbackDirective } from '../../components/ui/img-fallback.directive';
+import { PcCompararModalComponent } from '../../components/pc/pc-comparar-modal.component';
 
 /**
  * Tela 4: Verificação do PC. Etapa obrigatória entre o carrinho e o checkout quando o carrinho
@@ -19,7 +20,7 @@ import { ImgFallbackDirective } from '../../components/ui/img-fallback.directive
 @Component({
   selector: 'app-verificacao',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink, CheckoutStepsComponent, PcEnergiaComponent, PcChecklistComponent, ImgFallbackDirective],
+  imports: [NgFor, NgIf, RouterLink, CheckoutStepsComponent, PcEnergiaComponent, PcChecklistComponent, ImgFallbackDirective, PcCompararModalComponent],
   template: `
     <div class="pc-page">
       <div class="container">
@@ -108,6 +109,9 @@ import { ImgFallbackDirective } from '../../components/ui/img-fallback.directive
                 <button *ngIf="av().temIncompatibilidade" type="button" class="btn btn-danger vf-btn" (click)="continuar()" data-teste="continuar-mesmo-assim">
                   Continuar mesmo assim
                 </button>
+                <button type="button" class="btn btn-outline vf-comparar" (click)="comparando.set(true)" data-teste="comparar-pcs">
+                  ⚖️ Comparar com outro PC
+                </button>
                 <a routerLink="/carrinho" class="btn btn-ghost vf-voltar">← Voltar ao carrinho</a>
               </div>
             </section>
@@ -115,6 +119,9 @@ import { ImgFallbackDirective } from '../../components/ui/img-fallback.directive
         </div>
       </div>
     </div>
+
+    <app-pc-comparar-modal *ngIf="comparando()" [itensCarrinho]="itens()" [uf]="uf()" [horas]="horas()"
+                           (fechar)="comparando.set(false)"></app-pc-comparar-modal>
   `,
   styles: [`
     .vf-sub { margin-bottom: 1.5rem; }
@@ -144,6 +151,7 @@ import { ImgFallbackDirective } from '../../components/ui/img-fallback.directive
     .vf-link { font-size: .82rem; color: var(--brand-700); font-weight: 600; }
     .vf-alerta { margin-bottom: .75rem; font-size: .82rem; }
     .vf-btn { width: 100%; justify-content: center; height: 3rem; }
+    .vf-comparar { width: 100%; justify-content: center; margin-top: .5rem; color: var(--brand-700); border-color: var(--brand-200); }
     .vf-voltar { width: 100%; justify-content: center; margin-top: .4rem; color: var(--stone-600); }
     @media (max-width: 900px) { .vf-grid { grid-template-columns: minmax(0, 1fr); } .vf-lateral { position: static; } }
     @media (max-width: 520px) { .vf-pecas li { grid-template-columns: 1fr auto; } .vf-tipo { grid-column: 1 / -1; font-size: .72rem; } }
@@ -160,7 +168,10 @@ export class VerificacaoComponent implements OnInit {
   uf = signal(this.pc.verificacao()?.uf ?? this.pc.rascunho().uf ?? UF_PADRAO);
   horas = signal(this.pc.verificacao()?.horasUsoDia ?? this.pc.rascunho().horasUsoDia ?? HORAS_PADRAO);
 
-  private itens = computed(() => this.pc.itensDoCarrinho(this.carrinho()));
+  /** Modal "Qual PC é melhor?" (inovação 3). */
+  comparando = signal(false);
+
+  itens = computed(() => this.pc.itensDoCarrinho(this.carrinho()));
   pecas = computed(() => this.pc.pecas(this.itens()));
   av = computed(() => this.pc.avaliar(this.itens(), this.uf(), this.horas()));
   jogos = computed(() => this.pc.jogosPopulares().map(s => {

@@ -15,6 +15,7 @@ Três inovações, com regras em **[docs/regras-inovacoes.md](docs/regras-inovac
 Onde aparecem:
 - menu **Monte seu PC** (abas Montar, Comparar e Roda ou não?);
 - etapa nova **Verificação do PC** entre o carrinho e o checkout, obrigatória quando o carrinho tem hardware;
+- botão **"Comparar com outro PC"** na Verificação do PC (antes do pagamento): abre o modal "Qual PC é melhor?", que compara o PC do carrinho com outra montagem e indica a melhor escolha (placar por critério + custo-benefício);
 - bloco técnico na página de cada peça de hardware;
 - cadastros no painel do gerente.
 
